@@ -4,8 +4,4 @@
 	<application android:icon="@drawable/icon" android:label="SevenDays"></application>
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-	<uses-permission android:name="android.permission.READ_LOGS" />
-	<uses-permission android:name="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE" />
-	<uses-permission android:name="android.permission.READ_PHONE_STATE" />
-	<uses-permission android:name="android.permission.BATTERY_STATS" />
 </manifest>
