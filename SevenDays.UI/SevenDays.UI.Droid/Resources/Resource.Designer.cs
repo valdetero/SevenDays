@@ -104,6 +104,16 @@ namespace SevenDays.UI.Droid
 			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahTextSize = global::SevenDays.UI.Droid.Resource.Styleable.ProgressWheel_ahTextSize;
 			global::PCLStorage.Resource.String.ApplicationName = global::SevenDays.UI.Droid.Resource.String.ApplicationName;
 			global::PCLStorage.Resource.String.Hello = global::SevenDays.UI.Droid.Resource.String.Hello;
+			global::Toasts.Forms.Plugin.Droid.Resource.Drawable.error = global::SevenDays.UI.Droid.Resource.Drawable.error;
+			global::Toasts.Forms.Plugin.Droid.Resource.Drawable.info = global::SevenDays.UI.Droid.Resource.Drawable.info;
+			global::Toasts.Forms.Plugin.Droid.Resource.Drawable.success = global::SevenDays.UI.Droid.Resource.Drawable.success;
+			global::Toasts.Forms.Plugin.Droid.Resource.Drawable.warning = global::SevenDays.UI.Droid.Resource.Drawable.warning;
+			global::Toasts.Forms.Plugin.Droid.Resource.Id.desc = global::SevenDays.UI.Droid.Resource.Id.desc;
+			global::Toasts.Forms.Plugin.Droid.Resource.Id.image = global::SevenDays.UI.Droid.Resource.Id.image;
+			global::Toasts.Forms.Plugin.Droid.Resource.Id.title = global::SevenDays.UI.Droid.Resource.Id.title;
+			global::Toasts.Forms.Plugin.Droid.Resource.Layout.crouton = global::SevenDays.UI.Droid.Resource.Layout.crouton;
+			global::Toasts.Forms.Plugin.Droid.Resource.String.ApplicationName = global::SevenDays.UI.Droid.Resource.String.ApplicationName;
+			global::Toasts.Forms.Plugin.Droid.Resource.String.Hello = global::SevenDays.UI.Droid.Resource.String.Hello;
 			global::Xamarin.InsightsCore.Resource.String.ApplicationName = global::SevenDays.UI.Droid.Resource.String.ApplicationName;
 			global::Xamarin.InsightsCore.Resource.String.Hello = global::SevenDays.UI.Droid.Resource.String.Hello;
 		}
@@ -161,22 +171,34 @@ namespace SevenDays.UI.Droid
 		{
 			
 			// aapt resource value: 0x7f020000
-			public const int ic_errorstatus = 2130837504;
+			public const int error = 2130837504;
 			
 			// aapt resource value: 0x7f020001
-			public const int ic_successstatus = 2130837505;
+			public const int ic_errorstatus = 2130837505;
 			
 			// aapt resource value: 0x7f020002
-			public const int icon = 2130837506;
+			public const int ic_successstatus = 2130837506;
 			
 			// aapt resource value: 0x7f020003
-			public const int roundedbg = 2130837507;
+			public const int icon = 2130837507;
 			
 			// aapt resource value: 0x7f020004
-			public const int roundedbgdark = 2130837508;
+			public const int info = 2130837508;
 			
 			// aapt resource value: 0x7f020005
-			public const int settings = 2130837509;
+			public const int roundedbg = 2130837509;
+			
+			// aapt resource value: 0x7f020006
+			public const int roundedbgdark = 2130837510;
+			
+			// aapt resource value: 0x7f020007
+			public const int settings = 2130837511;
+			
+			// aapt resource value: 0x7f020008
+			public const int success = 2130837512;
+			
+			// aapt resource value: 0x7f020009
+			public const int warning = 2130837513;
 			
 			static Drawable()
 			{
@@ -192,16 +214,25 @@ namespace SevenDays.UI.Droid
 		{
 			
 			// aapt resource value: 0x7f050002
-			public const int loadingImage = 2131034114;
+			public const int desc = 2131034114;
 			
 			// aapt resource value: 0x7f050000
-			public const int loadingProgressBar = 2131034112;
+			public const int image = 2131034112;
+			
+			// aapt resource value: 0x7f050005
+			public const int loadingImage = 2131034117;
 			
 			// aapt resource value: 0x7f050003
-			public const int loadingProgressWheel = 2131034115;
+			public const int loadingProgressBar = 2131034115;
+			
+			// aapt resource value: 0x7f050006
+			public const int loadingProgressWheel = 2131034118;
+			
+			// aapt resource value: 0x7f050004
+			public const int textViewStatus = 2131034116;
 			
 			// aapt resource value: 0x7f050001
-			public const int textViewStatus = 2131034113;
+			public const int title = 2131034113;
 			
 			static Id()
 			{
@@ -217,13 +248,16 @@ namespace SevenDays.UI.Droid
 		{
 			
 			// aapt resource value: 0x7f030000
-			public const int loading = 2130903040;
+			public const int crouton = 2130903040;
 			
 			// aapt resource value: 0x7f030001
-			public const int loadingimage = 2130903041;
+			public const int loading = 2130903041;
 			
 			// aapt resource value: 0x7f030002
-			public const int loadingprogress = 2130903042;
+			public const int loadingimage = 2130903042;
+			
+			// aapt resource value: 0x7f030003
+			public const int loadingprogress = 2130903043;
 			
 			static Layout()
 			{

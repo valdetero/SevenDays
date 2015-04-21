@@ -7,6 +7,7 @@ using Acr.UserDialogs;
 using SevenDays.Core;
 using SevenDays.Core.ViewModels;
 using SevenDays.UI.Templates;
+using Toasts.Forms.Plugin.Abstractions;
 using Xamarin.Forms;
 
 namespace SevenDays.UI.Views
@@ -71,6 +72,12 @@ namespace SevenDays.UI.Views
             {
                 await ViewModel.ExecuteGetPlayerSummariesCommand();
                 listView.ItemsSource = ViewModel.Players;
+            }
+
+            if (!ViewModel.Players.Any())
+            {
+                var notificator = DependencyService.Get<IToastNotificator>();
+                bool tapped = await notificator.Notify(ToastNotificationType.Warning, "Players", "No players have connected to the server", TimeSpan.FromSeconds(2));
             }
         }
     }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Acr.UserDialogs;
 using SevenDays.Core.ViewModels;
 using SevenDays.UI.Templates;
+using Toasts.Forms.Plugin.Abstractions;
 using Xamarin.Forms;
 
 namespace SevenDays.UI.Views
@@ -64,6 +65,12 @@ namespace SevenDays.UI.Views
             {
                 await ViewModel.ExecuteLoadInventoryCommand();
                 listView.ItemsSource = ViewModel.Inventory;
+            }
+
+            if (!ViewModel.Inventory.Any())
+            {
+                var notificator = DependencyService.Get<IToastNotificator>();
+                bool tapped = await notificator.Notify(ToastNotificationType.Warning, "Inventory", "There are no items in the inventory", TimeSpan.FromSeconds(2));
             }
         }
     }
