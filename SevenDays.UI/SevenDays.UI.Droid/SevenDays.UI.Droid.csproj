@@ -129,6 +129,7 @@
   <ItemGroup>
     <Content Include="PluginsHelp\ConnectivityReadme.txt" />
     <Content Include="Properties\AndroidManifest.xml" />
+    <AndroidResource Include="Resources\drawable\settings.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\SevenDays.Core\SevenDays.Core.csproj">

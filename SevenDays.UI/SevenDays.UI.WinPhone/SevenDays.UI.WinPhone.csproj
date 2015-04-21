@@ -122,6 +122,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="settings.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="PluginsHelp\ConnectivityReadme.txt" />
     <Content Include="SplashScreenImage.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

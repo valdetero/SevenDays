@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Acr.UserDialogs;
 using SevenDays.Core.ViewModels;
 using Xamarin.Forms;
 
@@ -57,10 +58,8 @@ namespace SevenDays.UI.Views
                 Text = "Save",
 
             };
-            button.SetBinding(Button.CommandProperty, "SaveSettingsCommand");
-            button.Clicked += (s, e)  => {
-                Navigation.PopAsync();
-            };
+            //button.SetBinding(Button.CommandProperty, "SaveSettingsCommand");
+            button.Clicked += OnButtonClicked;
 
             var layout = new StackLayout
             {
@@ -71,6 +70,20 @@ namespace SevenDays.UI.Views
             Content = layout;
             BackgroundColor = Color.Black;
             Title = "Seven Days Server Settings";
+        }
+
+        async void OnButtonClicked(object sender, EventArgs e)
+        {
+            await ViewModel.ExecuteSaveSettingsCommand();
+            bool canConnect = false;
+            using (var loading = UserDialogs.Instance.Loading("Checking connectivity..."))
+            {
+                canConnect = await ViewModel.ExecuteCheckConnectivityCommand();
+            }
+            if (!canConnect)
+                UserDialogs.Instance.AlertAsync("Unable to connect to server. Please check host and port.");
+            else
+                Navigation.PopModalAsync();
         }
     }
 }

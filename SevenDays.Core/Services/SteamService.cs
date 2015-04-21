@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ModernHttpClient;
 using Newtonsoft.Json;
+using SevenDays.Core.Helpers;
 using SevenDays.Core.Interfaces;
 using SevenDays.Model.Base;
 using SevenDays.Model.Steam;
@@ -20,11 +21,17 @@ namespace SevenDays.Core.Services
         {
             networkService = Ioc.Container.Resolve<INetworkService>();
         }
+
+        private async Task<bool> canConnectToServer()
+        {
+            return await networkService.CanConnectToService(string.Format("http://{0}", Settings.SevendaysServer), Settings.SevendaysPort);
+        }
+
         public async Task<Response<PlayerStats>> GetPlayerAchievements(long steamId)
         {            
             var response = new Response<PlayerStats>();
 
-            if (!Connectivity.Plugin.CrossConnectivity.Current.IsConnected)
+            if (!await canConnectToServer())
                 return response;
 
             Insights.Track(string.Format("Getting player achievements for {0}", steamId));
@@ -44,7 +51,7 @@ namespace SevenDays.Core.Services
         {
             var response = new ListResponse<Player>();
 
-            if (!Connectivity.Plugin.CrossConnectivity.Current.IsConnected)
+            if (!await canConnectToServer())
                 return response;
 
             var sb = new StringBuilder();
@@ -76,7 +83,7 @@ namespace SevenDays.Core.Services
         {
             var response = new Response<Game>();
 
-            if (!Connectivity.Plugin.CrossConnectivity.Current.IsConnected)
+            if (!await canConnectToServer())
                 return response;
 
             string url = string.Format("{0}key={1}&appId={2}", ApiConstants.Steam.Schema, ApiConstants.Steam.Key, ApiConstants.Steam.AppId);
@@ -94,7 +101,7 @@ namespace SevenDays.Core.Services
         {
             var response = new Response<PlayerStats>();
 
-            if (!Connectivity.Plugin.CrossConnectivity.Current.IsConnected)
+            if (!await canConnectToServer())
                 return response;
 
             string url = string.Format("{0}key={1}&appId={2}&steamId={3}", ApiConstants.Steam.UserStats, ApiConstants.Steam.Key, ApiConstants.Steam.AppId, steamId);

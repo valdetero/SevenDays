@@ -10,14 +10,21 @@ namespace SevenDays.Core.Services
 {
     public class NetworkService : INetworkService
     {
+        public async Task<bool> CanConnectToService(string host)
+        {
+            int portInt;
+
+            return CrossConnectivity.Current.IsConnected 
+                && await CrossConnectivity.Current.IsReachable(host);
+        }
+
         public async Task<bool> CanConnectToService(string host, string port = "")
         {
             int portInt;
 
             return CrossConnectivity.Current.IsConnected 
                 && (int.TryParse(port, out portInt) 
-                    ? await CrossConnectivity.Current.IsRemoteReachable(host, portInt)
-                    : await CrossConnectivity.Current.IsReachable(host));
+                && await CrossConnectivity.Current.IsRemoteReachable(host, portInt));
         }
     }
 }

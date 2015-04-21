@@ -27,12 +27,13 @@ namespace SevenDays.UI.Views
                 IsGroupingEnabled = true,
                 GroupDisplayBinding = new Binding("Key")
             };
-            //if (Device.OS != TargetPlatform.WinPhone)
+            if (Device.OS != TargetPlatform.WinPhone)
                 listView.GroupHeaderTemplate = new DataTemplate(typeof(HeaderCell));
 
             listView.Refreshing += OnListViewRefreshing;
             Content = listView;
             Title = ViewModel.Name;
+            this.ToolbarItems.Add(new ToolbarItem { Text = "Settings", Icon = "settings.png", Command = new Command(() => Navigation.PushModalAsync(new SettingsPage())) });
         }
 
         protected async void OnListViewRefreshing(object sender, EventArgs e)
@@ -47,7 +48,6 @@ namespace SevenDays.UI.Views
             
             await loadGrid();
         }
-
 
         protected override void OnBindingContextChanged()
         {

@@ -10,6 +10,7 @@ namespace SevenDays.Core.Interfaces
 {
     public interface ISevendayService
     {
+        Task<bool> CanConnectToServer();
         Task<ListResponse<Player>> GetPlayersLocation();
         Task<Response<Inventory>> GetPlayerInventory(long steamId);
         string GetInventoryImageUrl(string item);

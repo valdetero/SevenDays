@@ -9,7 +9,7 @@ using Xamarin.Forms;
 namespace SevenDays.UI
 {
     public class App : Application
-    {
+    {        
         public App()
         {
             var playerList = new PlayerListPage();
@@ -19,7 +19,6 @@ namespace SevenDays.UI
             nav.BarBackgroundColor = Color.Teal;
             nav.BarTextColor = Color.White;
             //nav.BackgroundImage = "banner.png";
-            nav.ToolbarItems.Add(new ToolbarItem { Text = "Settings", Icon = "settings20.png", Command = new Command(() => nav.PushAsync(new SettingsPage())) } );
 
             MainPage = nav;
         }

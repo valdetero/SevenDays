@@ -29,11 +29,21 @@ namespace SevenDays.Core.Services
             return string.Format("http://{0}:{1}/{2}", Settings.SevendaysServer, Settings.SevendaysPort, api);
         }
 
+        private async Task<bool> canConnectToServer()
+        {
+            return await networkService.CanConnectToService(string.Format("http://{0}", Settings.SevendaysServer), Settings.SevendaysPort);
+        }
+
+        public async Task<bool> CanConnectToServer()
+        {
+            return await canConnectToServer();
+        }
+
         public async Task<Response<Inventory>> GetPlayerInventory(long steamId)
         {
             var response = new Response<Inventory>();
 
-            if (!Connectivity.Plugin.CrossConnectivity.Current.IsConnected)
+            if (!await canConnectToServer())
                 return response;
 
             Insights.Track(string.Format("Getting player inventory for {0}", steamId));
@@ -53,8 +63,8 @@ namespace SevenDays.Core.Services
         {
             var response = new ListResponse<Player>();
 
-            if (!Connectivity.Plugin.CrossConnectivity.Current.IsConnected)
-                return response;    
+            if (!await canConnectToServer())
+                return response;
 
             string url = getApiUrl(ApiConstants.Seven.PlayerLocation);
 
