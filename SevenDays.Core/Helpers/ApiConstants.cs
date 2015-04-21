@@ -11,7 +11,7 @@ namespace SevenDays.Core
 {
     public partial class ApiConstants
     {
-        public struct Steam
+        public partial struct Steam
         {
             public readonly static string Key = "";
             public const string AppId = "251570";
@@ -26,14 +26,14 @@ namespace SevenDays.Core
             
         }
 
-        public struct Seven
+        public partial struct Seven
         {
             public const string PlayerLocation = "api/getplayerslocation?";
             public const string PlayerInventory = "api/getplayerinventory?";
             public const string InventoryImage = "static/itemimages/{0}.png";
         }
 
-        public struct Insights
+        public partial struct Insights
         {
             public readonly static string Key = "";
         }        
