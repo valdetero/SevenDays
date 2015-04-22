@@ -58,13 +58,15 @@ namespace SevenDays.UI.Views
                 Text = "Save",
 
             };
-            //button.SetBinding(Button.CommandProperty, "SaveSettingsCommand");
+
             button.Clicked += OnButtonClicked;
+
+            var banner = new Banner();
 
             var layout = new StackLayout
             {
                 Orientation = StackOrientation.Vertical,
-                Children = { serverLayout, portLayout, button }
+                Children = { serverLayout, portLayout, button, banner }
             };
 
             Content = layout;
@@ -83,7 +85,7 @@ namespace SevenDays.UI.Views
             if (!canConnect)
                 UserDialogs.Instance.AlertAsync("Unable to connect to server. Please check host and port.");
             else
-                Navigation.PopModalAsync();
+                Navigation.PopAsync();
         }
     }
 }

@@ -32,9 +32,10 @@ namespace SevenDays.UI.Views
 
             listView.ItemTapped += OnItemSelected;
             listView.Refreshing += OnListViewRefreshing;
-            Content = listView;
+            
+            Content = listView; 
 
-            this.ToolbarItems.Add(new ToolbarItem { Text = "Settings", Icon = "settings.png", Command = new Command(() => Navigation.PushModalAsync(new SettingsPage())) });
+            this.ToolbarItems.Add(new ToolbarItem { Text = "Settings", Icon = "settings.png", Command = new Command(() => Navigation.PushAsync(new SettingsPage())) });
         }
 
         protected async void OnListViewRefreshing(object sender, EventArgs e)

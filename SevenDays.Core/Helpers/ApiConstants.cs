@@ -36,6 +36,13 @@ namespace SevenDays.Core
         public partial struct Insights
         {
             public readonly static string Key = "";
-        }        
+        }
+
+        public partial struct GoogleAds
+        {
+            public readonly static string WinKey = "";
+            public readonly static string DroidKey = "";
+            public readonly static string iOSKey = "";
+        }
     }
 }
