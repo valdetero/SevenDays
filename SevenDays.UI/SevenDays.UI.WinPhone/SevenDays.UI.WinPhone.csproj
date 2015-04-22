@@ -121,6 +121,8 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Assets\Icon.png" />
+    <None Include="Assets\Tiles\IconTileMedium.png" />
+    <None Include="Assets\Tiles\IconTileSmall.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="settings.png" />

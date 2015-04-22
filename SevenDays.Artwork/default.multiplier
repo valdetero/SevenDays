@@ -30,6 +30,8 @@
 { type: 'icons', width: 120, path: 'SevenDays.UI/SevenDays.UI.iOS/Resources/{0}40@3x' }
 
 { type: 'icons', width: 100, path: 'SevenDays.UI/SevenDays.UI.WinPhone/Assets/{0}' }
+{ type: 'icons', width: 159, path: 'SevenDays.UI/SevenDays.UI.WinPhone/Assets/Tiles/{0}TileSmall' }
+{ type: 'icons', width: 336, path: 'SevenDays.UI/SevenDays.UI.WinPhone/Assets/Tiles/{0}TileMedium' }
 
 # You can process multiple directories, each with different type specifiers
 
