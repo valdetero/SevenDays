@@ -23,6 +23,8 @@ namespace SevenDays.Model.Steam
         public string AvatarFull { get; set; }
         [JsonProperty("personastate")]
         public PersonaState PersonaState { get; set; }
+        [JsonProperty("lastlogoff")]
+        public long LastLogOff { get; set; }
         [JsonProperty("communityvisibilitystate")]
         public CommunityVisibilityState CommunityVisibilityState { get; set; }
     }

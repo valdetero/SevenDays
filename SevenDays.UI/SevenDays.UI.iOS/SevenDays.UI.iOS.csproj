@@ -90,7 +90,6 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="Renderers\NavigationRenderer.cs" />
     <None Include="app.config" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
@@ -213,6 +212,9 @@
     <BundleResource Include="Resources\settings20.svg" />
     <BundleResource Include="Resources\banner.png" />
     <BundleResource Include="Resources\settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Renderers\" />
   </ItemGroup>
   <Import Project="..\..\SevenDays.Shared\SevenDays.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

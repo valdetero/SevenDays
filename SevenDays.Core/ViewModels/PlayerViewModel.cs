@@ -32,6 +32,7 @@ namespace SevenDays.Core.ViewModels
             avatar = player.Avatar;
             SteamAvailability = player.SteamAvailability;
             SteamId = player.SteamId;
+            LastLogOff = player.LastLogOff.ToLocalTime().ToString();
         }
 
         public long SteamId { get; set; }
@@ -41,6 +42,7 @@ namespace SevenDays.Core.ViewModels
         public Color SteamColor { get { return getColorFromState(); } }
         public bool ShouldShowAsOnline { get { return IsOnline == true; } }
         public bool ShouldShowAsOffline { get { return IsOnline == false; } }
+        public string LastLogOff { get; set; }
         private string avatar;
         public ImageSource Avatar
         {

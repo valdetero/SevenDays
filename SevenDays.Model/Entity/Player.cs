@@ -13,5 +13,6 @@ namespace SevenDays.Model
         public string Avatar { get; set; }
         public string SteamAvailability { get; set; }
         public long SteamId { get; set; }
+        public DateTime LastLogOff { get; set; }
     }
 }

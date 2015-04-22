@@ -81,12 +81,20 @@ namespace SevenDays.UI.Templates
                 Children = { onlineImage, onLineLabel, offlineImage, offLineLabel, steamLabel }
             };
 
+            var timeLabel = new Label
+            {
+                TextColor = Color.FromHex("#ddd"),
+                FontAttributes = FontAttributes.Italic,
+                FontSize = 10,
+            };
+            timeLabel.SetBinding(Label.TextProperty, "LastLogOff");
+
             var detailsLayout = new StackLayout
             {
                 Padding = new Thickness(10, 0, 0, 0),
                 Spacing = 0,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
-                Children = { nameLabel, statusLayout }
+                Children = { nameLabel, statusLayout, timeLabel }
             };
 
             var tapImage = new Image()
