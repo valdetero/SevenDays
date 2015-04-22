@@ -235,3 +235,6 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+*/Keystore
+*.apk
+SevenDays.UI/SevenDays.UI.Droid/Resources/Keystore
