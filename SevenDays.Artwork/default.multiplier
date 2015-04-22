@@ -1,0 +1,47 @@
+﻿# This is a sample Image Multiplier specification file
+# In here you define each of the output types you want to create
+# And then provide search expressions for the SVG files you want to process
+# Each SVG file is processes against the matching type specifiers to create
+# multiple PNG files in all of the sizes you need for your Android and iOS projects
+
+# { type: 'icons', width: 36, color: '#f80c12', path: 'SevenDays.UI/SevenDays.UI.Droid/Resources/drawable-ldpi/{0}' }
+# { type: 'icons', width: 48, color: '#f80c12', path: 'SevenDays.UI/SevenDays.UI.Droid/Resources/drawable-mdpi/{0}' }
+{ type: 'icons', width: 72, color: '#f80c12', path: 'SevenDays.UI/SevenDays.UI.Droid/Resources/drawable-hdpi/{0}' }
+{ type: 'icons', width: 96, color: '#f80c12', path: 'SevenDays.UI/SevenDays.UI.Droid/Resources/drawable-xhdpi/{0}' }
+{ type: 'icons', width: 144, color: '#f80c12', path: 'SevenDays.UI/SevenDays.UI.Droid/Resources/drawable-xxhdpi/{0}' }
+{ type: 'icons', width: 144, color: '#f80c12', path: 'SevenDays.UI/SevenDays.UI.Droid/Resources/drawable/{0}' }
+
+# Icons
+# iOS 5,6 1x
+{ type: 'icons', width:  57, path: 'SevenDays.UI/SevenDays.UI.iOS/Resources/{0}57@1x' }
+# iOS 5,6 2x
+{ type: 'icons', width: 114, path: 'SevenDays.UI/SevenDays.UI.iOS/Resources/{0}57@2x' }
+# iOS 7 2x/3x
+{ type: 'icons', width: 120, path: 'SevenDays.UI/SevenDays.UI.iOS/Resources/{0}60@2x' }
+{ type: 'icons', width: 180, path: 'SevenDays.UI/SevenDays.UI.iOS/Resources/{0}60@3x' }
+
+# Spotlight/Settings
+# iOS 5,6 1x
+{ type: 'icons', width:  29, path: 'SevenDays.UI/SevenDays.UI.iOS/Resources/{0}29@1x' }
+# iOS 5,6 2x
+{ type: 'icons', width:  58, path: 'SevenDays.UI/SevenDays.UI.iOS/Resources/{0}29@2x' }
+# iOS 7 2x/3x
+{ type: 'icons', width:  80, path: 'SevenDays.UI/SevenDays.UI.iOS/Resources/{0}40@2x' }
+{ type: 'icons', width: 120, path: 'SevenDays.UI/SevenDays.UI.iOS/Resources/{0}40@3x' }
+
+{ type: 'icons', width: 100, path: 'SevenDays.UI/SevenDays.UI.WinPhone/Assets/{0}' }
+
+# You can process multiple directories, each with different type specifiers
+
+{ process: 'Icons/*.svg', as: ['icons'] }
+
+{ type: 'images', width: 96, color: '#f80c12', path: 'SevenDays.UI/SevenDays.UI.Droid/Resources/drawable/{0}' }
+{ type: 'images', width: 72, color: '#f80c12', path: 'SevenDays.UI/SevenDays.UI.Droid/Resources/drawable-hdpi/{0}' }
+{ type: 'images', width: 96, color: '#f80c12', path: 'SevenDays.UI/SevenDays.UI.Droid/Resources/drawable-xhdpi/{0}' }
+{ type: 'images', width: 144, color: '#f80c12', path: 'SevenDays.UI/SevenDays.UI.Droid/Resources/drawable-xxhdpi/{0}' }
+
+{ type: 'images', width:  30, path: 'SevenDays.UI/SevenDays.UI.iOS/Resources/{0}' }
+{ type: 'images', width:  60, path: 'SevenDays.UI/SevenDays.UI.iOS/Resources/{0}@2x' }
+{ type: 'images', width:  90, path: 'SevenDays.UI/SevenDays.UI.iOS/Resources/{0}@3x' }
+
+{ process: 'Images/*.svg', as: ['images'] }

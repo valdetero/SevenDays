@@ -27,10 +27,12 @@
 	<string>1.0</string>
 	<key>CFBundleIconFiles</key>
 	<array>
-		<string>Icon-60@2x.png</string>
-		<string>Icon-Small@2x.png</string>
-		<string>Icon-Small.png</string>
-		<string>Icon-Small-40@2x.png</string>
+		<string>Icon60@2x</string>
+		<string>Icon29@2x</string>
+		<string>Icon29@1x</string>
+		<string>Icon40@2x</string>
+		<string>Icon57@2x</string>
+		<string>Icon57@1x</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
