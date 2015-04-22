@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using Android.App;
 using Android.Content;
-using Android.Gms.Ads;
+//using Android.Gms.Ads;
 using Android.OS;
 using Android.Runtime;
-using Android.Views;
 using Android.Widget;
 using SevenDays.Core;
+using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
 [assembly: ExportRenderer(typeof(SevenDays.UI.Views.Banner), typeof(SevenDays.UI.Droid.Renderers.BannerRenderer))]
@@ -18,6 +18,7 @@ namespace SevenDays.UI.Droid.Renderers
 {
     public class BannerRenderer : ViewRenderer
     {
+        /*
         protected override void OnElementChanged(ElementChangedEventArgs<View> e)
         {
             base.OnElementChanged(e);
@@ -31,5 +32,6 @@ namespace SevenDays.UI.Droid.Renderers
                 this.SetNativeControl(ad);
             }
         }
+         */
     }
 }

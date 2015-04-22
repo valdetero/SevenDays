@@ -61,12 +61,10 @@ namespace SevenDays.UI.Views
 
             button.Clicked += OnButtonClicked;
 
-            var banner = new Banner();
-
             var layout = new StackLayout
             {
                 Orientation = StackOrientation.Vertical,
-                Children = { serverLayout, portLayout, button, banner }
+                Children = { serverLayout, portLayout, button }
             };
 
             Content = layout;
