@@ -14,7 +14,7 @@ namespace SevenDays.UI.Views
 
         public MenuPage()
         {
-            Icon = "menu.png";
+            Icon = PlatformImage.Resolver("menu.png");
             Title = "menu"; // The Title property must be set.
             BackgroundColor = Color.FromHex("333333");            
 
@@ -26,22 +26,22 @@ namespace SevenDays.UI.Views
             {
                 new Model.MenuItem { 
 				    Title = "Players", 
-				    IconSource = "people.png", 
+				    IconSource = PlatformImage.Resolver("people.png"), 
 				    TargetType = typeof(PlayerListPage)
 			    },
                 new Model.MenuItem { 
                     Title = "Map", 
-                    IconSource = "map.png", 
+                    IconSource = PlatformImage.Resolver("map.png"), 
                     TargetType = typeof(MapPage)
                 },
                 new Model.MenuItem { 
 				    Title = "Settings", 
-				    IconSource = "settings.png", 
+				    IconSource = PlatformImage.Resolver("settings.png"), 
 				    TargetType = typeof(SettingsPage)
 			    },
                 new Model.MenuItem { 
                     Title = "About", 
-                    IconSource = "info.png", 
+                    IconSource = PlatformImage.Resolver("info.png"), 
                     TargetType = typeof(AboutPage)
                 }
             };

@@ -91,6 +91,7 @@
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Renderers\BannerRenderer.cs" />
+    <Compile Include="Renderers\GradientContentPageRenderer.cs" />
     <Compile Include="Renderers\iAdBannerRenderer.cs" />
     <None Include="app.config" />
     <None Include="Entitlements.plist" />

@@ -121,16 +121,16 @@
     <None Include="Properties\WMAppManifest.xml">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Assets\Icon.png" />
+    <Content Include="Assets\Icon.png" />
     <None Include="Assets\Tiles\IconTileMedium.png" />
     <None Include="Assets\Tiles\IconTileSmall.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="info.png" />
-    <Content Include="map.png" />
-    <Content Include="menu.png" />
-    <Content Include="people.png" />
-    <Content Include="settings.png" />
+    <Content Include="Assets\info.png" />
+    <Content Include="Assets\map.png" />
+    <Content Include="Assets\menu.png" />
+    <Content Include="Assets\people.png" />
+    <Content Include="Assets\settings.png" />
     <Content Include="PluginsHelp\ConnectivityReadme.txt" />
     <Content Include="SplashScreenImage.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
