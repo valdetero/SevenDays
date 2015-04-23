@@ -19,6 +19,7 @@
 # iOS 7 2x/3x
 { type: 'icons', width: 120, path: 'SevenDays.UI/SevenDays.UI.iOS/Resources/{0}60@2x' }
 { type: 'icons', width: 180, path: 'SevenDays.UI/SevenDays.UI.iOS/Resources/{0}60@3x' }
+{ type: 'icons', width: 152, path: 'SevenDays.UI/SevenDays.UI.iOS/Resources/{0}76@2x' }
 
 # Spotlight/Settings
 # iOS 5,6 1x
@@ -46,6 +47,6 @@
 { type: 'images', width:  60, path: 'SevenDays.UI/SevenDays.UI.iOS/Resources/{0}@2x' }
 { type: 'images', width:  90, path: 'SevenDays.UI/SevenDays.UI.iOS/Resources/{0}@3x' }
 
-{ type: 'images', width:  76, path: 'SevenDays.UI/SevenDays.UI.WinPhone/{0}' }
+{ type: 'images', width:  38, path: 'SevenDays.UI/SevenDays.UI.WinPhone/Assets/{0}' }
 
-{ process: 'Images/*.svg', as: ['images'] }
+{ process: 'Images/*.svg', as: ['images'] } 
