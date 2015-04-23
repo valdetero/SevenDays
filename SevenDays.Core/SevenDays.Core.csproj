@@ -59,6 +59,7 @@
     <Compile Include="Services\SevendayService.cs" />
     <Compile Include="Services\SteamService.cs" />
     <Compile Include="ViewModels\InventoryViewModel.cs" />
+    <Compile Include="ViewModels\MapViewModel.cs" />
     <Compile Include="ViewModels\PlayerListViewModel.cs" />
     <Compile Include="ViewModels\PlayerViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />

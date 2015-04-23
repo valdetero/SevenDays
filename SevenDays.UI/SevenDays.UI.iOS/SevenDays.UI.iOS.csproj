@@ -213,6 +213,18 @@
     <BundleResource Include="Resources\tap%402x.png" />
     <BundleResource Include="Resources\tap%403x.png" />
     <BundleResource Include="Resources\banner.png" />
+    <BundleResource Include="Resources\info.png" />
+    <BundleResource Include="Resources\info%402x.png" />
+    <BundleResource Include="Resources\info%403x.png" />
+    <BundleResource Include="Resources\map.png" />
+    <BundleResource Include="Resources\map%402x.png" />
+    <BundleResource Include="Resources\map%403x.png" />
+    <BundleResource Include="Resources\menu.png" />
+    <BundleResource Include="Resources\menu%402x.png" />
+    <BundleResource Include="Resources\menu%403x.png" />
+    <BundleResource Include="Resources\people%403x.png" />
+    <BundleResource Include="Resources\people%402x.png" />
+    <BundleResource Include="Resources\people.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Resources/BannerRenderer2.xcassets/AppIcons.appiconset/Contents.json">

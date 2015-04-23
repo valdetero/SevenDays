@@ -14,5 +14,6 @@ namespace SevenDays.Core.Interfaces
         Task<ListResponse<Player>> GetPlayersLocation();
         Task<Response<Inventory>> GetPlayerInventory(long steamId);
         string GetInventoryImageUrl(string item);
+        string GetMapUrl();
     }
 }

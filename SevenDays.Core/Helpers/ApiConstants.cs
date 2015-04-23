@@ -31,6 +31,7 @@ namespace SevenDays.Core
             public const string PlayerLocation = "api/getplayerslocation?";
             public const string PlayerInventory = "api/getplayerinventory?";
             public const string InventoryImage = "static/itemimages/{0}.png";
+            public const string Map = "static/index.html";
         }
 
         public partial struct Insights

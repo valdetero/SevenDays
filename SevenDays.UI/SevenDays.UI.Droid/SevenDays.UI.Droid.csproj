@@ -152,6 +152,22 @@
     <Content Include="PluginsHelp\ConnectivityReadme.txt" />
     <Content Include="Properties\AndroidManifest.xml" />
     <AndroidResource Include="Resources\drawable\settings.png" />
+    <AndroidResource Include="Resources\drawable\people.png" />
+    <AndroidResource Include="Resources\drawable\info.png" />
+    <AndroidResource Include="Resources\drawable\map.png" />
+    <AndroidResource Include="Resources\drawable\menu.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\info.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\map.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\menu.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\people.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\info.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\map.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\menu.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\people.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\info.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\map.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\menu.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\people.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\SevenDays.Core\SevenDays.Core.csproj">

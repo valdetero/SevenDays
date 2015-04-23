@@ -34,8 +34,6 @@ namespace SevenDays.UI.Views
             listView.Refreshing += OnListViewRefreshing;
             
             Content = listView; 
-
-            this.ToolbarItems.Add(new ToolbarItem { Text = "Settings", Icon = "settings.png", Command = new Command(() => Navigation.PushAsync(new SettingsPage())) });
         }
 
         protected async void OnListViewRefreshing(object sender, EventArgs e)
@@ -69,11 +67,13 @@ namespace SevenDays.UI.Views
 
         private async Task loadGrid()
         {
+            IsBusy = true;
             using (var loading = UserDialogs.Instance.Loading("Loading players..."))
             {
                 await ViewModel.ExecuteGetPlayerSummariesCommand();
                 listView.ItemsSource = ViewModel.Players;
             }
+            IsBusy = false;
 
             if (!ViewModel.Players.Any())
             {

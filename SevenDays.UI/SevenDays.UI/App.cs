@@ -12,15 +12,13 @@ namespace SevenDays.UI
     {        
         public App()
         {
-            var playerList = new PlayerListPage();
-
-            var nav = new NavigationPage(playerList);
-
-            nav.BarBackgroundColor = Color.Teal;
-            nav.BarTextColor = Color.White;
+            //var playerList = new PlayerListPage();
+            //var nav = new NavigationPage(playerList);
+            //nav.BarBackgroundColor = Color.Teal;
+            //nav.BarTextColor = Color.White;
             //nav.BackgroundImage = "banner.png";
 
-            MainPage = nav;
+            MainPage = new RootPage();
         }
 
         public static Xamarin.Forms.Color BrandColor { get { return Color.Blue; } }

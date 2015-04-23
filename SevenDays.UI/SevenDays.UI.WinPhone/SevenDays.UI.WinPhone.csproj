@@ -126,6 +126,10 @@
     <None Include="Assets\Tiles\IconTileSmall.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="info.png" />
+    <Content Include="map.png" />
+    <Content Include="menu.png" />
+    <Content Include="people.png" />
     <Content Include="settings.png" />
     <Content Include="PluginsHelp\ConnectivityReadme.txt" />
     <Content Include="SplashScreenImage.jpg">

@@ -35,13 +35,19 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="Model\MenuItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Templates\HeaderCell.cs" />
     <Compile Include="Templates\InventoryCell.cs" />
+    <Compile Include="Templates\MenuCell.cs" />
     <Compile Include="Templates\PlayerCell.cs" />
+    <Compile Include="Views\AboutPage.cs" />
     <Compile Include="Views\Banner.cs" />
+    <Compile Include="Views\MapPage.cs" />
+    <Compile Include="Views\MenuPage.cs" />
     <Compile Include="Views\PlayerListPage.cs" />
     <Compile Include="Views\PlayerPage.cs" />
+    <Compile Include="Views\RootPage.cs" />
     <Compile Include="Views\SettingsPage.cs" />
     <Compile Include="Views\ViewPage.cs" />
   </ItemGroup>

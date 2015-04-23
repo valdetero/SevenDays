@@ -82,5 +82,10 @@ namespace SevenDays.Core.Services
             string url = getApiUrl(ApiConstants.Seven.InventoryImage);
             return string.Format(url, item);
         }
+
+        public string GetMapUrl()
+        {
+            return getApiUrl(ApiConstants.Seven.Map);
+        }
     }
 }
