@@ -35,6 +35,10 @@ namespace SevenDays.UI.Views
             Content = listView;
             Title = ViewModel.Name;
         }
+        public PlayerPage(PlayerViewModel viewModel) : this()
+        {
+            ViewModel = viewModel;
+        }
 
         protected async void OnListViewRefreshing(object sender, EventArgs e)
         {

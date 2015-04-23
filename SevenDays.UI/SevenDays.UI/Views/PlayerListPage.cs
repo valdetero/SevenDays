@@ -57,7 +57,7 @@ namespace SevenDays.UI.Views
         {
             var item = e.Item as PlayerViewModel;
 
-            var selected = new PlayerPage
+            var selected = new PlayerPage(item)
             {
                 BindingContext = item
             };

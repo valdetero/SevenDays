@@ -14,6 +14,7 @@ namespace SevenDays.UI.Views
     {
         public MapPage ()
 	    {
+            Title = "Server Map";
             Content = new WebView
             {
                 Source = ViewModel.ExecuteGetMapUrlCommand()
