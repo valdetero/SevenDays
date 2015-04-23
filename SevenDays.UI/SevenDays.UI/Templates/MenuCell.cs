@@ -14,6 +14,8 @@ namespace SevenDays.UI.Templates
             TextColor = Color.FromHex("AAAAAA");
             if(Device.OS == TargetPlatform.WinPhone)
                 Height = 40;
+            if (Device.OS == TargetPlatform.Android)
+                Height = 60;
         }
     }
 }
