@@ -238,3 +238,5 @@ $RECYCLE.BIN/
 */Keystore
 *.apk
 SevenDays.UI/SevenDays.UI.Droid/Resources/Keystore
+
+*.userprefs
