@@ -228,17 +228,9 @@
     <BundleResource Include="Resources\people.png" />
   </ItemGroup>
   <ItemGroup>
-    <ImageAsset Include="Resources/BannerRenderer2.xcassets/AppIcons.appiconset/Contents.json">
-      <InProject>false</InProject>
-    </ImageAsset>
-    <ImageAsset Include="Resources/BannerRenderer2.xcassets/LaunchImages.launchimage/Contents.json">
-      <InProject>false</InProject>
-    </ImageAsset>
-  </ItemGroup>
-  <ItemGroup>
     <XamarinComponentReference Include="googleadmob">
-      <Visible>False</Visible>
       <Version>7.1.0</Version>
+      <Visible>False</Visible>
     </XamarinComponentReference>
   </ItemGroup>
   <Import Project="..\..\SevenDays.Shared\SevenDays.Shared.projitems" Label="Shared" />
