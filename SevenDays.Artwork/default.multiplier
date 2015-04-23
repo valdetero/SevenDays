@@ -13,9 +13,9 @@
 
 # Icons
 # iOS 5,6 1x
-{ type: 'icons', width:  57, path: 'SevenDays.UI/SevenDays.UI.iOS/Resources/{0}57@1x' }
+# { type: 'icons', width:  57, path: 'SevenDays.UI/SevenDays.UI.iOS/Resources/{0}57@1x' }
 # iOS 5,6 2x
-{ type: 'icons', width: 114, path: 'SevenDays.UI/SevenDays.UI.iOS/Resources/{0}57@2x' }
+# { type: 'icons', width: 114, path: 'SevenDays.UI/SevenDays.UI.iOS/Resources/{0}57@2x' }
 # iOS 7 2x/3x
 { type: 'icons', width: 120, path: 'SevenDays.UI/SevenDays.UI.iOS/Resources/{0}60@2x' }
 { type: 'icons', width: 180, path: 'SevenDays.UI/SevenDays.UI.iOS/Resources/{0}60@3x' }
@@ -45,5 +45,7 @@
 { type: 'images', width:  30, path: 'SevenDays.UI/SevenDays.UI.iOS/Resources/{0}' }
 { type: 'images', width:  60, path: 'SevenDays.UI/SevenDays.UI.iOS/Resources/{0}@2x' }
 { type: 'images', width:  90, path: 'SevenDays.UI/SevenDays.UI.iOS/Resources/{0}@3x' }
+
+{ type: 'images', width:  76, path: 'SevenDays.UI/SevenDays.UI.WinPhone/{0}' }
 
 { process: 'Images/*.svg', as: ['images'] }

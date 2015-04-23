@@ -36,6 +36,10 @@
   <ItemGroup>
     <None Include="Icons\Icon.svg" />
     <None Include="Images\settings.svg" />
+    <None Include="Images\info.svg" />
+    <None Include="Images\map.svg" />
+    <None Include="Images\menu.svg" />
+    <None Include="Images\people.svg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Icons\" />
