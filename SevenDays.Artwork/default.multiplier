@@ -47,6 +47,6 @@
 { type: 'images', width:  60, path: 'SevenDays.UI/SevenDays.UI.iOS/Resources/{0}@2x' }
 { type: 'images', width:  90, path: 'SevenDays.UI/SevenDays.UI.iOS/Resources/{0}@3x' }
 
-{ type: 'images', width:  38, path: 'SevenDays.UI/SevenDays.UI.WinPhone/Assets/{0}' }
+{ type: 'images', width:  76, path: 'SevenDays.UI/SevenDays.UI.WinPhone/Assets/{0}' }
 
-{ process: 'Images/*.svg', as: ['images'] } 
+{ process: 'Images/*.svg', as: ['images'] }
