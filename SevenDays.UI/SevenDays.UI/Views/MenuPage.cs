@@ -53,6 +53,7 @@ namespace SevenDays.UI.Views
 			    BackgroundColor = Color.Transparent,
 			    SeparatorVisibility = SeparatorVisibility.None,
 			    ItemTemplate = cell,
+                HasUnevenRows = true,
             };
 
             var menuLabel = new ContentView
