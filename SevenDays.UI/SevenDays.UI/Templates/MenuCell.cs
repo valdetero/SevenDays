@@ -12,7 +12,6 @@ namespace SevenDays.UI.Templates
         public MenuCell() : base()
         {
             TextColor = Color.FromHex("AAAAAA");
-            System.Diagnostics.Debug.WriteLine("Height: " + Height);
             if(Device.OS == TargetPlatform.WinPhone)
                 Height = 40;
         }
