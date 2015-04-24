@@ -12,13 +12,11 @@ namespace SevenDays.Core.Services
     {
         public async Task<bool> CanConnectToService(string host)
         {
-            int portInt;
-
             return CrossConnectivity.Current.IsConnected 
                 && await CrossConnectivity.Current.IsReachable(host);
         }
 
-        public async Task<bool> CanConnectToService(string host, string port = "")
+        public async Task<bool> CanConnectToService(string host, string port)
         {
             int portInt;
 

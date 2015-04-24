@@ -11,7 +11,10 @@ namespace SevenDays.Tests.Shared
     public class SteamServiceTests
     {
         [Xunit.Fact]
-        [Nunit.Test, Nunit.Timeout(Int32.MaxValue)]
+        [Nunit.Test]
+#if !WINDOWS_PHONE
+        [Nunit.Timeout(Int32.MaxValue)]
+#endif
         public async Task GetPlayerSummaries()
         {
             var service = SevenDays.Core.Ioc.Container.Resolve<ISteamService>();
@@ -24,7 +27,10 @@ namespace SevenDays.Tests.Shared
         }
 
         [Xunit.Fact]
-        [Nunit.Test, Nunit.Timeout(Int32.MaxValue)]
+        [Nunit.Test]
+#if !WINDOWS_PHONE
+        [Nunit.Timeout(Int32.MaxValue)]
+#endif
         public async Task GetPlayerSummaries_2()
         {
             var service = SevenDays.Core.Ioc.Container.Resolve<ISteamService>();

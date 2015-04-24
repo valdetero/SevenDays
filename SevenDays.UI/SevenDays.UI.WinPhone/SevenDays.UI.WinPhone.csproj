@@ -131,8 +131,6 @@
     <Content Include="Assets\menu.png" />
     <Content Include="Assets\people.png" />
     <Content Include="Assets\settings.png" />
-    <Content Include="PluginsHelp\ConnectivityReadme.txt" />
-    <Content Include="Properties\_SettingsStarted.txt" />
     <Content Include="SplashScreenImage.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

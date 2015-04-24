@@ -18,6 +18,8 @@ namespace SevenDays.Tests.Droid
 
         protected override void OnCreate(Bundle bundle)
         {
+            Bootstrapper.Setup();
+
             AddTestAssembly(Assembly.GetExecutingAssembly());
 
             AddExecutionAssembly(typeof(ExtensibilityPointFactory).Assembly);

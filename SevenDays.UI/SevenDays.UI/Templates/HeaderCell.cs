@@ -14,7 +14,8 @@ namespace SevenDays.UI.Templates
             this.Height = 25;
             var title = new Label
             {
-                Font = Font.SystemFontOfSize(NamedSize.Small, FontAttributes.Bold),
+                FontAttributes = FontAttributes.Bold,
+                FontSize = Font.SystemFontOfSize(NamedSize.Small).FontSize,
                 TextColor = Color.White,
                 VerticalOptions = LayoutOptions.Center
             };

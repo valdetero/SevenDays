@@ -74,16 +74,16 @@ namespace SevenDays.UI.Views
 
         async void OnButtonClicked(object sender, EventArgs e)
         {
-            await ViewModel.ExecuteSaveSettingsCommand();
+            ViewModel.ExecuteSaveSettingsCommand();
             bool canConnect = false;
             using (var loading = UserDialogs.Instance.Loading("Checking connectivity..."))
             {
                 canConnect = await ViewModel.ExecuteCheckConnectivityCommand();
             }
             if (!canConnect)
-                UserDialogs.Instance.AlertAsync("Unable to connect to server. Please check host and port.");
+                await UserDialogs.Instance.AlertAsync("Unable to connect to server. Please check host and port.");
             else
-                Navigation.PopAsync();
+                await Navigation.PopAsync();
         }
     }
 }

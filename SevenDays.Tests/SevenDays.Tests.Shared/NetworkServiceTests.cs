@@ -10,7 +10,10 @@ namespace SevenDays.Tests.Shared
     public class NetworkServiceTests
     {
         [Xunit.Fact]
-        [Nunit.Test, Nunit.Timeout(Int32.MaxValue)]
+        [Nunit.Test]
+#if !WINDOWS_PHONE
+        [Nunit.Timeout(Int32.MaxValue)]
+#endif
         public async void CheckNetworkConnectivity()
         {
             var service = SevenDays.Core.Ioc.Container.Resolve<INetworkService>();

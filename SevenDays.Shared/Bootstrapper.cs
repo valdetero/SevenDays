@@ -10,11 +10,9 @@ namespace SevenDays
         {
             IoC.Init();
             SevenDays.Model.Mapper.AutoMapperConfig.Register();
-
+            Analytics.Init();
 #if !TEST
             
-            Analytics.Init();
-
     #if DROID
             Acr.UserDialogs.UserDialogs.Init(() => (Android.App.Activity)Xamarin.Forms.Forms.Context);
             ImageCircle.Forms.Plugin.Droid.ImageCircleRenderer.Init();

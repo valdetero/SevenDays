@@ -28,11 +28,11 @@ namespace SevenDays.Core.ViewModels
         private RelayCommand getSaveSettingsCommand;
         public ICommand SaveSettingsCommand
         {
-            get { return getSaveSettingsCommand ?? (getSaveSettingsCommand = new RelayCommand(async () => await ExecuteSaveSettingsCommand())); }
+            get { return getSaveSettingsCommand ?? (getSaveSettingsCommand = new RelayCommand(() => ExecuteSaveSettingsCommand())); }
         }
 
         [Insights]
-        public async Task ExecuteSaveSettingsCommand()
+        public void ExecuteSaveSettingsCommand()
         {
             int port;
             int.TryParse(Port, out port);

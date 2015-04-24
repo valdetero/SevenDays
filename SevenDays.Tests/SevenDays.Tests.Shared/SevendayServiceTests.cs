@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using SevenDays.Core.Helpers;
 using SevenDays.Core.Interfaces;
+using SevenDays.Model.Base;
+using SevenDays.Model.Seven;
 using Nunit = NUnit.Framework;
 
 namespace SevenDays.Tests.Shared
@@ -12,7 +14,10 @@ namespace SevenDays.Tests.Shared
     public class SevendayServiceTests
     {
         [Xunit.Fact]
-        [Nunit.Test, Nunit.Timeout(Int32.MaxValue)]
+        [Nunit.Test]
+#if !WINDOWS_PHONE
+        [Nunit.Timeout(Int32.MaxValue)]
+#endif
         public async Task GetPlayerInventory()
         {
             Settings.SevendaysServer = "home.wtfnext.com";
@@ -27,7 +32,10 @@ namespace SevenDays.Tests.Shared
         }
 
         [Xunit.Fact]
-        [Nunit.Test, Nunit.Timeout(Int32.MaxValue)]
+        [Nunit.Test]
+#if !WINDOWS_PHONE
+        [Nunit.Timeout(Int32.MaxValue)]
+#endif
         public async Task GetPlayersLocation()
         {
             Settings.SevendaysServer = "home.wtfnext.com";
