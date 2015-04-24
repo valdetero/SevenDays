@@ -15,56 +15,41 @@ namespace SevenDays.UI.Views
     {
         public SettingsPage()
         {            
-            var serverLabel = new Label()
+            var serverLabel = new Label
             {
                 FontFamily = "HelveticaNeue-Medium",
                 FontSize = Device.OnPlatform(18, 18, 24),
                 TextColor = Color.White,
                 Text = "Server"
             };
-            var serverText = new Entry
-            {
-
-            };
+            var serverText = new Entry();
             serverText.SetBinding(Entry.TextProperty, "Server");
 
-            var serverLayout = new StackLayout
-            {
-                Orientation = StackOrientation.Horizontal,
-                Children = { serverLabel, serverText,  }
-            };
-
-            var portLabel = new Label()
+            var portLabel = new Label
             {
                 FontFamily = "HelveticaNeue-Medium",
                 FontSize = Device.OnPlatform(18, 18, 24),
                 TextColor = Color.White,
                 Text = "Port"
             };
-            var portText = new Entry
-            {
-
-            };
+            var portText = new Entry();
             portText.SetBinding(Entry.TextProperty, "Port");
-
-            var portLayout = new StackLayout
-            {
-                Orientation = StackOrientation.Horizontal,
-                Children = { portLabel, portText, }
-            };
 
             var button = new Button
             {
                 Text = "Save",
-
             };
 
             button.Clicked += OnButtonClicked;
 
             var layout = new StackLayout
             {
-                Orientation = StackOrientation.Vertical,
-                Children = { serverLayout, portLayout, button }
+                VerticalOptions = LayoutOptions.StartAndExpand,
+                Padding = new Thickness(10),
+                Children = {
+                    serverLabel, serverText,
+                    portLabel, portText,
+                    button }
             };
 
             Content = layout;
