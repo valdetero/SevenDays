@@ -50,6 +50,8 @@ namespace SevenDays.Tests.Droid
 			global::Xamarin.Android.NUnitLite.Resource.Layout.results = global::SevenDays.Tests.Droid.Resource.Layout.results;
 			global::Xamarin.Android.NUnitLite.Resource.Layout.test_result = global::SevenDays.Tests.Droid.Resource.Layout.test_result;
 			global::Xamarin.Android.NUnitLite.Resource.Layout.test_suite = global::SevenDays.Tests.Droid.Resource.Layout.test_suite;
+			global::Xamarin.Forms.Platform.Resource.String.ApplicationName = global::SevenDays.Tests.Droid.Resource.String.ApplicationName;
+			global::Xamarin.Forms.Platform.Resource.String.Hello = global::SevenDays.Tests.Droid.Resource.String.Hello;
 		}
 		
 		public partial class Attribute
