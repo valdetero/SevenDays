@@ -141,7 +141,6 @@
     <Content Include="DeviceInfoReadme.txt" />
     <Content Include="PluginsHelp\ConnectivityReadme.txt" />
     <Content Include="Properties\AndroidManifest.xml" />
-    <Content Include="Properties\_SettingsStarted.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\SevenDays.Core\SevenDays.Core.csproj">

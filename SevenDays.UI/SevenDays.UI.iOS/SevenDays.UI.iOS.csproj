@@ -214,7 +214,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="PluginsHelp\ConnectivityReadme.txt" />
     <BundleResource Include="Resources\offline.png" />
     <BundleResource Include="Resources\offline%402x.png" />
     <BundleResource Include="Resources\offline%403x.png" />
@@ -237,7 +236,6 @@
     <BundleResource Include="Resources\people%403x.png" />
     <BundleResource Include="Resources\people%402x.png" />
     <BundleResource Include="Resources\people.png" />
-    <Content Include="Properties\_SettingsStarted.txt" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="googleadmob">

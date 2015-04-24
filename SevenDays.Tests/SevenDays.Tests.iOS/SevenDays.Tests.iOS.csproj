@@ -204,7 +204,6 @@
     <Content Include="DeviceInfoReadme.txt" />
     <Content Include="Entitlements.plist" />
     <Content Include="PluginsHelp\ConnectivityReadme.txt" />
-    <Content Include="Properties\_SettingsStarted.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\SevenDays.Core\SevenDays.Core.csproj">

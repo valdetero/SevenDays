@@ -161,7 +161,6 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\settings.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="PluginsHelp\ConnectivityReadme.txt" />
     <Content Include="Properties\AndroidManifest.xml" />
     <AndroidResource Include="Resources\drawable\settings.png" />
     <AndroidResource Include="Resources\drawable\people.png" />
@@ -180,7 +179,6 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\map.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\menu.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\people.png" />
-    <Content Include="Properties\_SettingsStarted.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\SevenDays.Core\SevenDays.Core.csproj">
