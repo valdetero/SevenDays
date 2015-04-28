@@ -39,6 +39,11 @@ namespace SevenDays.Core
             public readonly static string Key = "";
         }
 
+		public partial struct TestCloud
+		{
+			public readonly static string Key = "";
+		}
+
         public partial struct GoogleAds
         {
             public readonly static string WinKey = "";

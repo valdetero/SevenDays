@@ -18,7 +18,7 @@ namespace SevenDays.Tests.UI
 					.Android
 				// TODO: Update this path to point to your Android app and uncomment the
 				// code if the app is not included in the solution.
-				//.ApkFile ("../../../Droid/bin/Debug/xamarinforms.apk")
+					.ApkFile ("../../../../SevenDays.UI/SevenDays.UI.Droid/bin/Debug/SevenDays.UI.Droid.apk")
 					.StartApp();
 			}
 
@@ -26,7 +26,7 @@ namespace SevenDays.Tests.UI
 				.iOS
 			// TODO: Update this path to point to your iOS app and uncomment the
 			// code if the app is not included in the solution.
-			//.AppBundle ("../../../iOS/bin/iPhoneSimulator/Debug/XamarinForms.iOS.app")
+				.AppBundle ("../../../../SevenDays.UI/SevenDays.UI.iOS/bin/iPhoneSimulator/Debug/SevenDaysUIiOS.app")
 				.StartApp();
 		}
 	}
