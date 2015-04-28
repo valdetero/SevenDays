@@ -30,6 +30,16 @@ namespace SevenDays.Tests.UI
 		{
 			app.Screenshot("First screen.");
 		}
+
+        [Test]
+        public void Open_Repl()
+        {
+            _app.Query(c => c.Class("UILabel"));
+
+            _app.Repl();
+
+            AppResult[] results = _app.Query(c => c.All());
+        }
 	}
 }
 
