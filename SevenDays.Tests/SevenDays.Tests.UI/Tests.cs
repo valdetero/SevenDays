@@ -34,11 +34,11 @@ namespace SevenDays.Tests.UI
         [Test]
         public void Open_Repl()
         {
-            _app.Query(c => c.Class("UILabel"));
+            app.Query(c => c.Class("UILabel"));
 
-            _app.Repl();
+            app.Repl();
 
-            AppResult[] results = _app.Query(c => c.All());
+            AppResult[] results = app.Query(c => c.All());
         }
 	}
 }
