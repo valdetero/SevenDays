@@ -143,6 +143,10 @@
       <HintPath>..\..\packages\Acr.UserDialogs.3.3.0\lib\Xamarin.iOS10\BTProgressHUD.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Calabash, Version=14.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.TestCloud.Agent.0.14.0\lib\Xamarin.iOS10\Calabash.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="GoogleAdMobAds">
       <HintPath>..\..\Components\googleadmob-7.1.0\lib\ios-unified\GoogleAdMobAds.dll</HintPath>
     </Reference>
