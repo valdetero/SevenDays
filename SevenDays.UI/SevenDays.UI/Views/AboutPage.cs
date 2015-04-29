@@ -45,11 +45,14 @@ Icons made by
 <a href='{0}Xamarin.Forms' title='Xamarin.Forms'>Xamarin.Forms</a><br />
 <a href='{0}Xamarin.Insights' title='Xamarin.Insights'>Xamarin.Insights</a><br />
 </div>", nugeturl)
-            };
+			};
+
+			StyleId = "aboutPage";
 
             Content = new WebView
             {
-                Source = source
+                Source = source,
+				StyleId = "aboutWebView"
             };
 	    }
     }

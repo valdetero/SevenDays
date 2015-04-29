@@ -21,7 +21,8 @@ namespace SevenDays.UI.Templates
                 WidthRequest = 87,
                 Aspect = Aspect.AspectFill,
                 HorizontalOptions = LayoutOptions.Center,
-                VerticalOptions = LayoutOptions.Center,
+				VerticalOptions = LayoutOptions.Center,
+				StyleId = "inventoryImage"
             };
             invImage.SetBinding(Image.SourceProperty, "Image");
 
@@ -29,7 +30,8 @@ namespace SevenDays.UI.Templates
             {
                 FontFamily = "HelveticaNeue-Medium",
                 FontSize = Device.OnPlatform(18, 18, 24),
-                TextColor = Color.White
+				TextColor = Color.White,
+				StyleId = "nameLabel"
             };
             nameLabel.SetBinding(Label.TextProperty, "Name");
 
@@ -37,7 +39,8 @@ namespace SevenDays.UI.Templates
             {
                 FontFamily = "HelveticaNeue-Medium",
                 FontSize = 12,
-                TextColor = Color.White
+				TextColor = Color.White,
+				StyleId = "countLabel"
             };
             countLabel.SetBinding(Label.TextProperty, "Count");
 
@@ -64,6 +67,7 @@ namespace SevenDays.UI.Templates
                 Children = { invImage, detailsLayout }
             };
 
+			StyleId = "inventoryCell";
             this.View = cellLayout;
         }
     }

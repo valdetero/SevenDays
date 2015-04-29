@@ -27,12 +27,14 @@ namespace SevenDays.UI.Views
                 SeparatorColor = Color.FromHex("#ddd"),
                 IsPullToRefreshEnabled = true,
                 Header = new Image { Source = ApiConstants.Steam.HeaderUrl },
-                BackgroundColor = Color.Black,
+				BackgroundColor = Color.Black,
+				StyleId = "playerListView"
             };
 
             listView.ItemTapped += OnItemSelected;
             listView.Refreshing += OnListViewRefreshing;
             
+			StyleId = "playerListPage";
             Content = listView; 
         }
 

@@ -26,7 +26,8 @@ namespace SevenDays.UI.Views
                 IsPullToRefreshEnabled = true,
                 BackgroundColor = Color.Black,
                 IsGroupingEnabled = true,
-                GroupDisplayBinding = new Binding("Key")
+				GroupDisplayBinding = new Binding("Key"),
+				StyleId = "inventoryListView"
             };
             if (Device.OS != TargetPlatform.WinPhone)
                 listView.GroupHeaderTemplate = new DataTemplate(typeof(HeaderCell));
@@ -34,6 +35,7 @@ namespace SevenDays.UI.Views
             listView.Refreshing += OnListViewRefreshing;
             Content = listView;
             Title = ViewModel.Name;
+			StyleId = "playerPage";
         }
         public PlayerPage(PlayerViewModel viewModel) : this()
         {

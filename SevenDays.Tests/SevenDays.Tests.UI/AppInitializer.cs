@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using Xamarin.UITest;
 using Xamarin.UITest.Queries;
+using SevenDays.Core;
 
 namespace SevenDays.Tests.UI
 {
@@ -16,17 +17,33 @@ namespace SevenDays.Tests.UI
 			if(platform == Platform.Android) {
 				return ConfigureApp
 					.Android
-				// TODO: Update this path to point to your Android app and uncomment the
-				// code if the app is not included in the solution.
+					.Debug()
+					.EnableLocalScreenshots()
+					.ApiKey(ApiConstants.TestCloud.Key)
+
+					//Device
+					//.DeviceSerial()
+					//.InstalledApp("SevenDays.SevenDays")
+
+					//Simulator
 					.ApkFile ("../../../../SevenDays.UI/SevenDays.UI.Droid/bin/Debug/SevenDays.UI.Droid.apk")
+
 					.StartApp();
 			}
 
 			return ConfigureApp
 				.iOS
-			// TODO: Update this path to point to your iOS app and uncomment the
-			// code if the app is not included in the solution.
+				.Debug()
+				.EnableLocalScreenshots()
+				.ApiKey(ApiConstants.TestCloud.Key)
+
+				//Device
+				//.DeviceIdentifier("42a46071aaf6b895aebc4f9ace29972270dac022")
+				//.InstalledApp("com.sparkhound.SevenDays.UI")
+
+				//Simulator
 				.AppBundle ("../../../../SevenDays.UI/SevenDays.UI.iOS/bin/iPhoneSimulator/Debug/SevenDaysUIiOS.app")
+
 				.StartApp();
 		}
 	}

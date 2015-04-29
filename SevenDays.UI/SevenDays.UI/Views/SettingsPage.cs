@@ -20,9 +20,13 @@ namespace SevenDays.UI.Views
                 FontFamily = "HelveticaNeue-Medium",
                 FontSize = Device.OnPlatform(18, 18, 24),
                 TextColor = Color.White,
-                Text = "Server"
+				Text = "Server",
+				StyleId = "serverLabel"
             };
-            var serverText = new Entry();
+			var serverText = new Entry 
+			{
+				StyleId = "serverEntry"
+			};
             serverText.SetBinding(Entry.TextProperty, "Server");
 
             var portLabel = new Label
@@ -30,14 +34,19 @@ namespace SevenDays.UI.Views
                 FontFamily = "HelveticaNeue-Medium",
                 FontSize = Device.OnPlatform(18, 18, 24),
                 TextColor = Color.White,
-                Text = "Port"
+				Text = "Port",
+				StyleId = "portLabel"
             };
-            var portText = new Entry();
+            var portText = new Entry
+			{
+				StyleId = "portEntry"
+			};
             portText.SetBinding(Entry.TextProperty, "Port");
 
             var button = new Button
             {
-                Text = "Save",
+				Text = "Save",
+				StyleId = "saveButton"
             };
 
             button.Clicked += OnButtonClicked;
@@ -55,6 +64,7 @@ namespace SevenDays.UI.Views
             Content = layout;
             BackgroundColor = Color.Black;
             Title = "Seven Days Server Settings";
+			StyleId = "settingsPage";
         }
 
         async void OnButtonClicked(object sender, EventArgs e)

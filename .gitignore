@@ -240,3 +240,5 @@ $RECYCLE.BIN/
 SevenDays.UI/SevenDays.UI.Droid/Resources/Keystore
 
 *.userprefs
+
+Components/*

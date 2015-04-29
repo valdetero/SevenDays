@@ -17,10 +17,13 @@ namespace SevenDays.UI.Templates
                 FontAttributes = FontAttributes.Bold,
                 FontSize = Font.SystemFontOfSize(NamedSize.Small).FontSize,
                 TextColor = Color.White,
-                VerticalOptions = LayoutOptions.Center
+				VerticalOptions = LayoutOptions.Center,
+				StyleId = "titleLabel"
             };
 
             title.SetBinding(Label.TextProperty, "Key");
+
+			StyleId = "headerCell";
 
             View = new StackLayout
             {

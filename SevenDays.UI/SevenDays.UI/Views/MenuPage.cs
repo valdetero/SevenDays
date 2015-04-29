@@ -16,7 +16,8 @@ namespace SevenDays.UI.Views
         {
             Icon = PlatformImage.Resolver("menu.png");
             Title = "menu"; // The Title property must be set.
-            BackgroundColor = Color.FromHex("333333");            
+            BackgroundColor = Color.FromHex("333333");    
+			StyleId = "menuPage";
 
             var cell = new DataTemplate(typeof(MenuCell));
 			cell.SetBinding (MenuCell.TextProperty, "Title");
@@ -54,6 +55,7 @@ namespace SevenDays.UI.Views
 			    SeparatorVisibility = SeparatorVisibility.None,
 			    ItemTemplate = cell,
                 HasUnevenRows = true,
+				StyleId = "menuListView"
             };
 
             var menuLabel = new ContentView
@@ -63,7 +65,8 @@ namespace SevenDays.UI.Views
                 {
                     TextColor = Color.FromHex("AAAAAA"),
                     Text = "MENU",
-                }
+				},
+				StyleId = "menuLabel"
             };
 
             var layout = new StackLayout

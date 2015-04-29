@@ -31,7 +31,10 @@ namespace SevenDays.UI.Views
             {
                 BarBackgroundColor = Color.Teal,
                 BarTextColor = Color.White,
+				StyleId = "navigationPage"
             };
+
+			StyleId = "rootPage";
         }
 
         void NavigateTo(Model.MenuItem menu)

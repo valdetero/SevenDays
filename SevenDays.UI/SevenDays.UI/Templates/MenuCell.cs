@@ -16,6 +16,8 @@ namespace SevenDays.UI.Templates
                 Height = 40;
             if (Device.OS == TargetPlatform.Android)
                 Height = 60;
+
+			StyleId = "menuCell";
         }
     }
 }

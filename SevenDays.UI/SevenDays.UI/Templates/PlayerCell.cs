@@ -23,6 +23,7 @@ namespace SevenDays.UI.Templates
                 Aspect = Aspect.AspectFill,
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.Center,
+				StyleId = "profileImage"
             };
             profileImage.SetBinding(Image.SourceProperty, "Avatar");
 
@@ -30,14 +31,16 @@ namespace SevenDays.UI.Templates
             {
                 FontFamily = "HelveticaNeue-Medium",
                 FontSize = Device.OnPlatform(18, 18, 24),
-                TextColor = Color.White
+                TextColor = Color.White,
+				StyleId = "nameLabel"
             };
             nameLabel.SetBinding(Label.TextProperty, "Name");
 
             var steamLabel = new Label()
             {
                 FontAttributes = FontAttributes.Bold,
-                FontSize = 12,
+				FontSize = 12,
+				StyleId = "steamLabel"
             };
             steamLabel.SetBinding(Label.TextColorProperty, "SteamColor");
             steamLabel.SetBinding(Label.TextProperty, "SteamAvailability");
@@ -46,7 +49,8 @@ namespace SevenDays.UI.Templates
             {
                 Source = "online.png",
                 HeightRequest = 8,
-                WidthRequest = 8
+                WidthRequest = 8,
+				StyleId = "onlineImage"
             };
             onlineImage.SetBinding(Image.IsVisibleProperty, "ShouldShowAsOnline");
             var onLineLabel = new Label()
@@ -54,7 +58,8 @@ namespace SevenDays.UI.Templates
                 Text = "Online",
                 TextColor = Color.Green,
                 FontSize = 12,
-                IsVisible = false,
+				IsVisible = false,
+				StyleId = "onlineLabel"
             };
             onLineLabel.SetBinding(Label.IsVisibleProperty, "ShouldShowAsOnline");
 
@@ -63,7 +68,8 @@ namespace SevenDays.UI.Templates
             {
                 Source = "offline.png",
                 HeightRequest = 8,
-                WidthRequest = 8
+				WidthRequest = 8,
+				StyleId = "offlineImage"
             };
             offlineImage.SetBinding(Image.IsVisibleProperty, "ShouldShowAsOffline");
             var offLineLabel = new Label()
@@ -71,7 +77,8 @@ namespace SevenDays.UI.Templates
                 Text = "Offline",
                 TextColor = Color.FromHex("#ddd"),
                 FontSize = 12,
-                IsVisible = false,
+				IsVisible = false,
+				StyleId = "offlineLabel"
             };
             offLineLabel.SetBinding(Label.IsVisibleProperty, "ShouldShowAsOffline");
 
@@ -85,7 +92,8 @@ namespace SevenDays.UI.Templates
             {
                 TextColor = Color.FromHex("#ddd"),
                 FontAttributes = FontAttributes.Italic,
-                FontSize = 10,
+				FontSize = 10,
+				StyleId = "timeLabel"
             };
             timeLabel.SetBinding(Label.TextProperty, "LastLogOff");
 
@@ -101,7 +109,8 @@ namespace SevenDays.UI.Templates
             {
                 Source = "tap.png",
                 HorizontalOptions = LayoutOptions.End,
-                HeightRequest = 12,
+				HeightRequest = 12,
+				StyleId = "tapImage"
             };
 
             var cellLayout = new StackLayout
@@ -113,6 +122,7 @@ namespace SevenDays.UI.Templates
                 Children = { profileImage, detailsLayout, tapImage }
             };
 
+			StyleId = "playerCell";
             this.View = cellLayout;
         }
     }
