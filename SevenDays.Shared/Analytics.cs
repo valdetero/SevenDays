@@ -10,6 +10,13 @@ namespace SevenDays
         public static void Init()
         {
 #if !TEST
+            Xamarin.Insights.HasPendingCrashReport += (sender, isStartupCrash) =>
+            {
+                if (isStartupCrash)
+                {
+                    Xamarin.Insights.PurgePendingCrashReports().Wait();
+                }
+            };
     #if DROID
             Xamarin.Insights.Initialize(ApiConstants.Insights.Key, (Android.App.Activity)Xamarin.Forms.Forms.Context);
     #else
