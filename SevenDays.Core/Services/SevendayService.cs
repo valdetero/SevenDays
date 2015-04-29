@@ -50,6 +50,7 @@ namespace SevenDays.Core.Services
 
             string url = string.Format("{0}steamId={1}", getApiUrl(ApiConstants.Seven.PlayerInventory), steamId);
 
+            using (var handle = Insights.TrackTime("Seven_GetPlayerInventory"))
             using (var client = new HttpClient(new NativeMessageHandler()))
             {
                 var result = await client.GetStringAsync(url);
@@ -68,6 +69,7 @@ namespace SevenDays.Core.Services
 
             string url = getApiUrl(ApiConstants.Seven.PlayerLocation);
 
+            using (var handle = Insights.TrackTime("Seven_GetPlayersLocation"))
             using (var client = new HttpClient(new NativeMessageHandler()))
             {
                 var result = await client.GetStringAsync(url);

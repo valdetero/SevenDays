@@ -38,6 +38,7 @@ namespace SevenDays.Core.Services
 
             string url = string.Format("{0}key={1}&appId={2}&steamId={3}", ApiConstants.Steam.Achievements, ApiConstants.Steam.Key, ApiConstants.Steam.AppId, steamId);
 
+            using (var handle = Insights.TrackTime("Steam_GetPlayerAchievements"))
             using (var client = new HttpClient(new NativeMessageHandler()))
             {
                 var result = await client.GetStringAsync(url);
@@ -69,6 +70,7 @@ namespace SevenDays.Core.Services
 
             string url = string.Format("{0}key={1}&steamIds={2}", ApiConstants.Steam.PlayerSummary, ApiConstants.Steam.Key, sb.ToString());
 
+            using (var handle = Insights.TrackTime("Steam_GetPlayerSummaries"))
             using (var client = new HttpClient(new NativeMessageHandler()))
             {
                 var result = await client.GetStringAsync(url);
@@ -88,6 +90,7 @@ namespace SevenDays.Core.Services
 
             string url = string.Format("{0}key={1}&appId={2}", ApiConstants.Steam.Schema, ApiConstants.Steam.Key, ApiConstants.Steam.AppId);
 
+            using (var handle = Insights.TrackTime("Steam_GetSchemaForGame"))
             using (var client = new HttpClient(new NativeMessageHandler()))
             {
                 var result = await client.GetStringAsync(url);
@@ -106,6 +109,7 @@ namespace SevenDays.Core.Services
 
             string url = string.Format("{0}key={1}&appId={2}&steamId={3}", ApiConstants.Steam.UserStats, ApiConstants.Steam.Key, ApiConstants.Steam.AppId, steamId);
 
+            using (var handle = Insights.TrackTime("Steam_GetUserStatsForGame"))
             using (var client = new HttpClient(new NativeMessageHandler()))
             {
                 var result = await client.GetStringAsync(url);
