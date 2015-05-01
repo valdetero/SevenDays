@@ -43,6 +43,7 @@
     <Compile Include="Templates\MenuCell.cs" />
     <Compile Include="Templates\PlayerCell.cs" />
     <Compile Include="Views\AboutPage.cs" />
+    <Compile Include="Views\AdMobBuddyControl.cs" />
     <Compile Include="Views\Banner.cs" />
     <Compile Include="Views\GradientContentPage.cs" />
     <Compile Include="Views\MapPage.cs" />

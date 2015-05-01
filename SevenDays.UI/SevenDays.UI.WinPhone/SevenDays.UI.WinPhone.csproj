@@ -97,6 +97,7 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Renderers\AdMobBuddyRenderer.cs" />
     <Compile Include="Renderers\BannerRenderer.cs" />
     <Compile Include="Resources\AppResources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -195,9 +196,6 @@
     <Reference Include="DeviceInfo.Plugin.Abstractions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xam.Plugin.DeviceInfo.1.0.0.2\lib\wp8\DeviceInfo.Plugin.Abstractions.dll</HintPath>
       <Private>True</Private>
-    </Reference>
-    <Reference Include="GoogleAds">
-      <HintPath>Resources\GoogleAds.dll</HintPath>
     </Reference>
     <Reference Include="ImageCircle.Forms.Plugin.Abstractions, Version=1.0.10.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xam.Plugins.Forms.ImageCircle.1.0.10\lib\wp8\ImageCircle.Forms.Plugin.Abstractions.dll</HintPath>

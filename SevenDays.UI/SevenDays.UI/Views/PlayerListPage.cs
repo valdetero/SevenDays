@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
+using AdMobBuddy.Forms.Plugin.Abstractions;
 using SevenDays.Core;
 using SevenDays.Core.ViewModels;
 using SevenDays.UI.Templates;
@@ -35,7 +36,17 @@ namespace SevenDays.UI.Views
             listView.Refreshing += OnListViewRefreshing;
             
 			StyleId = "playerListPage";
-            Content = listView; 
+            Content = new StackLayout
+            {
+                VerticalOptions = LayoutOptions.Center,
+                Children = {
+						listView,
+						new AdMobBuddyControl
+                        {
+							AdUnitId = App.AdMobId
+						}
+					}
+            }; 
         }
 
         protected async void OnListViewRefreshing(object sender, EventArgs e)

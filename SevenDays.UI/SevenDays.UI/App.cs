@@ -23,6 +23,8 @@ namespace SevenDays.UI
 
         public static Xamarin.Forms.Color BrandColor { get { return Color.Blue; } }
 
+        public static string AdMobId { get; set; }
+
         protected override void OnStart()
         {
             // Handle when your app starts

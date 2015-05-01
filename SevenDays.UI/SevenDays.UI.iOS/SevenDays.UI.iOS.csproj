@@ -90,6 +90,7 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="Renderers\AdMobBuddyRenderer.cs" />
     <Compile Include="Renderers\BannerRenderer.cs" />
     <Compile Include="Renderers\GradientContentPageRenderer.cs" />
     <Compile Include="Renderers\iAdBannerRenderer.cs" />
@@ -100,7 +101,9 @@
     </None>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <ITunesArtwork Include="iTunesArtwork" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <ITunesArtwork Include="iTunesArtwork%402x" />
   </ItemGroup>
   <ItemGroup>
