@@ -35,9 +35,9 @@ namespace SevenDays
     #else
             Xamarin.Insights.Initialize(Xamarin.Insights.DebugModeKey);
     #endif
-            Xamarin.Insights.DisableCollection = true;
-            Xamarin.Insights.DisableDataTransmission = true;
-            Xamarin.Insights.DisableExceptionCatching = true;
+            //Xamarin.Insights.DisableCollection = true;
+            //Xamarin.Insights.DisableDataTransmission = true;
+            //Xamarin.Insights.DisableExceptionCatching = true;
 #endif
         }
     }

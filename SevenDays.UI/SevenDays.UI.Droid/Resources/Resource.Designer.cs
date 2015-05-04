@@ -104,6 +104,7 @@ namespace SevenDays.UI.Droid
 			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahTextSize = global::SevenDays.UI.Droid.Resource.Styleable.ProgressWheel_ahTextSize;
 			global::PCLStorage.Resource.String.ApplicationName = global::SevenDays.UI.Droid.Resource.String.ApplicationName;
 			global::PCLStorage.Resource.String.Hello = global::SevenDays.UI.Droid.Resource.String.Hello;
+			global::Splat.Resource.String.library_name = global::SevenDays.UI.Droid.Resource.String.library_name;
 			global::Toasts.Forms.Plugin.Droid.Resource.Drawable.error = global::SevenDays.UI.Droid.Resource.Drawable.error;
 			global::Toasts.Forms.Plugin.Droid.Resource.Drawable.info = global::SevenDays.UI.Droid.Resource.Drawable.info;
 			global::Toasts.Forms.Plugin.Droid.Resource.Drawable.success = global::SevenDays.UI.Droid.Resource.Drawable.success;

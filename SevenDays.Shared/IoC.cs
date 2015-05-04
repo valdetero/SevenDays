@@ -15,6 +15,7 @@ namespace SevenDays
             Container.Register<INetworkService>(() => new NetworkService());
             Container.Register<ISteamService>(() => new SteamService());
             Container.Register<ISevendayService>(() => new SevendayService());
+            Container.Register<ICacheService>(() => new AkavacheCacheService())
         }
     }
 }

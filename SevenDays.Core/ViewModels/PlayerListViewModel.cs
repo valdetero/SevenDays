@@ -19,15 +19,24 @@ namespace SevenDays.Core.ViewModels
     {
         private ISevendayService sevendayService;
         private ISteamService steamService;
+        private ICacheService cache;
         public PlayerListViewModel()
         {
             sevendayService = Container.Resolve<ISevendayService>();
             steamService = Container.Resolve<ISteamService>();
+            cache = Container.Resolve<ICacheService>();
 
             Players = new ObservableCollection<PlayerViewModel>();
         }
 
         public ObservableCollection<PlayerViewModel> Players { get; set; }
+
+        private void addPlayers(IEnumerable<Model.Seven.Player> sevens, IEnumerable<Model.Steam.Player> steams)
+        {
+            var players = sevens.Join(steams, _7 => _7.SteamId, s => s.SteamId, (_7, s) => PlayerMapper.Map(s, _7)).Select(x => new PlayerViewModel(x)).ToList();
+
+            Players = new ObservableCollection<PlayerViewModel>(players);
+        }
 
         private RelayCommand getPlayerSummariesCommand;
         public ICommand GetPlayerSummariesCommand
@@ -47,6 +56,8 @@ namespace SevenDays.Core.ViewModels
 
             var sevens = locationResponse.Result.ToList();
 
+            await cache.InsertObject("seven_players", sevens);
+
             Insights.Track(string.Format("Found {0} seven players", sevens.Count));
 
             var summaryResponse = await steamService.GetPlayerSummaries(sevens.Select(x => x.SteamId).ToArray());
@@ -56,13 +67,43 @@ namespace SevenDays.Core.ViewModels
 
             var steams = summaryResponse.Result.ToList();
 
+            await cache.InsertObject("steam_players", steams);
+
             Insights.Track(string.Format("Found {0} steam players", steams.Count));
 
-            var players = sevens.Join(steams, _7 => _7.SteamId, s => s.SteamId, (_7, s) => PlayerMapper.Map(s, _7)).Select(x => new PlayerViewModel(x)).ToList();
-
-            Players = new ObservableCollection<PlayerViewModel>(players);
+            addPlayers(sevens, steams);
 
             Insights.Track(string.Format("Added {0} players to view", players.Count));
+        }
+
+        private RelayCommand getIsServerReachableCommand;
+        public ICommand IsServerReachableCommand
+        {
+            get { return getIsServerReachableCommand ?? (getIsServerReachableCommand = new RelayCommand(async () => await ExecuteIsServerReachableCommand())); }
+        }
+
+        [Insights]
+        public async Task<bool> ExecuteIsServerReachableCommand()
+        {
+            return await sevendayService.CanConnectToServer();
+        }
+
+        private RelayCommand geGetCachedPlayersCommand;
+        public ICommand GetCachedPlayersCommand
+        {
+            get { return getGetCachedPlayers ?? (getGetCachedPlayersCommand = new RelayCommand(async () => await ExecuteGetCachedPlayersCommand())); }
+        }
+
+        [Insights]
+        public async Task ExecuteGetCachedPlayersCommand()
+        {
+            var sevens = await cache.GetObject<IEnumerable<Model.Seven.Player>>("seven_players");
+            var steams = await cache.GetObject<IEnumerable<Model.Steam.Player>>("steam_players");
+
+            if (sevens == null || steams == null)
+                return;
+
+            addPlayers(sevens, steams);
         }
     }
 }

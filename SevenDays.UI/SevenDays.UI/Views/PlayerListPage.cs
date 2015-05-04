@@ -61,7 +61,17 @@ namespace SevenDays.UI.Views
 
             if (ViewModel.Players == null || ViewModel.Players.Count == 0)
             {
-                await loadGrid();
+                if(!await serverIsReachable())
+                {
+                    await ViewModel.ExecuteGetCachedPlayersCommand();
+
+                    if (!ViewModel.Players.Any())
+                        listView.ItemsSource = ViewModel.Players;
+                }
+                else
+                {
+                    await loadGrid();
+                }
             }
             listView.SelectedItem = null;
         }
@@ -91,8 +101,24 @@ namespace SevenDays.UI.Views
             if (!ViewModel.Players.Any())
             {
                 var notificator = DependencyService.Get<IToastNotificator>();
-                bool tapped = await notificator.Notify(ToastNotificationType.Warning, "Players", "No players have connected to the server", TimeSpan.FromSeconds(2));
+                bool tapped = await notificator.Notify(ToastNotificationType.Warning, "Players", "No players have connected", TimeSpan.FromSeconds(2));
             }
+        }
+
+        private async Task<bool> serverIsReachable()
+        {
+            IsBusy = true;
+
+            var isReachable = await ViewModel.ExecuteIsServerReachableCommand();
+
+            if(!isReachable)
+            {
+                bool tapped = await DependencyService.Get<IToastNotificator>().Notify(ToastNotificationType.Error, "Server Error", "Server is unavailable", TimeSpan.FromSeconds(2));
+            }
+
+            IsBusy = false;
+
+            return isReachable;
         }
     }
 }

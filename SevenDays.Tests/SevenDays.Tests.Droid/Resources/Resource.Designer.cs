@@ -28,6 +28,7 @@ namespace SevenDays.Tests.Droid
 		{
 			global::PCLStorage.Resource.String.ApplicationName = global::SevenDays.Tests.Droid.Resource.String.ApplicationName;
 			global::PCLStorage.Resource.String.Hello = global::SevenDays.Tests.Droid.Resource.String.Hello;
+			global::Splat.Resource.String.library_name = global::SevenDays.Tests.Droid.Resource.String.library_name;
 			global::Xamarin.Android.NUnitLite.Resource.Id.OptionHostName = global::SevenDays.Tests.Droid.Resource.Id.OptionHostName;
 			global::Xamarin.Android.NUnitLite.Resource.Id.OptionPort = global::SevenDays.Tests.Droid.Resource.Id.OptionPort;
 			global::Xamarin.Android.NUnitLite.Resource.Id.OptionRemoteServer = global::SevenDays.Tests.Droid.Resource.Id.OptionRemoteServer;
@@ -185,6 +186,9 @@ namespace SevenDays.Tests.Droid
 			
 			// aapt resource value: 0x7f040000
 			public const int Hello = 2130968576;
+			
+			// aapt resource value: 0x7f040002
+			public const int library_name = 2130968578;
 			
 			static String()
 			{

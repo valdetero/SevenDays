@@ -11,6 +11,9 @@ namespace SevenDays
             IoC.Init();
             SevenDays.Model.Mapper.AutoMapperConfig.Register();
             Analytics.Init();
+
+            Akavache.BlobCache.ApplicationName = "SevenDays";
+            Akavache.BlobCache.EnsureInitialized();
 #if !TEST
             
     #if DROID
