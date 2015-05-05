@@ -60,7 +60,7 @@ namespace SevenDays.Core.Services
 
             var sb = new StringBuilder();
 
-            for (int i = 0; i < steamIds.Length && i < 10; i++)
+            for (int i = 0; i < steamIds.Length && i < 25; i++)
             {
                 sb.Append(steamIds[i]);
                 if (steamIds.Length > 1 && i + 1 != steamIds.Length)

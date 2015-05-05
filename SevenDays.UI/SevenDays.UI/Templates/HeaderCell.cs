@@ -13,28 +13,23 @@ namespace SevenDays.UI.Templates
     {
         public HeaderCell()
         {
-            this.Height = 25;
-            var title = new Label
+            Height = 40;
+            var groupKey = new Label
             {
-                FontAttributes = FontAttributes.Bold,
-                FontSize = Font.SystemFontOfSize(NamedSize.Small).FontSize,
+                FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
                 TextColor = Color.White,
-				VerticalOptions = LayoutOptions.Center,
-				StyleId = "titleLabel"
+                VerticalOptions = LayoutOptions.Center
             };
-
-            title.SetBinding<Grouping<string, InventoryViewModel>>(Label.TextProperty, x => x.Key);
-
-			StyleId = "headerCell";
+            groupKey.SetBinding(Label.TextProperty, new Binding("Key"));
 
             View = new StackLayout
             {
                 HorizontalOptions = LayoutOptions.FillAndExpand,
-                HeightRequest = 25,
+                HeightRequest = 40,
                 BackgroundColor = Color.FromRgb(52, 152, 218),
                 Padding = 5,
                 Orientation = StackOrientation.Horizontal,
-                Children = { title }
+                Children = { groupKey }
             };
         }
     }

@@ -26,6 +26,7 @@ Created with <a href='http://www.xamarin.com/forms' title='Xamarin Forms'>Xamari
 <div><h3>Credits</h3>
 Icons made by 
 <a href='http://www.flaticon.com/authors/freepik' title='Freepik'>Freepik</a>, 
+<a href='http://www.flaticon.com/authors/balraj-chana' title='Balraj Chana'>Balraj Chana</a>,
 <a href='http://www.flaticon.com/authors/google' title='Google'>Google</a> from 
 <a href='http://www.flaticon.com' title='Flaticon'>www.flaticon.com</a>             is licensed by 
 <a href='http://creativecommons.org/licenses/by/3.0/' title='Creative Commons BY 3.0'>CC BY 3.0</a>

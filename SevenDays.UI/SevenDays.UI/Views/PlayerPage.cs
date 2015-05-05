@@ -26,7 +26,7 @@ namespace SevenDays.UI.Views
                 IsPullToRefreshEnabled = true,
                 BackgroundColor = Color.Black,
                 IsGroupingEnabled = true,
-				GroupDisplayBinding = new Binding("Key"),
+                GroupDisplayBinding = new Binding("Key"),
 				StyleId = "inventoryListView"
             };
             if (Device.OS != TargetPlatform.WinPhone)
