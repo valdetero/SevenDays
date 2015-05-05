@@ -25,7 +25,7 @@ namespace SevenDays.UI.Templates
                 VerticalOptions = LayoutOptions.Center,
 				StyleId = "profileImage"
             };
-            profileImage.SetBinding(Image.SourceProperty, "Avatar");
+            profileImage.SetBinding<PlayerViewModel>(Image.SourceProperty, x => x.Avatar);
 
             var nameLabel = new Label()
             {
@@ -34,7 +34,7 @@ namespace SevenDays.UI.Templates
                 TextColor = Color.White,
 				StyleId = "nameLabel"
             };
-            nameLabel.SetBinding(Label.TextProperty, "Name");
+            nameLabel.SetBinding<PlayerViewModel>(Label.TextProperty, x => x.Name);
 
             var steamLabel = new Label()
             {
@@ -42,8 +42,8 @@ namespace SevenDays.UI.Templates
 				FontSize = 12,
 				StyleId = "steamLabel"
             };
-            steamLabel.SetBinding(Label.TextColorProperty, "SteamColor");
-            steamLabel.SetBinding(Label.TextProperty, "SteamAvailability");
+            steamLabel.SetBinding<PlayerViewModel>(Label.TextColorProperty, x => x.SteamColor);
+            steamLabel.SetBinding<PlayerViewModel>(Label.TextProperty, x => x.SteamAvailability);
 
             var onlineImage = new Image()
             {
@@ -52,7 +52,7 @@ namespace SevenDays.UI.Templates
                 WidthRequest = 8,
 				StyleId = "onlineImage"
             };
-            onlineImage.SetBinding(Image.IsVisibleProperty, "ShouldShowAsOnline");
+            onlineImage.SetBinding<PlayerViewModel>(Image.IsVisibleProperty, x => x.ShouldShowAsOnline);
             var onLineLabel = new Label()
             {
                 Text = "Online",
@@ -61,7 +61,7 @@ namespace SevenDays.UI.Templates
 				IsVisible = false,
 				StyleId = "onlineLabel"
             };
-            onLineLabel.SetBinding(Label.IsVisibleProperty, "ShouldShowAsOnline");
+            onLineLabel.SetBinding<PlayerViewModel>(Label.IsVisibleProperty, x => x.ShouldShowAsOnline);
 
             // Offline image and label
             var offlineImage = new Image()
@@ -71,7 +71,7 @@ namespace SevenDays.UI.Templates
 				WidthRequest = 8,
 				StyleId = "offlineImage"
             };
-            offlineImage.SetBinding(Image.IsVisibleProperty, "ShouldShowAsOffline");
+            offlineImage.SetBinding<PlayerViewModel>(Image.IsVisibleProperty, x => x.ShouldShowAsOffline);
             var offLineLabel = new Label()
             {
                 Text = "Offline",
@@ -80,7 +80,7 @@ namespace SevenDays.UI.Templates
 				IsVisible = false,
 				StyleId = "offlineLabel"
             };
-            offLineLabel.SetBinding(Label.IsVisibleProperty, "ShouldShowAsOffline");
+            offLineLabel.SetBinding<PlayerViewModel>(Label.IsVisibleProperty, x => x.ShouldShowAsOffline);
 
             var statusLayout = new StackLayout
             {
@@ -95,7 +95,7 @@ namespace SevenDays.UI.Templates
 				FontSize = 10,
 				StyleId = "timeLabel"
             };
-            timeLabel.SetBinding(Label.TextProperty, "LastLogOff");
+            timeLabel.SetBinding<PlayerViewModel>(Label.TextProperty, x => x.LastLogOff);
 
             var detailsLayout = new StackLayout
             {

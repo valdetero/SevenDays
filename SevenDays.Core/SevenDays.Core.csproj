@@ -65,6 +65,8 @@
     <Compile Include="ViewModels\MapViewModel.cs" />
     <Compile Include="ViewModels\PlayerListViewModel.cs" />
     <Compile Include="ViewModels\PlayerViewModel.cs" />
+    <Compile Include="ViewModels\ServerListViewModel.cs" />
+    <Compile Include="ViewModels\ServerViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

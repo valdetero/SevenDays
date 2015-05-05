@@ -12,15 +12,22 @@ namespace SevenDays.UI.Views
 
     public class MapPage : MapPageBase
     {
+        private WebView webView;
         public MapPage ()
 	    {
             Title = "Server Map";
 			StyleId = "mapPage";
-            Content = new WebView
+            webView = new WebView
             {
-                Source = ViewModel.ExecuteGetMapUrlCommand(),
 				StyleId = "mapWebView"
-            };    
+            };
+            Content = webView;
 	    }
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            webView.Source = await ViewModel.ExecuteGetMapUrlCommand();
+        }
     }
 }

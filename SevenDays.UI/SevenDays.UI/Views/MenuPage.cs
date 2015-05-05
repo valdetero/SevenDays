@@ -20,8 +20,8 @@ namespace SevenDays.UI.Views
 			StyleId = "menuPage";
 
             var cell = new DataTemplate(typeof(MenuCell));
-			cell.SetBinding (MenuCell.TextProperty, "Title");
-			cell.SetBinding (MenuCell.ImageSourceProperty, "IconSource");
+			cell.SetBinding(MenuCell.TextProperty, "Title");
+			cell.SetBinding(MenuCell.ImageSourceProperty, "IconSource");
 
             var menuItems = new List<Model.MenuItem>
             {
@@ -29,6 +29,11 @@ namespace SevenDays.UI.Views
 				    Title = "Players", 
 				    IconSource = PlatformImage.Resolver("people.png"), 
 				    TargetType = typeof(PlayerListPage)
+			    },
+                new Model.MenuItem { 
+				    Title = "Servers", 
+                    //IconSource = PlatformImage.Resolver("people.png"), 
+				    TargetType = typeof(ServerListPage)
 			    },
                 new Model.MenuItem { 
                     Title = "Map", 

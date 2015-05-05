@@ -22,17 +22,19 @@ namespace SevenDays.Core.Services
             networkService = Ioc.Container.Resolve<INetworkService>();
         }
 
-        private async Task<bool> canConnectToServer()
-        {
-            return await networkService.CanConnectToService(string.Format("http://{0}", Settings.SevendaysServer), Settings.SevendaysPort);
+        //Can't ping the API
+        private Task<bool> canConnectToServer()
+        {            
+            //return await networkService.CanConnectToService(ApiConstants.Steam.ApiEndpoint, "80");
+            return Task.FromResult(true);
         }
 
         public async Task<Response<PlayerStats>> GetPlayerAchievements(long steamId)
         {            
             var response = new Response<PlayerStats>();
 
-            if (!await canConnectToServer())
-                return response;
+            //if (!await canConnectToServer())
+            //    return response;
 
             Insights.Track(string.Format("Getting player achievements for {0}", steamId));
 
@@ -48,16 +50,17 @@ namespace SevenDays.Core.Services
             return response;
         }
 
+        //TODO: Batch < 100
         public async Task<ListResponse<Player>> GetPlayerSummaries(params long[] steamIds)
         {
             var response = new ListResponse<Player>();
 
-            if (!await canConnectToServer())
-                return response;
+            //if (!await canConnectToServer())
+            //    return response;
 
             var sb = new StringBuilder();
 
-            for (int i = 0; i < steamIds.Length; i++)
+            for (int i = 0; i < steamIds.Length && i < 10; i++)
             {
                 sb.Append(steamIds[i]);
                 if (steamIds.Length > 1 && i + 1 != steamIds.Length)
@@ -66,7 +69,7 @@ namespace SevenDays.Core.Services
                 }
             }
 
-            Insights.Track(string.Format("Getting player summaries for {0}", sb.ToString()));
+            Insights.Track(string.Format("Getting player summaries for {0} steamIds", steamIds.Length));
 
             string url = string.Format("{0}key={1}&steamIds={2}", ApiConstants.Steam.PlayerSummary, ApiConstants.Steam.Key, sb.ToString());
 
@@ -85,8 +88,8 @@ namespace SevenDays.Core.Services
         {
             var response = new Response<Game>();
 
-            if (!await canConnectToServer())
-                return response;
+            //if (!await canConnectToServer())
+            //    return response;
 
             string url = string.Format("{0}key={1}&appId={2}", ApiConstants.Steam.Schema, ApiConstants.Steam.Key, ApiConstants.Steam.AppId);
 
@@ -104,8 +107,8 @@ namespace SevenDays.Core.Services
         {
             var response = new Response<PlayerStats>();
 
-            if (!await canConnectToServer())
-                return response;
+            //if (!await canConnectToServer())
+            //    return response;
 
             string url = string.Format("{0}key={1}&appId={2}&steamId={3}", ApiConstants.Steam.UserStats, ApiConstants.Steam.Key, ApiConstants.Steam.AppId, steamId);
 

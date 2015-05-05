@@ -21,8 +21,13 @@ namespace SevenDays.Core.ViewModels
         {
             Name = item.Name;
             Count = item.Count;
-            Image = sevendayService.GetInventoryImageUrl(item.Name);
+            //Image = sevendayService.GetInventoryImageUrl(item.Name);
             Pack = pack;
+        }
+
+        public async Task Init()
+        {
+            Image = await sevendayService.GetInventoryImageUrl(Name);
         }
 
         public string Pack { get; set; }

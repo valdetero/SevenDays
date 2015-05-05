@@ -86,6 +86,11 @@ namespace SevenDays.Core.ViewModels
             var inventories =   inventory.Bag.Where(x => x.Count > 0).Select(x => new InventoryViewModel(x, "Bag")).Concat(
                                 inventory.Belt.Where(x => x.Count > 0).Select(x => new InventoryViewModel(x, "Belt")));
 
+            foreach (var inv in inventories)
+            {
+                await inv.Init();
+            }
+
             var allItems = (from i in inventories
                            group i by i.Pack into Group
                            select new Grouping<string, InventoryViewModel>(Group.Key, Group)).ToList();

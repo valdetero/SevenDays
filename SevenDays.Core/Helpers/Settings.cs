@@ -28,6 +28,10 @@ namespace SevenDays.Core.Helpers
         private const string SevendaysPortKey = "sevendays_port";
         private static readonly string SevendaysPortDefault = "26903";
 
+        private const string SevendaysSelectedServerKey = "sevendays_selected_server";
+
+        private const string UseAds = "showAds";
+
         #endregion
 
 
@@ -43,5 +47,16 @@ namespace SevenDays.Core.Helpers
             set { AppSettings.AddOrUpdateValue(SevendaysPortKey, value); }
         }
 
+        public static string SevendaysSelectedServer
+        {
+            get { return AppSettings.GetValueOrDefault(SevendaysSelectedServerKey, ""); }
+            set { AppSettings.AddOrUpdateValue(SevendaysSelectedServerKey, value); }
+        }
+
+        public static bool ShowAds
+        {
+            get { return AppSettings.GetValueOrDefault(UseAds, false); }
+            set { AppSettings.AddOrUpdateValue(UseAds, value); }
+        }
     }
 }

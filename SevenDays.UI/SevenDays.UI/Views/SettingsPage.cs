@@ -27,7 +27,7 @@ namespace SevenDays.UI.Views
 			{
 				StyleId = "serverEntry"
 			};
-            serverText.SetBinding(Entry.TextProperty, "Server");
+            serverText.SetBinding<SettingsViewModel>(Entry.TextProperty, x => x.Server);
 
             var portLabel = new Label
             {
@@ -41,7 +41,7 @@ namespace SevenDays.UI.Views
 			{
 				StyleId = "portEntry"
 			};
-            portText.SetBinding(Entry.TextProperty, "Port");
+            portText.SetBinding<SettingsViewModel>(Entry.TextProperty, x => x.Port);
 
             var button = new Button
             {

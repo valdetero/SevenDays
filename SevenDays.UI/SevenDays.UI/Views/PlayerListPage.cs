@@ -36,17 +36,17 @@ namespace SevenDays.UI.Views
             listView.Refreshing += OnListViewRefreshing;
             
 			StyleId = "playerListPage";
-            Content = new StackLayout
+            
+            var layout = new StackLayout
             {
                 VerticalOptions = LayoutOptions.Center,
-                Children = {
-						listView,
-						new AdMobBuddyControl
-                        {
-							AdUnitId = App.AdMobId
-						}
-					}
-            }; 
+                Children = { listView }
+            };
+
+            if (SevenDays.Core.Helpers.Settings.ShowAds)
+                layout.Children.Add(new AdMobBuddyControl { AdUnitId = App.AdMobId, StyleId = "admobControl" });
+
+            Content = layout;
         }
 
         protected async void OnListViewRefreshing(object sender, EventArgs e)
@@ -59,19 +59,21 @@ namespace SevenDays.UI.Views
         {
             base.OnAppearing();
 
+            //TODO: Add infinite scrolling
             if (ViewModel.Players == null || ViewModel.Players.Count == 0)
             {
-                if(!await serverIsReachable())
-                {
-                    await ViewModel.ExecuteGetCachedPlayersCommand();
+                //if(!await serverIsReachable())
+                //{
+                //    //TODO: Figure a better way to local cache list (if even)
+                //    await ViewModel.ExecuteGetCachedPlayersCommand();
 
-                    if (!ViewModel.Players.Any())
-                        listView.ItemsSource = ViewModel.Players;
-                }
-                else
-                {
-                    await loadGrid();
-                }
+                //    if (!ViewModel.Players.Any())
+                //        listView.ItemsSource = ViewModel.Players;
+                //}
+                //else
+                //{
+                await loadGrid();
+                //}
             }
             listView.SelectedItem = null;
         }
@@ -101,7 +103,7 @@ namespace SevenDays.UI.Views
             if (!ViewModel.Players.Any())
             {
                 var notificator = DependencyService.Get<IToastNotificator>();
-                bool tapped = await notificator.Notify(ToastNotificationType.Warning, "Players", "No players have connected", TimeSpan.FromSeconds(2));
+                bool tapped = await notificator.Notify(ToastNotificationType.Info, "Players", "No players have connected", TimeSpan.FromSeconds(2));
             }
         }
 

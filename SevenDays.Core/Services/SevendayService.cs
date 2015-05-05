@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Reactive.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Akavache;
 using Connectivity.Plugin;
 using ModernHttpClient;
 using Newtonsoft.Json;
@@ -19,36 +21,64 @@ namespace SevenDays.Core.Services
     public class SevendayService : ISevendayService
     {
         private INetworkService networkService;
+        private ICacheService cache;
         public SevendayService()
         {
             networkService = Ioc.Container.Resolve<INetworkService>();
+            cache = Ioc.Container.Resolve<ICacheService>();
         }
 
-        private string getApiUrl(string api)
+        private async Task<string> getApiUrlAsync(string api)
         {
-            return string.Format("http://{0}:{1}/{2}", Settings.SevendaysServer, Settings.SevendaysPort, api);
+            var server = await getSelectedServerFromCache();
+            return string.Format("http://{0}:{1}/{2}", server.Host, server.Port, api);
         }
 
-        private async Task<bool> canConnectToServer()
+        public async Task<SevenDays.Model.Entity.Server> getSelectedServerFromCache()
         {
-            return await networkService.CanConnectToService(string.Format("http://{0}", Settings.SevendaysServer), Settings.SevendaysPort);
+            var serverKey = Settings.SevendaysSelectedServer;
+
+            if (string.IsNullOrEmpty(serverKey))
+                return null;
+
+            return await cache.GetObject<SevenDays.Model.Entity.Server>(serverKey);
+        }
+
+        public async Task<bool> CanConnectToServer(string host, string port)
+        {
+            return await networkService.CanConnectToService(string.Format("http://{0}", host), port);
+        }
+
+        public async Task<bool> CanConnectToServer(SevenDays.Model.Entity.Server server)
+        {
+            if (server == null)
+                return false;
+            if (string.IsNullOrEmpty(server.Host) || string.IsNullOrEmpty(server.Port))
+                return false;
+
+            return await CanConnectToServer(server.Host, server.Port);
         }
 
         public async Task<bool> CanConnectToServer()
         {
-            return await canConnectToServer();
+            var server = await getSelectedServerFromCache();
+
+            if (server == null)
+                return false;
+
+            return await CanConnectToServer(server);
         }
 
         public async Task<Response<Inventory>> GetPlayerInventory(long steamId)
         {
             var response = new Response<Inventory>();
 
-            if (!await canConnectToServer())
+            if (!await CanConnectToServer())
                 return response;
 
             Insights.Track(string.Format("Getting player inventory for {0}", steamId));
 
-            string url = string.Format("{0}steamId={1}", getApiUrl(ApiConstants.Seven.PlayerInventory), steamId);
+            string url = string.Format("{0}steamId={1}", await getApiUrlAsync(ApiConstants.Seven.PlayerInventory), steamId);
 
             using (var handle = Insights.TrackTime("Seven_GetPlayerInventory"))
             using (var client = new HttpClient(new NativeMessageHandler()))
@@ -64,10 +94,10 @@ namespace SevenDays.Core.Services
         {
             var response = new ListResponse<Player>();
 
-            if (!await canConnectToServer())
+            if (!await CanConnectToServer())
                 return response;
 
-            string url = getApiUrl(ApiConstants.Seven.PlayerLocation);
+            string url = await getApiUrlAsync(ApiConstants.Seven.PlayerLocation);
 
             using (var handle = Insights.TrackTime("Seven_GetPlayersLocation"))
             using (var client = new HttpClient(new NativeMessageHandler()))
@@ -79,15 +109,15 @@ namespace SevenDays.Core.Services
             return response;
         }
 
-        public string GetInventoryImageUrl(string item)
+        public async Task<string> GetInventoryImageUrl(string item)
         {
-            string url = getApiUrl(ApiConstants.Seven.InventoryImage);
+            string url = await getApiUrlAsync(ApiConstants.Seven.InventoryImage);
             return string.Format(url, item);
         }
 
-        public string GetMapUrl()
+        public async Task<string> GetMapUrl()
         {
-            return getApiUrl(ApiConstants.Seven.Map);
+            return await getApiUrlAsync(ApiConstants.Seven.Map);
         }
     }
 }

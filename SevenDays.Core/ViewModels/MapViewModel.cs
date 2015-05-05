@@ -21,11 +21,11 @@ namespace SevenDays.Core.ViewModels
         private RelayCommand getGetMapUrlCommand;
         public ICommand GetMapUrlCommand
         {
-            get { return getGetMapUrlCommand ?? (getGetMapUrlCommand = new RelayCommand(() => ExecuteGetMapUrlCommand())); }
+            get { return getGetMapUrlCommand ?? (getGetMapUrlCommand = new RelayCommand(async () => await ExecuteGetMapUrlCommand())); }
         }
 
         [Insights]
-        public string ExecuteGetMapUrlCommand()
+        public Task<string> ExecuteGetMapUrlCommand()
         {
             return sevendayService.GetMapUrl();
         }

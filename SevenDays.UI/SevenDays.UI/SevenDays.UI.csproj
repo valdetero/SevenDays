@@ -42,6 +42,7 @@
     <Compile Include="Templates\InventoryCell.cs" />
     <Compile Include="Templates\MenuCell.cs" />
     <Compile Include="Templates\PlayerCell.cs" />
+    <Compile Include="Templates\ServerCell.cs" />
     <Compile Include="Views\AboutPage.cs" />
     <Compile Include="Views\AdMobBuddyControl.cs" />
     <Compile Include="Views\Banner.cs" />
@@ -51,6 +52,8 @@
     <Compile Include="Views\PlayerListPage.cs" />
     <Compile Include="Views\PlayerPage.cs" />
     <Compile Include="Views\RootPage.cs" />
+    <Compile Include="Views\ServerListPage.cs" />
+    <Compile Include="Views\ServerPage.cs" />
     <Compile Include="Views\SettingsPage.cs" />
     <Compile Include="Views\ViewPage.cs" />
   </ItemGroup>

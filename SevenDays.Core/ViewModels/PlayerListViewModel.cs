@@ -56,7 +56,7 @@ namespace SevenDays.Core.ViewModels
 
             var sevens = locationResponse.Result.ToList();
 
-            await cache.InsertObject("seven_players", sevens);
+            //await cache.InsertObject("seven_players", sevens);
 
             Insights.Track(string.Format("Found {0} seven players", sevens.Count));
 
@@ -67,13 +67,13 @@ namespace SevenDays.Core.ViewModels
 
             var steams = summaryResponse.Result.ToList();
 
-            await cache.InsertObject("steam_players", steams);
+            //await cache.InsertObject("steam_players", steams);
 
             Insights.Track(string.Format("Found {0} steam players", steams.Count));
 
             addPlayers(sevens, steams);
 
-            Insights.Track(string.Format("Added {0} players to view", players.Count));
+            Insights.Track(string.Format("Added {0} players to view", Players.Count));
         }
 
         private RelayCommand getIsServerReachableCommand;
@@ -88,10 +88,10 @@ namespace SevenDays.Core.ViewModels
             return await sevendayService.CanConnectToServer();
         }
 
-        private RelayCommand geGetCachedPlayersCommand;
+        private RelayCommand getGetCachedPlayersCommand;
         public ICommand GetCachedPlayersCommand
         {
-            get { return getGetCachedPlayers ?? (getGetCachedPlayersCommand = new RelayCommand(async () => await ExecuteGetCachedPlayersCommand())); }
+            get { return getGetCachedPlayersCommand ?? (getGetCachedPlayersCommand = new RelayCommand(async () => await ExecuteGetCachedPlayersCommand())); }
         }
 
         [Insights]

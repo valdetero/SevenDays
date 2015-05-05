@@ -23,7 +23,7 @@ namespace SevenDays.Core
             public const string UserStats = BaseUrl + "ISteamUserStats/GetUserStatsForGame/v0002/?";
             public const string Achievements = BaseUrl + "ISteamUserStats/GetPlayerAchievements/v0001/?";
             public const string Schema = BaseUrl + "ISteamUserStats/GetSchemaForGame/v0002/?";
-            
+            public const string ApiEndpoint = BaseUrl + "ISteamWebAPIUtil/GetSupportedAPIList/v0001/?";
         }
 
         public partial struct Seven

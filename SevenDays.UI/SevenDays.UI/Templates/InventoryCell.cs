@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ImageCircle.Forms.Plugin.Abstractions;
+using SevenDays.Core.ViewModels;
 using Xamarin.Forms;
 
 namespace SevenDays.UI.Templates
@@ -24,7 +25,7 @@ namespace SevenDays.UI.Templates
 				VerticalOptions = LayoutOptions.Center,
 				StyleId = "inventoryImage"
             };
-            invImage.SetBinding(Image.SourceProperty, "Image");
+            invImage.SetBinding<InventoryViewModel>(Image.SourceProperty, x => x.Image);
 
             var nameLabel = new Label()
             {
@@ -33,7 +34,7 @@ namespace SevenDays.UI.Templates
 				TextColor = Color.White,
 				StyleId = "nameLabel"
             };
-            nameLabel.SetBinding(Label.TextProperty, "Name");
+            nameLabel.SetBinding<InventoryViewModel>(Label.TextProperty, x => x.Name);
 
             var countLabel = new Label()
             {
@@ -42,7 +43,7 @@ namespace SevenDays.UI.Templates
 				TextColor = Color.White,
 				StyleId = "countLabel"
             };
-            countLabel.SetBinding(Label.TextProperty, "Count");
+            countLabel.SetBinding<InventoryViewModel>(Label.TextProperty, x => x.Count);
 
             var statusLayout = new StackLayout
             {

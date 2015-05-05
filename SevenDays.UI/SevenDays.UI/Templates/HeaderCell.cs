@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SevenDays.Core;
+using SevenDays.Core.ViewModels;
 using Xamarin.Forms;
 
 namespace SevenDays.UI.Templates
@@ -21,7 +23,7 @@ namespace SevenDays.UI.Templates
 				StyleId = "titleLabel"
             };
 
-            title.SetBinding(Label.TextProperty, "Key");
+            title.SetBinding<Grouping<string, InventoryViewModel>>(Label.TextProperty, x => x.Key);
 
 			StyleId = "headerCell";
 

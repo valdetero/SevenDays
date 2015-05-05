@@ -9,7 +9,8 @@ namespace SevenDays.Core.Interfaces
     public interface ICacheService
     {
         Task<T> GetObject<T>(string key);
-        Task InsertObject<T>(string key, T value);
+        Task<IEnumerable<T>> GetAllObjects<T>();
+        Task<bool> InsertObject<T>(string key, T value);
         Task RemoveObject(string key);
     }
 }
