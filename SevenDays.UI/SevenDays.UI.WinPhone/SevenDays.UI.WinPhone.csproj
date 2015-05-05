@@ -132,6 +132,7 @@
     <Content Include="Assets\map.png" />
     <Content Include="Assets\menu.png" />
     <Content Include="Assets\people.png" />
+    <Content Include="Assets\plus.png" />
     <Content Include="Assets\servers.png" />
     <Content Include="Assets\settings.png" />
     <Content Include="SplashScreenImage.jpg">

@@ -155,6 +155,9 @@
     <BundleResource Include="Resources\servers.png" />
     <BundleResource Include="Resources\servers%402x.png" />
     <BundleResource Include="Resources\servers%403x.png" />
+    <BundleResource Include="Resources\plus.png" />
+    <BundleResource Include="Resources\plus%402x.png" />
+    <BundleResource Include="Resources\plus%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Calabash">

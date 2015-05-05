@@ -191,6 +191,10 @@
     <AndroidResource Include="Resources\drawable-hdpi\servers.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\servers.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\servers.png" />
+    <AndroidResource Include="Resources\drawable\plus.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\plus.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\plus.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\plus.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\AndroidManifest.xml" />

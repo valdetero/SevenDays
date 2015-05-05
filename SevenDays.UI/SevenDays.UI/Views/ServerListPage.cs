@@ -38,8 +38,7 @@ namespace SevenDays.UI.Views
                 Children = { listView }
             };
 
-            //TODO: Change "+" to image
-            ToolbarItems.Add(new ToolbarItem("+", "", async () => await Navigation.PushAsync(new ServerPage())));
+			ToolbarItems.Add(new ToolbarItem("add", PlatformImage.Resolver("plus.png"), async () => await Navigation.PushAsync(new ServerPage())));
         }
 
         protected override async void OnAppearing()

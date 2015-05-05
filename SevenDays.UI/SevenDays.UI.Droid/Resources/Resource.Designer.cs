@@ -1279,28 +1279,31 @@ namespace SevenDays.UI.Droid
 			public const int people = 2130837643;
 			
 			// aapt resource value: 0x7f02008c
-			public const int powered_by_google_dark = 2130837644;
+			public const int plus = 2130837644;
 			
 			// aapt resource value: 0x7f02008d
-			public const int powered_by_google_light = 2130837645;
+			public const int powered_by_google_dark = 2130837645;
 			
 			// aapt resource value: 0x7f02008e
-			public const int roundedbg = 2130837646;
+			public const int powered_by_google_light = 2130837646;
 			
 			// aapt resource value: 0x7f02008f
-			public const int roundedbgdark = 2130837647;
+			public const int roundedbg = 2130837647;
 			
 			// aapt resource value: 0x7f020090
-			public const int servers = 2130837648;
+			public const int roundedbgdark = 2130837648;
 			
 			// aapt resource value: 0x7f020091
-			public const int settings = 2130837649;
+			public const int servers = 2130837649;
 			
 			// aapt resource value: 0x7f020092
-			public const int success = 2130837650;
+			public const int settings = 2130837650;
 			
 			// aapt resource value: 0x7f020093
-			public const int warning = 2130837651;
+			public const int success = 2130837651;
+			
+			// aapt resource value: 0x7f020094
+			public const int warning = 2130837652;
 			
 			static Drawable()
 			{
