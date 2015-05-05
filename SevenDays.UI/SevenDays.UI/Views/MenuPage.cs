@@ -32,7 +32,7 @@ namespace SevenDays.UI.Views
 			    },
                 new Model.MenuItem { 
 				    Title = "Servers", 
-                    //IconSource = PlatformImage.Resolver("people.png"), 
+                    IconSource = PlatformImage.Resolver("servers.png"), 
 				    TargetType = typeof(ServerListPage)
 			    },
                 new Model.MenuItem { 
