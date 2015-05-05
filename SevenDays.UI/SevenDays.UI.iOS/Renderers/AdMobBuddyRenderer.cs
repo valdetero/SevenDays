@@ -33,7 +33,7 @@ namespace AdMobBuddy.Forms.Plugin.iOS
             //convert the element to the control we want
             var adMobElement = Element as AdMobBuddyControl;
 
-            if (null != adMobElement) //TODO: does need this check here?
+            if (null != adMobElement)
             {
                 adView = new GADBannerView(size: GADAdSizeCons.Banner)
                 {

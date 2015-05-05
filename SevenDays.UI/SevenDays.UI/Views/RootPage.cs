@@ -22,8 +22,9 @@ namespace SevenDays.UI.Views
 
             ContentPage page;
 
-            if(string.IsNullOrEmpty(Settings.SevendaysServer))
-                page = new SettingsPage();
+            bool isNoServerSelected = string.IsNullOrEmpty(Settings.SevendaysSelectedServer);
+            if (isNoServerSelected)
+                page = new ServerListPage();
             else
                 page = new PlayerListPage();
 
