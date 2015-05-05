@@ -20,6 +20,9 @@ namespace SevenDays.UI.Views
             var source = new HtmlWebViewSource 
             {
                 Html = string.Format(@"
+<div><h3>Powered by <a href='http://www.xamarin.com/' title='Xamarin'>Xamarin</a></h3>
+Created with <a href='http://www.xamarin.com/forms' title='Xamarin Forms'>Xamarin Forms</a>
+</div>
 <div><h3>Credits</h3>
 Icons made by 
 <a href='http://www.flaticon.com/authors/freepik' title='Freepik'>Freepik</a>, 
