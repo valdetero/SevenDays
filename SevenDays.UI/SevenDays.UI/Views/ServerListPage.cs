@@ -20,7 +20,6 @@ namespace SevenDays.UI.Views
         {
             listView = new ListView
             {
-                //HasUnevenRows = true,
                 ItemTemplate = new DataTemplate(typeof(ServerCell)),
                 SeparatorColor = Color.FromHex("#ddd"),
                 BackgroundColor = Color.Black,
@@ -38,7 +37,7 @@ namespace SevenDays.UI.Views
                 Children = { listView }
             };
 
-			ToolbarItems.Add(new ToolbarItem("add", PlatformImage.Resolver("plus.png"), async () => await Navigation.PushAsync(new ServerPage())));
+            ToolbarItems.Add(new ToolbarItem("add", PlatformImage.Resolver("plus.png"), async () => await Navigation.PushAsync(new ServerPage())));
         }
 
         protected override async void OnAppearing()
