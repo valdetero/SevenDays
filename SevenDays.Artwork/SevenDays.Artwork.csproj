@@ -47,8 +47,13 @@
       <Generator>ImageMultiplierGenerator</Generator>
     </Content>
     <Content Include="Images\plus.svg" />
-    <Content Include="PlatformSpecific\menu-droid.svg" />
-    <Content Include="PlatformSpecific\menu-ios.svg" />
-    <Content Include="PlatformSpecific\menu-wp.svg" />
+    <Content Include="Images\Droid\menu.svg" />
+    <Content Include="Images\iOS\menu.svg" />
+    <Content Include="Images\WP\menu.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Images\WP\" />
+    <Folder Include="Images\iOS\" />
+    <Folder Include="Images\Droid\" />
   </ItemGroup>
 </Project>

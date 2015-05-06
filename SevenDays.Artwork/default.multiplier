@@ -50,3 +50,18 @@
 { type: 'images', width:  76, path: 'SevenDays.UI/SevenDays.UI.WinPhone/Assets/{0}' }
 
 { process: 'Images/*.svg', as: ['images'] }
+
+{ type: 'droid', width: 96, color: '#f80c12', path: 'SevenDays.UI/SevenDays.UI.Droid/Resources/drawable/{0}' }
+{ type: 'droid', width: 72, color: '#f80c12', path: 'SevenDays.UI/SevenDays.UI.Droid/Resources/drawable-hdpi/{0}' }
+{ type: 'droid', width: 96, color: '#f80c12', path: 'SevenDays.UI/SevenDays.UI.Droid/Resources/drawable-xhdpi/{0}' }
+{ type: 'droid', width: 144, color: '#f80c12', path: 'SevenDays.UI/SevenDays.UI.Droid/Resources/drawable-xxhdpi/{0}' }
+
+{ type: 'ios', width:  30, path: 'SevenDays.UI/SevenDays.UI.iOS/Resources/{0}' }
+{ type: 'ios', width:  60, path: 'SevenDays.UI/SevenDays.UI.iOS/Resources/{0}@2x' }
+{ type: 'ios', width:  90, path: 'SevenDays.UI/SevenDays.UI.iOS/Resources/{0}@3x' }
+
+{ type: 'wp', width:  76, path: 'SevenDays.UI/SevenDays.UI.WinPhone/Assets/{0}' }
+
+{ process: 'Images/iOS/*.svg', as: ['ios'] }
+{ process: 'Images/Droid/*.svg', as: ['droid'] }
+{ process: 'Images/WP/*.svg', as: ['wp'] }
