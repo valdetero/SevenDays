@@ -41,11 +41,6 @@ namespace SevenDays.UI.Views
                     TargetType = typeof(MapPage)
                 },
                 new Model.MenuItem { 
-				    Title = "Settings", 
-				    IconSource = PlatformImage.Resolver("settings.png"), 
-				    TargetType = typeof(SettingsPage)
-			    },
-                new Model.MenuItem { 
                     Title = "About", 
                     IconSource = PlatformImage.Resolver("info.png"), 
                     TargetType = typeof(AboutPage)
