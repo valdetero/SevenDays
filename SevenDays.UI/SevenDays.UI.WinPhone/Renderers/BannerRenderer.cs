@@ -8,7 +8,7 @@ using SevenDays.Core;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.WinPhone;
 
-[assembly: ExportRenderer(typeof(SevenDays.UI.Views.Banner), typeof(SevenDays.UI.WinPhone.Renderers.BannerRenderer))]
+[assembly: ExportRenderer(typeof(SevenDays.UI.Controls.Banner), typeof(SevenDays.UI.WinPhone.Renderers.BannerRenderer))]
 
 namespace SevenDays.UI.WinPhone.Renderers
 {

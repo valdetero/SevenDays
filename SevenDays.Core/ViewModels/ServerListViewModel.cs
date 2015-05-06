@@ -47,10 +47,10 @@ namespace SevenDays.Core.ViewModels
             Servers = new ObservableCollection<ServerViewModel>(servers);
         }
 
-        private RelayCommand getCheckConnectivityCommand;
+        private RelayCommand checkConnectivityCommand;
         public ICommand CheckConnectivityCommand
         {
-            get { return getCheckConnectivityCommand ?? (getCheckConnectivityCommand = new RelayCommand(async () => await ExecuteCheckConnectivityCommand())); }
+            get { return checkConnectivityCommand ?? (checkConnectivityCommand = new RelayCommand(async () => await ExecuteCheckConnectivityCommand())); }
         }
 
         [Insights]
@@ -59,10 +59,10 @@ namespace SevenDays.Core.ViewModels
             throw new NotImplementedException();
         }
 
-        private RelayCommand getDeleteServerCommand;
+        private RelayCommand deleteServerCommand;
         public ICommand DeleteServerCommand
         {
-            get { return getDeleteServerCommand ?? (getDeleteServerCommand = new RelayCommand(async () => await ExecuteDeleteServerCommand())); }
+            get { return deleteServerCommand ?? (deleteServerCommand = new RelayCommand(async () => await ExecuteDeleteServerCommand())); }
         }
 
         [Insights]
@@ -71,10 +71,10 @@ namespace SevenDays.Core.ViewModels
             throw new NotImplementedException();
         }
 
-        private RelayCommand getAddServerCommand;
+        private RelayCommand addServerCommand;
         public ICommand AddServerCommand
         {
-            get { return getAddServerCommand ?? (getAddServerCommand = new RelayCommand(async () => await ExecuteAddServerCommand())); }
+            get { return addServerCommand ?? (addServerCommand = new RelayCommand(async () => await ExecuteAddServerCommand())); }
         }
 
         [Insights]

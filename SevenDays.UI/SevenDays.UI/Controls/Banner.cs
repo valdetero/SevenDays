@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace SevenDays.UI.Views
+namespace SevenDays.UI.Controls
 {
     public class Banner : View
     {

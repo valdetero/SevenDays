@@ -12,12 +12,6 @@ namespace SevenDays.UI
     {        
         public App()
         {
-            //var playerList = new PlayerListPage();
-            //var nav = new NavigationPage(playerList);
-            //nav.BarBackgroundColor = Color.Teal;
-            //nav.BarTextColor = Color.White;
-            //nav.BackgroundImage = "banner.png";
-
             MainPage = new RootPage();
         }
 

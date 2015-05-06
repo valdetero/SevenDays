@@ -7,6 +7,7 @@ using Acr.UserDialogs;
 using AdMobBuddy.Forms.Plugin.Abstractions;
 using SevenDays.Core;
 using SevenDays.Core.ViewModels;
+using SevenDays.UI.Controls;
 using SevenDays.UI.Templates;
 using Toasts.Forms.Plugin.Abstractions;
 using Xamarin.Forms;
@@ -21,7 +22,7 @@ namespace SevenDays.UI.Views
 
         public PlayerListPage()
         {
-            listView = new ListView
+            listView = new InfiniteListView
             {
                 HasUnevenRows = true,
                 ItemTemplate = new DataTemplate(typeof(PlayerCell)),
@@ -29,6 +30,8 @@ namespace SevenDays.UI.Views
                 IsPullToRefreshEnabled = true,
                 Header = new Image { Source = PlatformImage.Resolver("header.jpg") },
 				BackgroundColor = Color.Black,
+                LoadMoreCommand = ViewModel.LoadMoreCommand,
+                ItemsSource = ViewModel.Players,
 				StyleId = "playerListView"
             };
 
@@ -59,23 +62,7 @@ namespace SevenDays.UI.Views
         {
             base.OnAppearing();
 
-            //TODO: Add infinite scrolling
-            if (ViewModel.Players == null || ViewModel.Players.Count == 0)
-            {
-                //if(!await serverIsReachable())
-                //{
-                //    //TODO: Figure a better way to local cache list (if even)
-                //    await ViewModel.ExecuteGetCachedPlayersCommand();
-
-                //    if (!ViewModel.Players.Any())
-                //        listView.ItemsSource = ViewModel.Players;
-                //}
-                //else
-                //{
-                await loadGrid();
-                //}
-            }
-            listView.SelectedItem = null;
+            await loadGrid();
         }
 
         protected async void OnItemSelected(object sender, ItemTappedEventArgs e)
@@ -92,13 +79,19 @@ namespace SevenDays.UI.Views
 
         private async Task loadGrid()
         {
-            IsBusy = true;
+            ViewModel.IsBusy = false;
+
             using (var loading = UserDialogs.Instance.Loading("Loading players..."))
             {
-                await ViewModel.ExecuteGetPlayerSummariesCommand();
-                listView.ItemsSource = ViewModel.Players;
+                await ViewModel.ExecuteLoadMoreCommand();
             }
-            IsBusy = false;
+
+            listView.SelectedItem = null;
+
+            ViewModel.IsBusyChanged = (busy) =>
+            {
+                IsBusy = busy;
+            };
 
             if (!ViewModel.Players.Any())
             {

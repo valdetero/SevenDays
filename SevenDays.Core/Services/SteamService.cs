@@ -33,9 +33,6 @@ namespace SevenDays.Core.Services
         {            
             var response = new Response<PlayerStats>();
 
-            //if (!await canConnectToServer())
-            //    return response;
-
             Insights.Track(string.Format("Getting player achievements for {0}", steamId));
 
             string url = string.Format("{0}key={1}&appId={2}&steamId={3}", ApiConstants.Steam.Achievements, ApiConstants.Steam.Key, ApiConstants.Steam.AppId, steamId);
@@ -50,17 +47,14 @@ namespace SevenDays.Core.Services
             return response;
         }
 
-        //TODO: Batch < 100
         public async Task<ListResponse<Player>> GetPlayerSummaries(params long[] steamIds)
         {
             var response = new ListResponse<Player>();
 
-            //if (!await canConnectToServer())
-            //    return response;
-
             var sb = new StringBuilder();
 
-            for (int i = 0; i < steamIds.Length && i < 25; i++)
+            //steam has a cap of 100 on its API, it will fail otherwise
+            for (int i = 0; i < steamIds.Length && i < 100; i++)
             {
                 sb.Append(steamIds[i]);
                 if (steamIds.Length > 1 && i + 1 != steamIds.Length)
@@ -88,9 +82,6 @@ namespace SevenDays.Core.Services
         {
             var response = new Response<Game>();
 
-            //if (!await canConnectToServer())
-            //    return response;
-
             string url = string.Format("{0}key={1}&appId={2}", ApiConstants.Steam.Schema, ApiConstants.Steam.Key, ApiConstants.Steam.AppId);
 
             using (var handle = Insights.TrackTime("Steam_GetSchemaForGame"))
@@ -106,9 +97,6 @@ namespace SevenDays.Core.Services
         public async Task<Response<PlayerStats>> GetUserStatsForGame(long steamId)
         {
             var response = new Response<PlayerStats>();
-
-            //if (!await canConnectToServer())
-            //    return response;
 
             string url = string.Format("{0}key={1}&appId={2}&steamId={3}", ApiConstants.Steam.UserStats, ApiConstants.Steam.Key, ApiConstants.Steam.AppId, steamId);
 

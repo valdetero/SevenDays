@@ -82,8 +82,6 @@ namespace SevenDays.Core.ViewModels
             Insights.Track(string.Format("Found {0} inventory items in bag", inventory.Bag.Count()));
             Insights.Track(string.Format("Found {0} inventory items in belt", inventory.Belt.Count()));
 
-
-            //TODO: Fix inventory images.
             var inventories =   inventory.Bag.Where(x => x.Count > 0).Select(x => new InventoryViewModel(x, "Bag")).Concat(
                                 inventory.Belt.Where(x => x.Count > 0).Select(x => new InventoryViewModel(x, "Belt"))).ToList();
 

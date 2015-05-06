@@ -8,6 +8,8 @@ using SevenDays.Core;
 using UIKit;
 using Xamarin.Forms.Platform.iOS;
 
+[assembly: Xamarin.Forms.ExportRenderer(typeof(SevenDays.UI.Controls.Banner), typeof(SevenDays.UI.iOS.Renderers.BannerRenderer))]
+
 namespace SevenDays.UI.iOS.Renderers
 {
     public class BannerRenderer : ViewRenderer

@@ -30,7 +30,9 @@ namespace SevenDays.Core.Helpers
 
         private const string SevendaysSelectedServerKey = "sevendays_selected_server";
 
-        private const string UseAds = "showAds";
+        private const string UseAdsKey = "showAds";
+
+        private const string PageSizeKey = "page_size";
 
         #endregion
 
@@ -55,8 +57,14 @@ namespace SevenDays.Core.Helpers
 
         public static bool ShowAds
         {
-            get { return AppSettings.GetValueOrDefault(UseAds, false); }
-            set { AppSettings.AddOrUpdateValue(UseAds, value); }
+            get { return AppSettings.GetValueOrDefault(UseAdsKey, false); }
+            set { AppSettings.AddOrUpdateValue(UseAdsKey, value); }
+        }
+
+        public static int PageSize
+        {
+            get { return AppSettings.GetValueOrDefault(PageSizeKey, 50); }
+            set { AppSettings.AddOrUpdateValue(PageSizeKey, value); }
         }
     }
 }
