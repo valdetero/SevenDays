@@ -40,6 +40,7 @@
     <None Include="Images\map.svg" />
     <None Include="Images\people.svg" />
     <None Include="Images\servers.svg" />
+    <None Include="Images\favorite.svg" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
