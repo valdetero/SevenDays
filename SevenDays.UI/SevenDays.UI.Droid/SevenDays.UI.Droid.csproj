@@ -215,6 +215,23 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\map.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\menu.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\people.png" />
+    <AndroidResource Include="Resources\drawable\favorite.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\favorite.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\favorite.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\favorite.png" />
+    <AndroidResource Include="Resources\drawable\offline.png" />
+    <AndroidResource Include="Resources\drawable\online.png" />
+    <AndroidResource Include="Resources\drawable\tap.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\offline.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\online.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\tap.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\offline.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\online.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\tap.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\offline.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\online.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\tap.png" />
+    <AndroidResource Include="Resources\drawable\header.jpg" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\SevenDays.Core\SevenDays.Core.csproj">

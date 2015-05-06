@@ -28,6 +28,8 @@ namespace SevenDays.Core.ViewModels
         {
             _existingHost = Host = server.Host;
             _existingPort = Port = server.Port;
+
+            IsFavorite = Settings.SevendaysSelectedServer == server.ToString();
         }
 
         private string _existingHost { get; set; }
@@ -36,6 +38,8 @@ namespace SevenDays.Core.ViewModels
         public string Host { get; set; }
         public string Port { get; set; }
         public bool? IsReachable { get; set; }
+        public bool IsFavorite { get; set; }
+        public bool IsNotFavorite { get { return !this.IsFavorite; } }
 
         private RelayCommand getSaveCommand;
         public ICommand SaveCommand

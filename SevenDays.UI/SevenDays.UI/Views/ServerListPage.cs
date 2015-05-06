@@ -23,6 +23,8 @@ namespace SevenDays.UI.Views
                 ItemTemplate = new DataTemplate(typeof(ServerCell)),
                 SeparatorColor = Color.FromHex("#ddd"),
                 BackgroundColor = Color.Black,
+                IsPullToRefreshEnabled = true,
+                HasUnevenRows = true,
                 StyleId = "serverListView"
             };
 
@@ -31,9 +33,10 @@ namespace SevenDays.UI.Views
             listView.Refreshing += OnListViewRefreshing;
 
             StyleId = "serverListPage";
+            Title = "Servers";
             Content = new StackLayout
             {
-                VerticalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.Fill,
                 Children = { listView }
             };
 

@@ -27,7 +27,7 @@ namespace SevenDays.UI.Views
                 ItemTemplate = new DataTemplate(typeof(PlayerCell)),
                 SeparatorColor = Color.FromHex("#ddd"),
                 IsPullToRefreshEnabled = true,
-                Header = new Image { Source = ApiConstants.Steam.HeaderUrl },
+                Header = new Image { Source = PlatformImage.Resolver("header.jpg") },
 				BackgroundColor = Color.Black,
 				StyleId = "playerListView"
             };
@@ -39,7 +39,7 @@ namespace SevenDays.UI.Views
             
             var layout = new StackLayout
             {
-                VerticalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.Fill,
                 Children = { listView }
             };
 

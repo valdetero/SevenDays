@@ -47,7 +47,7 @@ namespace SevenDays.UI.Templates
 
             var onlineImage = new Image()
             {
-                Source = "online.png",
+                Source = PlatformImage.Resolver("online.png"),
                 HeightRequest = 8,
                 WidthRequest = 8,
 				StyleId = "onlineImage"
@@ -66,7 +66,7 @@ namespace SevenDays.UI.Templates
             // Offline image and label
             var offlineImage = new Image()
             {
-                Source = "offline.png",
+                Source = PlatformImage.Resolver("offline.png"),
                 HeightRequest = 8,
 				WidthRequest = 8,
 				StyleId = "offlineImage"
@@ -107,7 +107,7 @@ namespace SevenDays.UI.Templates
 
             var tapImage = new Image()
             {
-                Source = "tap.png",
+                Source = PlatformImage.Resolver("tap.png"),
                 HorizontalOptions = LayoutOptions.End,
 				HeightRequest = 12,
 				StyleId = "tapImage"

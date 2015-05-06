@@ -123,6 +123,8 @@
     <None Include="Properties\WMAppManifest.xml">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Assets\favorite.png" />
+    <Content Include="Assets\header.jpg" />
     <Content Include="Assets\Icon.png" />
     <None Include="Assets\Tiles\IconTileMedium.png" />
     <None Include="Assets\Tiles\IconTileSmall.png" />
@@ -131,10 +133,13 @@
     <Content Include="Assets\info.png" />
     <Content Include="Assets\map.png" />
     <Content Include="Assets\menu.png" />
+    <Content Include="Assets\offline.png" />
+    <Content Include="Assets\online.png" />
     <Content Include="Assets\people.png" />
     <Content Include="Assets\plus.png" />
     <Content Include="Assets\servers.png" />
     <Content Include="Assets\settings.png" />
+    <Content Include="Assets\tap.png" />
     <Content Include="SplashScreenImage.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

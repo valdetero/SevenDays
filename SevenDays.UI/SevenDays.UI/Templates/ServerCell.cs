@@ -12,10 +12,6 @@ namespace SevenDays.UI.Templates
     {
         public ServerCell()
         {
-            var connectAction = new MenuItem { Text = "Test" };
-            connectAction.SetBinding(MenuItem.CommandParameterProperty, new Binding("."));
-            connectAction.SetBinding<ServerViewModel>(MenuItem.CommandProperty, x => x.CheckConnectivityCommand);
-
             var favoriteAction = new MenuItem { Text = "Favorite" };
             favoriteAction.SetBinding(MenuItem.CommandParameterProperty, new Binding("."));
             favoriteAction.SetBinding<ServerViewModel>(MenuItem.CommandProperty, x => x.SetDefaultCommand);
@@ -29,9 +25,29 @@ namespace SevenDays.UI.Templates
                 var vm = (ServerViewModel)mi.CommandParameter;
             };
 
-            ContextActions.Add(connectAction);
             ContextActions.Add(favoriteAction);
             ContextActions.Add(deleteAction);
+
+            var image = new Image
+            {
+                Source = PlatformImage.Resolver("favorite.png"),
+                HeightRequest = 40,
+                WidthRequest = 40,
+                Aspect = Aspect.AspectFill,
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.Center,
+            };
+            image.SetBinding<ServerViewModel>(Image.IsVisibleProperty, x => x.IsFavorite);
+
+            var notimage = new Image
+            {
+                HeightRequest = 40,
+                WidthRequest = 40,
+                Aspect = Aspect.AspectFill,
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.Center,
+            };
+            notimage.SetBinding<ServerViewModel>(Image.IsVisibleProperty, x => x.IsNotFavorite);
 
             var nameLabel = new Label()
             {
@@ -42,13 +58,22 @@ namespace SevenDays.UI.Templates
             };
             nameLabel.SetBinding<ServerViewModel>(Label.TextProperty, x => x.Host);
 
+            var detailsLayout = new StackLayout
+            {
+                Padding = new Thickness(10, 0, 0, 0),
+                Spacing = 0,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.Center,
+                Children = { nameLabel }
+            };
+
             var cellLayout = new StackLayout
             {
                 Spacing = 0,
-                Padding = new Thickness(10, 5, 10, 5),
+                Padding = new Thickness(10, 10, 10, 5),
                 Orientation = StackOrientation.Horizontal,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
-                Children = { nameLabel }
+                Children = { image, notimage, detailsLayout }
             };
 
             StyleId = "serverCell";
