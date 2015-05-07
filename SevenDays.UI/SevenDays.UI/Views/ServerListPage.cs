@@ -53,6 +53,31 @@ namespace SevenDays.UI.Views
             {
                 await DependencyService.Get<IToastNotificator>().Notify(ToastNotificationType.Info, "No Servers", "Please add a server", TimeSpan.FromSeconds(2));
             }
+
+            MessagingCenter.Subscribe<ServerCell, ServerViewModel>(this, "Delete", async(sender, arg) =>
+            {
+                ViewModel.Servers.Remove(arg);
+
+                if (arg.IsFavorite)
+                {
+                    await DependencyService.Get<IToastNotificator>().Notify(ToastNotificationType.Warning, "No Favorite", "Please select a favorite", TimeSpan.FromSeconds(3));
+                }
+            });
+            MessagingCenter.Subscribe<ServerCell, ServerViewModel>(this, "Favorite", async (sender, arg) =>
+            {
+                foreach (var server in ViewModel.Servers)
+                {
+                    server.IsFavorite = (server == arg);
+                }
+            });
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+
+            MessagingCenter.Unsubscribe<ServerCell, ServerViewModel>(this, "Delete");
+            MessagingCenter.Unsubscribe<ServerCell, ServerViewModel>(this, "Favorite");
         }
 
         private async void OnListViewRefreshing(object sender, EventArgs e)
@@ -75,11 +100,8 @@ namespace SevenDays.UI.Views
 
         private async Task loadGrid()
         {
-            //if (ViewModel.Servers == null || ViewModel.Servers.Count == 0)
-            //{
             await ViewModel.ExecuteGetServersCommand();
             listView.ItemsSource = ViewModel.Servers;
-            //}
             listView.SelectedItem = null;
         }
     }

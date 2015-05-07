@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SevenDays.Core.ViewModels;
+using SevenDays.UI.Views;
 using Xamarin.Forms;
 
 namespace SevenDays.UI.Templates
@@ -15,6 +16,12 @@ namespace SevenDays.UI.Templates
             var favoriteAction = new MenuItem { Text = "Favorite" };
             favoriteAction.SetBinding(MenuItem.CommandParameterProperty, new Binding("."));
             favoriteAction.SetBinding<ServerViewModel>(MenuItem.CommandProperty, x => x.SetDefaultCommand);
+            favoriteAction.Clicked += async (sender, e) =>
+            {
+                var mi = (MenuItem)sender;
+                var vm = (ServerViewModel)mi.CommandParameter;
+                MessagingCenter.Send<ServerCell, ServerViewModel>(this, "Favorite", vm);
+            };
 
             var deleteAction = new MenuItem { Text = "Delete", IsDestructive = true };
             deleteAction.SetBinding(MenuItem.CommandParameterProperty, new Binding("."));
@@ -23,6 +30,7 @@ namespace SevenDays.UI.Templates
             {
                 var mi = (MenuItem)sender;
                 var vm = (ServerViewModel)mi.CommandParameter;
+                MessagingCenter.Send<ServerCell, ServerViewModel>(this, "Delete", vm);
             };
 
             ContextActions.Add(favoriteAction);

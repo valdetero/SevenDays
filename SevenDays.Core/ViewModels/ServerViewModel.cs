@@ -40,6 +40,8 @@ namespace SevenDays.Core.ViewModels
         public bool? IsReachable { get; set; }
         public bool IsFavorite { get; set; }
         public bool IsNotFavorite { get { return !this.IsFavorite; } }
+        public bool CanSave { get { return !string.IsNullOrEmpty(this.Host) && !string.IsNullOrEmpty(this.Port); } }
+        public bool CanDelete { get { return !string.IsNullOrEmpty(this._existingHost) && !string.IsNullOrEmpty(this._existingPort); } }
 
         private RelayCommand getSaveCommand;
         public ICommand SaveCommand
@@ -54,6 +56,9 @@ namespace SevenDays.Core.ViewModels
             int.TryParse(Port, out port);
                        
             await deletingExistingItem();
+
+            if (await IsExistingItem())
+                return false;
 
             var server = setDefault();
 
@@ -103,6 +108,13 @@ namespace SevenDays.Core.ViewModels
             var keyToRemove = new Server(_existingHost, _existingPort).ToString();
 
             return cache.RemoveObject(keyToRemove);
+        }
+
+        private async Task<bool> IsExistingItem()
+        {
+            var keyToGet = new Server(Host, Port).ToString();
+
+            return await cache.GetObject<Server>(keyToGet) != null;
         }
 
         private Server setDefault()

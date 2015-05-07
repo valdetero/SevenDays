@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Acr.UserDialogs;
 using SevenDays.Core.ViewModels;
 using SevenDays.UI.Controls;
+using Toasts.Forms.Plugin.Abstractions;
 using Xamarin.Forms;
 
 namespace SevenDays.UI.Views
@@ -54,6 +55,7 @@ namespace SevenDays.UI.Views
             };
 
             save.Clicked += OnSaveButtonClicked;
+            save.SetBinding<ServerViewModel>(Button.IsEnabledProperty, x => x.CanSave);
 
             var delete = new Button
             {
@@ -63,6 +65,7 @@ namespace SevenDays.UI.Views
             };
 
             delete.Clicked += OnDeleteButtonClicked;
+            delete.SetBinding<ServerViewModel>(Button.IsVisibleProperty, x => x.CanDelete);
 
             var layout = new StackLayout
             {
@@ -87,26 +90,32 @@ namespace SevenDays.UI.Views
 
         async void OnSaveButtonClicked(object sender, EventArgs e)
         {
-            var saved = await ViewModel.ExecuteSaveCommand();
-            if(!saved)
-            {
-                await UserDialogs.Instance.AlertAsync("Unable to save. Please try again");
-                return;
-            }
             bool canConnect = false;
             using (var loading = UserDialogs.Instance.Loading("Checking connectivity..."))
             {
                 canConnect = await ViewModel.ExecuteCheckConnectivityCommand();
             }
             if (!canConnect)
-                await UserDialogs.Instance.AlertAsync("Unable to connect to server. Please check host and port.");
-            else
+            {
+                await DependencyService.Get<IToastNotificator>().Notify(ToastNotificationType.Error, "Connection Error", "Please check host and port.", TimeSpan.FromSeconds(2));
+                //await UserDialogs.Instance.AlertAsync("Unable to connect to server. Please check host and port.");
+                return;
+            }
+            var saved = await ViewModel.ExecuteSaveCommand();
+            if (saved)
+            {
                 await Navigation.PopAsync();
+            }
+            else
+            {
+                await DependencyService.Get<IToastNotificator>().Notify(ToastNotificationType.Error, "Save Error", "Please try again.", TimeSpan.FromSeconds(2));
+                //await UserDialogs.Instance.AlertAsync("Unable to save. Please try again.");
+            }
         }
 
         async void OnDeleteButtonClicked(object sender, EventArgs e)
         {
-            if (await UserDialogs.Instance.ConfirmAsync("Delete?", "Are you sure that you want to delete this server?"))
+            if (await UserDialogs.Instance.ConfirmAsync("Are you sure that you want to delete this server?", "Delete?"))
             {
                 await ViewModel.ExecuteDeleteCommand();
                 await Navigation.PopAsync();
