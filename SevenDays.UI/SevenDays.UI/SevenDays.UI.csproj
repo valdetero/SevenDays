@@ -35,6 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="Controls\DoneEntry.cs" />
     <Compile Include="Controls\InfiniteListView.cs" />
     <Compile Include="Helpers\PlatformImage.cs" />
     <Compile Include="Model\MenuItem.cs" />

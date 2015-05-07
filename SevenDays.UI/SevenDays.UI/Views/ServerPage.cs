@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
 using SevenDays.Core.ViewModels;
+using SevenDays.UI.Controls;
 using Xamarin.Forms;
 
 namespace SevenDays.UI.Views
@@ -37,11 +38,14 @@ namespace SevenDays.UI.Views
                 Text = "Port",
                 StyleId = "portLabel"
             };
-            var portText = new Entry
+            var portText = new DoneEntry
             {
+                Keyboard = Keyboard.Numeric,
                 StyleId = "portEntry",
             };
             portText.SetBinding<ServerViewModel>(Entry.TextProperty, x => x.Port);
+
+            serverText.Completed += (sender, e) =>  portText.Focus();
 
             var save = new Button
             {
