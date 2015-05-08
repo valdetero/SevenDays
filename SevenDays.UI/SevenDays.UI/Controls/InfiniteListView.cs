@@ -37,7 +37,11 @@ namespace SevenDays.UI.Controls
         {
             var items = ItemsSource as IList;
 
-            if (items != null && e.Item == items[items.Count - 1])
+            bool canLoadMore = items != null 
+                        && (    (items.Count > 5 && e.Item == items[items.Count - 5])
+                            ||  (e.Item == items[items.Count - 1]));
+
+            if (canLoadMore)
             {
                 if (LoadMoreCommand != null && LoadMoreCommand.CanExecute(null))
                     LoadMoreCommand.Execute(null);

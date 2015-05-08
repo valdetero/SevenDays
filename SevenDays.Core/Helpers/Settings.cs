@@ -63,7 +63,7 @@ namespace SevenDays.Core.Helpers
 
         public static int PageSize
         {
-            get { return AppSettings.GetValueOrDefault(PageSizeKey, 50); }
+            get { return AppSettings.GetValueOrDefault(PageSizeKey, 30); }
             set { AppSettings.AddOrUpdateValue(PageSizeKey, value); }
         }
     }
