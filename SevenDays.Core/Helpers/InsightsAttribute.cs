@@ -6,8 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using MethodDecoratorInterfaces;
 
-[module: SevenDays.Core.Helpers.Insights]
-
 namespace SevenDays.Core.Helpers
 {
     [AttributeUsage(

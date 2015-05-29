@@ -2,4 +2,5 @@
 <Weavers>
   <PropertyChanged />
   <MethodDecoratorEx />
+  <AsyncErrorHandler />
 </Weavers>

@@ -17,10 +17,10 @@ namespace SevenDays.Core.ViewModels
     [PropertyChanged.ImplementPropertyChanged]
     public class PlayerViewModel : IViewModel
     {
-        private ISevendayService sevendayService;
+        private readonly ISevendayService _sevendayService;
         public PlayerViewModel()
         {
-            sevendayService = Container.Resolve<ISevendayService>();
+            _sevendayService = Container.Resolve<ISevendayService>();
 
             Inventory = new ObservableCollection<Grouping<string, InventoryViewModel>>();
         }
@@ -61,10 +61,10 @@ namespace SevenDays.Core.ViewModels
 
         public ObservableCollection<Grouping<string, InventoryViewModel>> Inventory { get; set; }
 
-        private RelayCommand getLoadInventoryCommand;
+        private RelayCommand _getLoadInventoryCommand;
         public ICommand LoadInventoryCommand
         {
-            get { return getLoadInventoryCommand ?? (getLoadInventoryCommand = new RelayCommand(async () => await ExecuteLoadInventoryCommand())); }
+            get { return _getLoadInventoryCommand ?? (_getLoadInventoryCommand = new RelayCommand(async () => await ExecuteLoadInventoryCommand())); }
         }
 
         [Insights]
@@ -72,7 +72,7 @@ namespace SevenDays.Core.ViewModels
         {
             Inventory.Clear();
 
-            var invResponse = await sevendayService.GetPlayerInventory(SteamId);
+            var invResponse = await _sevendayService.GetPlayerInventory(SteamId);
 
             if (!invResponse.Successful)
                 return;

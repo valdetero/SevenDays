@@ -15,6 +15,7 @@ namespace SevenDays.Model.Base
 
         public virtual bool Successful { get; set; }
         public string Message { get; set; }
+        public virtual bool CanConnect { get; set; }
     }
 
     public class Response<T> : Response where T : class, new()

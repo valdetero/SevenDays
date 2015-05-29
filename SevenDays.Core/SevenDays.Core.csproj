@@ -46,6 +46,7 @@
     <Compile Include="Extensions\ColorExtension.cs" />
     <Compile Include="Helpers\ApiConstants.cs" />
     <Compile Include="Helpers\ApiConstants.Keys.cs" />
+    <Compile Include="Helpers\AsyncErrorHandler.cs" />
     <Compile Include="Helpers\Grouping.cs" />
     <Compile Include="Helpers\InsightsAttribute.cs" />
     <Compile Include="Helpers\RelayCommand.cs" />
