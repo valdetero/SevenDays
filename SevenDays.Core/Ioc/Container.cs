@@ -8,15 +8,15 @@ namespace SevenDays.Core.Ioc
     /// </summary>
     public class Container
     {
-        static readonly Dictionary<Type, Lazy<object>> services = new Dictionary<Type, Lazy<object>>();
-        static readonly Stack<Dictionary<Type, object>> scopedServices = new Stack<Dictionary<Type, object>>();
+        static readonly Dictionary<Type, Lazy<object>> Services = new Dictionary<Type, Lazy<object>>();
+        static readonly Stack<Dictionary<Type, object>> ScopedServices = new Stack<Dictionary<Type, object>>();
 
         /// <summary>
         /// Register the specified service with an instance
         /// </summary>
         public static void Register<T>(T service)
         {
-            services[typeof(T)] = new Lazy<object>(() => service);
+            Services[typeof(T)] = new Lazy<object>(() => service);
         }
 
         /// <summary>
@@ -24,7 +24,7 @@ namespace SevenDays.Core.Ioc
         /// </summary>
         public static void Register<T>() where T : new()
         {
-            services[typeof(T)] = new Lazy<object>(() => new T());
+            Services[typeof(T)] = new Lazy<object>(() => new T());
         }
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace SevenDays.Core.Ioc
         /// </summary>
         public static void Register<T>(Func<T> function)
         {
-            services[typeof(T)] = new Lazy<object>(() => function());
+            Services[typeof(T)] = new Lazy<object>(() => function());
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace SevenDays.Core.Ioc
         /// </summary>
         public static void Register(Type type, object service)
         {
-            services[type] = new Lazy<object>(() => service);
+            Services[type] = new Lazy<object>(() => service);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace SevenDays.Core.Ioc
         /// </summary>
         public static void Register(Type type, Func<object> function)
         {
-            services[type] = new Lazy<object>(function);
+            Services[type] = new Lazy<object>(function);
         }
 
         /// <summary>
@@ -57,14 +57,14 @@ namespace SevenDays.Core.Ioc
         public static void RegisterScoped<T>(T service)
         {
             Dictionary<Type, object> services;
-            if (scopedServices.Count == 0)
+            if (ScopedServices.Count == 0)
             {
                 services = new Dictionary<Type, object>();
-                scopedServices.Push(services);
+                ScopedServices.Push(services);
             }
             else
             {
-                services = scopedServices.Peek();
+                services = ScopedServices.Peek();
             }
 
             services[typeof(T)] = service;
@@ -84,9 +84,9 @@ namespace SevenDays.Core.Ioc
         public static object Resolve(Type type)
         {
             //Scoped services
-            if (scopedServices.Count > 0)
+            if (ScopedServices.Count > 0)
             {
-                var services = scopedServices.Peek();
+                var services = ScopedServices.Peek();
 
                 object service;
                 if (services.TryGetValue(type, out service))
@@ -98,7 +98,7 @@ namespace SevenDays.Core.Ioc
             //Non-scoped services
             {
                 Lazy<object> service;
-                if (services.TryGetValue(type, out service))
+                if (Services.TryGetValue(type, out service))
                 {
                     return service.Value;
                 }
@@ -114,7 +114,7 @@ namespace SevenDays.Core.Ioc
         /// </summary>
         public static void AddScope()
         {
-            scopedServices.Push(new Dictionary<Type, object>());
+            ScopedServices.Push(new Dictionary<Type, object>());
         }
 
         /// <summary>
@@ -122,8 +122,8 @@ namespace SevenDays.Core.Ioc
         /// </summary>
         public static void RemoveScope()
         {
-            if (scopedServices.Count > 0)
-                scopedServices.Pop();
+            if (ScopedServices.Count > 0)
+                ScopedServices.Pop();
         }
 
         /// <summary>
@@ -131,8 +131,8 @@ namespace SevenDays.Core.Ioc
         /// </summary>
         public static void Clear()
         {
-            services.Clear();
-            scopedServices.Clear();
+            Services.Clear();
+            ScopedServices.Clear();
         }
     }
 }

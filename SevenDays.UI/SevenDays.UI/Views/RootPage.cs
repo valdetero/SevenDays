@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SevenDays.Core.Helpers;
+using SevenDays.Core.Interfaces;
+using SevenDays.Core.Ioc;
 using Xamarin.Forms;
 
 namespace SevenDays.UI.Views
@@ -11,9 +13,10 @@ namespace SevenDays.UI.Views
     public class RootPage : MasterDetailPage
     {
         MenuPage menuPage;
-
+        private readonly ISettings settings;
         public RootPage()
         {
+            settings = Container.Resolve<ISettings>();
             menuPage = new MenuPage();
 
             menuPage.Menu.ItemSelected += (sender, e) => NavigateTo(e.SelectedItem as Model.MenuItem);
@@ -22,7 +25,7 @@ namespace SevenDays.UI.Views
 
             ContentPage page;
 
-            bool isNoServerSelected = string.IsNullOrEmpty(Settings.SevendaysSelectedServer);
+            bool isNoServerSelected = string.IsNullOrEmpty(settings.SevendaysSelectedServer);
             if (isNoServerSelected)
                 page = new ServerListPage();
             else

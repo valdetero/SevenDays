@@ -83,7 +83,6 @@
     <Reference Include="System.Runtime" />
     <Reference Include="System.Threading.Tasks" />
     <Reference Include="System.Xml" />
-    <Reference Include="Xamarin.Android.NUnitLite" />
     <Reference Include="Connectivity.Plugin, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\..\packages\Xam.Plugin.Connectivity.1.0.2\lib\MonoAndroid10\Connectivity.Plugin.dll</HintPath>
     </Reference>
@@ -167,9 +166,9 @@
     <AndroidResource Include="Resources\values\Strings.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DeviceInfoReadme.txt" />
-    <Content Include="PluginsHelp\ConnectivityReadme.txt" />
-    <Content Include="Properties\AndroidManifest.xml" />
+    <Content Include="Properties\AndroidManifest.xml">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\SevenDays.Core\SevenDays.Core.csproj">

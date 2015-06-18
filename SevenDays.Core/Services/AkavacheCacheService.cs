@@ -28,7 +28,7 @@ namespace SevenDays.Core.Services
             }
         }
  
-        public async Task<T> GetObject<T>(string key)
+        public async Task<T> GetObject<T>(string key) where T: class, new()
         {
             try
             {

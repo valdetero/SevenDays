@@ -53,6 +53,7 @@
     <Compile Include="Helpers\Settings.cs" />
     <Compile Include="Interfaces\ICacheService.cs" />
     <Compile Include="Interfaces\INetworkService.cs" />
+    <Compile Include="Interfaces\ISettings.cs" />
     <Compile Include="Interfaces\ISevendayService.cs" />
     <Compile Include="Interfaces\ISteamService.cs" />
     <Compile Include="Interfaces\IViewModel.cs" />

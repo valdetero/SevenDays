@@ -9,8 +9,10 @@
     <Import_RootNamespace>SevenDays.Tests.Shared</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)Assert.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CacheServiceMock.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)NetworkServiceMock.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)NetworkServiceTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SettingsMock.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SevendayServiceTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SteamServiceTests.cs" />
   </ItemGroup>

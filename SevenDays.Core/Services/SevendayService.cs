@@ -20,12 +20,14 @@ namespace SevenDays.Core.Services
 {
     public class SevendayService : ISevendayService
     {
-        private INetworkService networkService;
-        private ICacheService cache;
+        private readonly INetworkService networkService;
+        private readonly ICacheService cache;
+        private readonly ISettings settings;
         public SevendayService()
         {
             networkService = Ioc.Container.Resolve<INetworkService>();
             cache = Ioc.Container.Resolve<ICacheService>();
+            settings = Ioc.Container.Resolve<ISettings>();
         }
 
         private async Task<string> getApiUrlAsync(string api)
@@ -36,7 +38,7 @@ namespace SevenDays.Core.Services
 
         public async Task<SevenDays.Model.Entity.Server> getSelectedServerFromCache()
         {
-            var serverKey = Settings.SevendaysSelectedServer;
+            var serverKey = settings.SevendaysSelectedServer;
 
             if (string.IsNullOrEmpty(serverKey))
                 return null;
@@ -76,11 +78,8 @@ namespace SevenDays.Core.Services
             if (!await CanConnectToServer())
                 return response;
 
-            Insights.Track(string.Format("Getting player inventory for {0}", steamId));
-
             string url = string.Format("{0}steamId={1}", await getApiUrlAsync(ApiConstants.Seven.PlayerInventory), steamId);
 
-            using (var handle = Insights.TrackTime("Seven_GetPlayerInventory"))
             using (var client = new HttpClient(new NativeMessageHandler()))
             {
                 var result = await client.GetStringAsync(url);
@@ -99,7 +98,6 @@ namespace SevenDays.Core.Services
 
             string url = await getApiUrlAsync(ApiConstants.Seven.PlayerLocation);
 
-            using (var handle = Insights.TrackTime("Seven_GetPlayersLocation"))
             using (var client = new HttpClient(new NativeMessageHandler()))
             {
                 var result = await client.GetStringAsync(url);

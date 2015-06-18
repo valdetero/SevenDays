@@ -16,12 +16,14 @@ namespace SevenDays.Core.ViewModels
     [PropertyChanged.ImplementPropertyChanged]
     public class ServerViewModel : IViewModel
     {
-        private ISevendayService sevendayService;
-        private ICacheService cache;
+        private readonly ISevendayService sevendayService;
+        private readonly ICacheService cache;
+        private readonly ISettings settings;
         public ServerViewModel()
         {
             sevendayService = Container.Resolve<ISevendayService>();
             cache = Container.Resolve<ICacheService>();
+            settings = Container.Resolve<ISettings>();
         }
 
         public ServerViewModel(Server server) : this()
@@ -29,7 +31,7 @@ namespace SevenDays.Core.ViewModels
             _existingHost = Host = server.Host;
             _existingPort = Port = server.Port;
 
-            IsFavorite = Settings.SevendaysSelectedServer == server.ToString();
+            IsFavorite = settings.SevendaysSelectedServer == server.ToString();
         }
 
         private string _existingHost { get; set; }
@@ -121,7 +123,7 @@ namespace SevenDays.Core.ViewModels
         {
             var server = new Server(Host, Port);
 
-            Settings.SevendaysSelectedServer = server.ToString();
+            settings.SevendaysSelectedServer = server.ToString();
 
             return server;
         }

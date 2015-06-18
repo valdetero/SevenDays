@@ -9,7 +9,7 @@ namespace SevenDays.Core.Helpers
     /// of your client applications. All settings are laid out the same exact way with getters
     /// and setters. 
     /// </summary>
-    public static class Settings
+    public class Settings : SevenDays.Core.Interfaces.ISettings
     {
         private static ISettings AppSettings
         {
@@ -21,12 +21,12 @@ namespace SevenDays.Core.Helpers
 
         #region Setting Constants
 
-        private const string SevendaysServerKey = "sevendays_server";
+        //private const string SevendaysServerKey = "sevendays_server";
         //private static readonly string SevendaysServerDefault = "localhost";
-        private static readonly string SevendaysServerDefault = "home.wtfnext.com";
+        //private static readonly string SevendaysServerDefault = "home.wtfnext.com";
 
-        private const string SevendaysPortKey = "sevendays_port";
-        private static readonly string SevendaysPortDefault = "26903";
+        //private const string SevendaysPortKey = "sevendays_port";
+        //private static readonly string SevendaysPortDefault = "26903";
 
         private const string SevendaysSelectedServerKey = "sevendays_selected_server";
 
@@ -37,19 +37,19 @@ namespace SevenDays.Core.Helpers
         #endregion
 
 
-        public static string SevendaysServer
-        {
-            get { return AppSettings.GetValueOrDefault(SevendaysServerKey, SevendaysServerDefault); }
-            set { AppSettings.AddOrUpdateValue(SevendaysServerKey, value); }
-        }
+        //public static string SevendaysServer
+        //{
+        //    get { return AppSettings.GetValueOrDefault(SevendaysServerKey, SevendaysServerDefault); }
+        //    set { AppSettings.AddOrUpdateValue(SevendaysServerKey, value); }
+        //}
 
-        public static string SevendaysPort
-        {
-            get { return AppSettings.GetValueOrDefault(SevendaysPortKey, SevendaysPortDefault); }
-            set { AppSettings.AddOrUpdateValue(SevendaysPortKey, value); }
-        }
+        //public static string SevendaysPort
+        //{
+        //    get { return AppSettings.GetValueOrDefault(SevendaysPortKey, SevendaysPortDefault); }
+        //    set { AppSettings.AddOrUpdateValue(SevendaysPortKey, value); }
+        //}
 
-        public static string SevendaysSelectedServer
+        public string SevendaysSelectedServer
         {
             get { return AppSettings.GetValueOrDefault(SevendaysSelectedServerKey, ""); }
             set { AppSettings.AddOrUpdateValue(SevendaysSelectedServerKey, value); }

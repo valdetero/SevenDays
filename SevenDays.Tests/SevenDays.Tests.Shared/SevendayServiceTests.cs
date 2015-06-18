@@ -5,48 +5,48 @@ using System.Text;
 using System.Threading.Tasks;
 using SevenDays.Core.Helpers;
 using SevenDays.Core.Interfaces;
+using SevenDays.Core.Ioc;
+using SevenDays.Core.Services;
 using SevenDays.Model.Base;
 using SevenDays.Model.Seven;
-using Nunit = NUnit.Framework;
+using Xunit;
+//using Settings = SevenDays.Core.Helpers.Settings;
 
 namespace SevenDays.Tests.Shared
 {
     public class SevendayServiceTests
     {
-        [Xunit.Fact]
-        [Nunit.Test]
-#if !WINDOWS_PHONE
-        [Nunit.Timeout(Int32.MaxValue)]
-#endif
+        public SevendayServiceTests()
+        {
+            Container.Clear();
+            Container.Register<INetworkService>(() => new NetworkServiceMock());
+            Container.Register<ICacheService>(() => new CacheServiceMock());
+            Container.Register<ISettings>(() => new SettingsMock());
+            Container.Register<ISevendayService>(() => new SevendayService());
+        }
+
+        [Fact]
         public async Task GetPlayerInventory()
         {
-            Settings.SevendaysServer = "home.wtfnext.com";
-            Settings.SevendaysPort = "26903";
-            var service = SevenDays.Core.Ioc.Container.Resolve<ISevendayService>();
+            var service = Container.Resolve<ISevendayService>();
 
             var result = await service.GetPlayerInventory(76561197968329571);
 
-            Assert.True(result.Successful);
+            Assert.True(result.Successful, result.Message);
             Assert.NotNull(result.Result.Bag);
             Assert.NotNull(result.Result.Belt);
         }
 
-        [Xunit.Fact]
-        [Nunit.Test]
-#if !WINDOWS_PHONE
-        [Nunit.Timeout(Int32.MaxValue)]
-#endif
+        [Fact]
         public async Task GetPlayersLocation()
         {
-            Settings.SevendaysServer = "home.wtfnext.com";
-            Settings.SevendaysPort = "26903";
-            var service = SevenDays.Core.Ioc.Container.Resolve<ISevendayService>();
+            var service = Container.Resolve<ISevendayService>();
 
             var result = await service.GetPlayersLocation();
 
-            Assert.True(result.Successful);
+            Assert.True(result.Successful, result.Message);
             Assert.NotNull(result.Result);
-            Assert.True(result.Result.Any(x => x.Name == "svickn"));
+            Assert.True(result.Result.Any(x => x.Name == "svickn"), "No player by the name of svickn");
         }
     }
 }

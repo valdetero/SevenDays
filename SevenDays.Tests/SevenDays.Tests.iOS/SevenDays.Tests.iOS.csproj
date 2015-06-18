@@ -108,7 +108,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AkavacheSqliteLinkerOverride.cs" />
-    <Compile Include="AppDelegate.NUnit.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.XUnit.cs" />
     <None Include="app.config" />
@@ -130,7 +129,6 @@
       <HintPath>..\..\packages\akavache.sqlite3.4.1.1\lib\Portable-Net45+Win8+WP8+Wpa81\Akavache.Sqlite3.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="MonoTouch.NUnitLite" />
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.6.0.8\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -230,9 +228,7 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DeviceInfoReadme.txt" />
     <Content Include="Entitlements.plist" />
-    <Content Include="PluginsHelp\ConnectivityReadme.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\SevenDays.Core\SevenDays.Core.csproj">

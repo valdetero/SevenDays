@@ -72,12 +72,18 @@ namespace SevenDays.Core.ViewModels
         {
             Inventory.Clear();
 
-            var invResponse = await _sevendayService.GetPlayerInventory(SteamId);
+            Inventory inventory;
 
-            if (!invResponse.Successful)
-                return;
+            Insights.Track(string.Format("Getting player inventory for {0}", SteamId));
+            using (var handle = Insights.TrackTime("Seven_GetPlayerInventory"))
+            {
+                var invResponse = await _sevendayService.GetPlayerInventory(SteamId);
 
-            var inventory = invResponse.Result;
+                if (!invResponse.Successful)
+                    return;
+
+                inventory = invResponse.Result;
+            }
 
             Insights.Track(string.Format("Found {0} inventory items in bag", inventory.Bag.Count()));
             Insights.Track(string.Format("Found {0} inventory items in belt", inventory.Belt.Count()));

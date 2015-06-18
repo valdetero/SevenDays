@@ -3,20 +3,24 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using SevenDays.Core.Interfaces;
-using Nunit = NUnit.Framework;
+using SevenDays.Core.Ioc;
+using SevenDays.Core.Services;
+using Xunit;
 
 namespace SevenDays.Tests.Shared
 {
     public class NetworkServiceTests
     {
-        [Xunit.Fact]
-        [Nunit.Test]
-#if !WINDOWS_PHONE
-        [Nunit.Timeout(Int32.MaxValue)]
-#endif
+        public NetworkServiceTests()
+        {
+            Container.Clear();
+            Container.Register<INetworkService>(() => new NetworkService());
+        }
+
+        [Fact]
         public async void CheckNetworkConnectivity()
         {
-            var service = SevenDays.Core.Ioc.Container.Resolve<INetworkService>();
+            var service = Container.Resolve<INetworkService>();
 
             var result = await service.CanConnectToService("www.google.com");
 

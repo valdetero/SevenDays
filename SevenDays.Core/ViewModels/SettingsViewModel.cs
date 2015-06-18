@@ -13,13 +13,15 @@ namespace SevenDays.Core.ViewModels
     [PropertyChanged.ImplementPropertyChanged]
     public class SettingsViewModel : IViewModel
     {
-        private ISevendayService sevendayService;
+        private readonly ISevendayService sevendayService;
+        private readonly ISettings settings;
         public SettingsViewModel()
         {
             sevendayService = Container.Resolve<ISevendayService>();
+            settings = Container.Resolve<ISettings>();
 
-            Server = Settings.SevendaysServer;
-            Port = Settings.SevendaysPort;
+            Server = settings.SevendaysSelectedServer.Split(':')[0];
+            Port = settings.SevendaysSelectedServer.Split(':')[1];
         }
 
         public string Server { get; set; }
@@ -37,8 +39,7 @@ namespace SevenDays.Core.ViewModels
             int port;
             int.TryParse(Port, out port);
 
-            Settings.SevendaysServer = Server;
-            Settings.SevendaysPort = port.ToString();
+            settings.SevendaysSelectedServer = string.Format("{0}:{1}", Server, Port);
         }
 
         private RelayCommand getCheckConnectivityCommand;
