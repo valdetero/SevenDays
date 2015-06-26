@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2012/deployment" AppPlatformVersion="8.0">
   <DefaultLanguage xmlns="" code="en-US" />
-  <App xmlns="" ProductID="{fcc1ddfa-63d0-438c-96c4-abda921b4b15}" Title="7 Days" RuntimeType="Silverlight" Version="1.1.0.0" Genre="apps.normal" Author="Seth Valdetero" Description="Sample description" Publisher="Sparkhound" PublisherID="{4d7b9a36-196a-49c7-920f-ee1fe9ba84a2}">
+  <App xmlns="" ProductID="{fcc1ddfa-63d0-438c-96c4-abda921b4b15}" Title="7 Days" RuntimeType="Silverlight" Version="1.3.0.0" Genre="apps.normal" Author="Seth Valdetero" Description="Sample description" Publisher="Sparkhound" PublisherID="{4d7b9a36-196a-49c7-920f-ee1fe9ba84a2}">
     <IconPath IsRelative="true" IsResource="false">Assets\Icon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING" />

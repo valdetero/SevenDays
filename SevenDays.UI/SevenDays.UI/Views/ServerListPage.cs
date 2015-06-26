@@ -63,7 +63,7 @@ namespace SevenDays.UI.Views
                     await DependencyService.Get<IToastNotificator>().Notify(ToastNotificationType.Warning, "No Favorite", "Please select a favorite", TimeSpan.FromSeconds(3));
                 }
             });
-            MessagingCenter.Subscribe<ServerCell, ServerViewModel>(this, "Favorite", async (sender, arg) =>
+            MessagingCenter.Subscribe<ServerCell, ServerViewModel>(this, "Favorite", (sender, arg) =>
             {
                 foreach (var server in ViewModel.Servers)
                 {

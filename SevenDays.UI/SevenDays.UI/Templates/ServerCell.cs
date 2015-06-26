@@ -16,7 +16,7 @@ namespace SevenDays.UI.Templates
             var favoriteAction = new MenuItem { Text = "Favorite" };
             favoriteAction.SetBinding(MenuItem.CommandParameterProperty, new Binding("."));
             favoriteAction.SetBinding<ServerViewModel>(MenuItem.CommandProperty, x => x.SetDefaultCommand);
-            favoriteAction.Clicked += async (sender, e) =>
+            favoriteAction.Clicked += (sender, e) =>
             {
                 var mi = (MenuItem)sender;
                 var vm = (ServerViewModel)mi.CommandParameter;
@@ -26,7 +26,7 @@ namespace SevenDays.UI.Templates
             var deleteAction = new MenuItem { Text = "Delete", IsDestructive = true };
             deleteAction.SetBinding(MenuItem.CommandParameterProperty, new Binding("."));
             deleteAction.SetBinding<ServerViewModel>(MenuItem.CommandProperty, x => x.DeleteCommand);
-            deleteAction.Clicked += async (sender, e) =>
+            deleteAction.Clicked += (sender, e) =>
             {
                 var mi = (MenuItem)sender;
                 var vm = (ServerViewModel)mi.CommandParameter;

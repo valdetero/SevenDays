@@ -34,7 +34,7 @@ namespace SevenDays.Core.Services
             {
                 return await BlobCache.LocalMachine.GetObject<T>(key);
             }
-            catch (KeyNotFoundException exception)
+            catch (KeyNotFoundException)
             {
                 return default(T);
             }
@@ -52,7 +52,7 @@ namespace SevenDays.Core.Services
             {
                 return await BlobCache.LocalMachine.GetAllObjects<T>();
             }
-            catch (KeyNotFoundException exception)
+            catch (KeyNotFoundException)
             {
                 return new List<T>();
             }

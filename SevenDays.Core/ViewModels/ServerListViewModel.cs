@@ -47,6 +47,7 @@ namespace SevenDays.Core.ViewModels
             Servers = new ObservableCollection<ServerViewModel>(servers);
         }
 
+/*
         private RelayCommand checkConnectivityCommand;
         public ICommand CheckConnectivityCommand
         {
@@ -54,7 +55,7 @@ namespace SevenDays.Core.ViewModels
         }
 
         [Insights]
-        public async Task<bool> ExecuteCheckConnectivityCommand()
+        public Task<bool> ExecuteCheckConnectivityCommand()
         {
             throw new NotImplementedException();
         }
@@ -66,7 +67,7 @@ namespace SevenDays.Core.ViewModels
         }
 
         [Insights]
-        public async Task<bool> ExecuteDeleteServerCommand()
+        public Task<bool> ExecuteDeleteServerCommand()
         {
             throw new NotImplementedException();
         }
@@ -78,9 +79,10 @@ namespace SevenDays.Core.ViewModels
         }
 
         [Insights]
-        public async Task<bool> ExecuteAddServerCommand()
+        public Task<bool> ExecuteAddServerCommand()
         {
             throw new NotImplementedException();
         }
+*/
     }
 }
