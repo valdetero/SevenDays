@@ -10,6 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)CacheServiceMock.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LoggerMock.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)NetworkServiceMock.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)NetworkServiceTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SettingsMock.cs" />

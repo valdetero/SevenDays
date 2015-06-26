@@ -23,11 +23,13 @@ namespace SevenDays.Core.Services
         private readonly INetworkService networkService;
         private readonly ICacheService cache;
         private readonly ISettings settings;
+        private readonly ILogger logger;
         public SevendayService()
         {
             networkService = Ioc.Container.Resolve<INetworkService>();
             cache = Ioc.Container.Resolve<ICacheService>();
             settings = Ioc.Container.Resolve<ISettings>();
+            logger = Ioc.Container.Resolve<ILogger>();
         }
 
         private async Task<string> getApiUrlAsync(string api)
@@ -46,19 +48,19 @@ namespace SevenDays.Core.Services
             return await cache.GetObject<SevenDays.Model.Entity.Server>(serverKey);
         }
 
-        public async Task<bool> CanConnectToServer(string host, string port)
+        public Task<bool> CanConnectToServer(string host, string port)
         {
-            return await networkService.CanConnectToService(string.Format("http://{0}", host), port);
+            return networkService.CanConnectToService(string.Format("http://{0}", host), port);
         }
 
-        public async Task<bool> CanConnectToServer(SevenDays.Model.Entity.Server server)
+        public Task<bool> CanConnectToServer(SevenDays.Model.Entity.Server server)
         {
             if (server == null)
-                return false;
+                return Task.FromResult(false);
             if (string.IsNullOrEmpty(server.Host) || string.IsNullOrEmpty(server.Port))
-                return false;
+                return Task.FromResult(false);
 
-            return await CanConnectToServer(server.Host, server.Port);
+            return CanConnectToServer(server.Host, server.Port);
         }
 
         public async Task<bool> CanConnectToServer()
@@ -98,10 +100,23 @@ namespace SevenDays.Core.Services
 
             string url = await getApiUrlAsync(ApiConstants.Seven.PlayerLocation);
 
-            using (var client = new HttpClient(new NativeMessageHandler()))
+            try
             {
-                var result = await client.GetStringAsync(url);
-                response.Result = JsonConvert.DeserializeObject<IEnumerable<Player>>(result);
+                using (var client = new HttpClient(new NativeMessageHandler()))
+                {
+                    var result = await client.GetStringAsync(url);
+                    response.Result = JsonConvert.DeserializeObject<IEnumerable<Player>>(result);
+                }
+            }
+            /*
+                System.Net.WebExceptionStatus.ReceiveFailure = 3
+                Azure throws this error. However this enum doesn't exist in the namespace.
+            */
+            catch (System.Net.WebException ex) when ((int)ex.Status == 3)
+            {
+                if ((int) ex.Status != 3)
+                    throw;
+                logger.LogException(ex);
             }
 
             return response;

@@ -10,7 +10,6 @@ using SevenDays.Core.Services;
 using SevenDays.Model.Base;
 using SevenDays.Model.Seven;
 using Xunit;
-//using Settings = SevenDays.Core.Helpers.Settings;
 
 namespace SevenDays.Tests.Shared
 {
@@ -22,6 +21,7 @@ namespace SevenDays.Tests.Shared
             Container.Register<INetworkService>(() => new NetworkServiceMock());
             Container.Register<ICacheService>(() => new CacheServiceMock());
             Container.Register<ISettings>(() => new SettingsMock());
+            Container.Register<ILogger>(() => new LoggerMock());
             Container.Register<ISevendayService>(() => new SevendayService());
         }
 

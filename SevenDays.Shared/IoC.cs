@@ -17,6 +17,7 @@ namespace SevenDays
             Container.Register<ISevendayService>(() => new SevendayService());
             Container.Register<ISettings>(() => new Settings());
             Container.Register<ICacheService>(() => new AkavacheCacheService());
+            Container.Register<ILogger>(() => new Logger());
         }
     }
 }
