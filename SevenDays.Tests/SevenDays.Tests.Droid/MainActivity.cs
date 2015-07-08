@@ -12,7 +12,7 @@ using Xunit.Runners.UI;
 
 namespace SevenDays.Tests.Droid
 {
-    [Activity(Label = "SevenDays Tests", MainLauncher = true, Theme = "@android:style/Theme.Material.Light")]
+    [Activity(Label = "7 Days Tests", MainLauncher = true, Theme = "@android:style/Theme.Material.Light")]
     public class MainActivity : RunnerActivity
     {
         protected override void OnCreate(Bundle bundle)

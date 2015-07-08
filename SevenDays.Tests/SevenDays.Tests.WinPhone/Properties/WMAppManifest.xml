@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2012/deployment" AppPlatformVersion="8.0">
   <DefaultLanguage xmlns="" code="en-US" />
-  <App xmlns="" ProductID="{43914441-fd23-4c99-be3e-0c875dfce0ff}" Title="SevenDays.Tests" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="SevenDays.Tests.WinPhone author" Description="Sample description" Publisher="SevenDays.Tests.WinPhone" PublisherID="{fc5b32a1-5eab-48b8-aa8c-0da8b09f6e9a}">
+  <App xmlns="" ProductID="{43914441-fd23-4c99-be3e-0c875dfce0ff}" Title="7 Days Tests" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="SevenDays.Tests.WinPhone author" Description="Sample description" Publisher="SevenDays.Tests.WinPhone" PublisherID="{fc5b32a1-5eab-48b8-aa8c-0da8b09f6e9a}">
     <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING" />
