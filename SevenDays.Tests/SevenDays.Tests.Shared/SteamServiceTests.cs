@@ -15,6 +15,7 @@ namespace SevenDays.Tests.Shared
         public SteamServiceTests()
         {
             Container.Clear();
+            Container.Register<ILogger>(() => new LoggerMock());
             Container.Register<INetworkService>(new NetworkServiceMock());
             Container.Register<ISteamService>(new SteamService());
         }
