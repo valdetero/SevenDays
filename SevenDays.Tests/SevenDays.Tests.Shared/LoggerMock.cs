@@ -22,7 +22,8 @@ namespace SevenDays.Tests.Shared
 
         public void Track(string trackIdentifier)
         {
-            System.Diagnostics.Debug.WriteLine($"Tracked: {trackIdentifier}");
+            //System.Diagnostics.Debug.WriteLine($"Tracked: {trackIdentifier}");
+            System.Diagnostics.Debug.WriteLine(string.Format("Tracked: {0}", trackIdentifier));
         }
     }
 }

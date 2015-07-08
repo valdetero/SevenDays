@@ -112,7 +112,7 @@ namespace SevenDays.Core.Services
                 System.Net.WebExceptionStatus.ReceiveFailure = 3
                 Azure throws this error. However this enum doesn't exist in the namespace.
             */
-            catch (System.Net.WebException ex) when ((int)ex.Status == 3)
+            catch (System.Net.WebException ex)// when ((int)ex.Status == 3)
             {
                 if ((int) ex.Status != 3)
                     throw;
