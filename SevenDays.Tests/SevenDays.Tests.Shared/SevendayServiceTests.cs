@@ -37,16 +37,20 @@ namespace SevenDays.Tests.Shared
             Assert.NotNull(result.Result.Belt);
         }
 
-        [Fact]
-        public async Task GetPlayersLocation()
+        [Theory]
+        [InlineData("misko-7dtd.cloudapp.net:8082")]
+        [InlineData("home.wtfnext.com:26903")]
+        public async Task GetPlayersLocation(string server)
         {
+            Container.Resolve<ISettings>().SevendaysSelectedServer = server;
+
             var service = Container.Resolve<ISevendayService>();
 
             var result = await service.GetPlayersLocation();
 
             Assert.True(result.Successful, result.Message);
             Assert.NotNull(result.Result);
-            Assert.True(result.Result.Any(x => x.Name == "svickn"), "No player by the name of svickn");
+            Assert.True(result.Result.Any(), "No player on the server");
         }
     }
 }

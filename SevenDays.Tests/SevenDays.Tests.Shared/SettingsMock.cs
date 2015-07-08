@@ -9,7 +9,8 @@ namespace SevenDays.Tests.Shared
     {
         public SettingsMock()
         {
-            this.SevendaysSelectedServer = "home.wtfnext.com:26903";
+            //this.SevendaysSelectedServer = "home.wtfnext.com:26903";
+            this.SevendaysSelectedServer = "misko-7dtd.cloudapp.net:8082";
         }
 
         public string SevendaysSelectedServer { get; set; }
