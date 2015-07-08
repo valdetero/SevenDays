@@ -16,10 +16,12 @@ namespace SevenDays.Core.Services
 {
     public class SteamService : ISteamService
     {
-        private INetworkService networkService;
+        private readonly INetworkService networkService;
+        private readonly ILogger logger;
         public SteamService()
         {
             networkService = Ioc.Container.Resolve<INetworkService>();
+            logger = Ioc.Container.Resolve<ILogger>();
         }
 
         //Can't ping the API
@@ -33,7 +35,7 @@ namespace SevenDays.Core.Services
         {            
             var response = new Response<PlayerStats>();
 
-            Insights.Track(string.Format("Getting player achievements for {0}", steamId));
+            logger.Track(string.Format("Getting player achievements for {0}", steamId));
 
             string url = string.Format("{0}key={1}&appId={2}&steamId={3}", ApiConstants.Steam.Achievements, ApiConstants.Steam.Key, ApiConstants.Steam.AppId, steamId);
             

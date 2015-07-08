@@ -10,7 +10,7 @@ namespace SevenDays.Core.Helpers
     {
         public static void HandleException(Exception exception)
         {
-            Xamarin.Insights.Report(exception);
+            Ioc.Container.Resolve<SevenDays.Core.Interfaces.ILogger>().LogException(exception);
         }
     }
 }

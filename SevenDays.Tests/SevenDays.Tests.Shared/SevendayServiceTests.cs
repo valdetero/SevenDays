@@ -25,12 +25,16 @@ namespace SevenDays.Tests.Shared
             Container.Register<ISevendayService>(() => new SevendayService());
         }
 
-        [Fact]
-        public async Task GetPlayerInventory()
+        [Theory]
+        [InlineData("misko-7dtd.cloudapp.net:8082", 76561197964915848)]
+        [InlineData("home.wtfnext.com:26903", 76561197968329571)]
+        public async Task GetPlayerInventory(string server, long steamId)
         {
+            Container.Resolve<ISettings>().SevendaysSelectedServer = server;
+
             var service = Container.Resolve<ISevendayService>();
 
-            var result = await service.GetPlayerInventory(76561197968329571);
+            var result = await service.GetPlayerInventory(steamId);
 
             Assert.True(result.Successful, result.Message);
             Assert.NotNull(result.Result.Bag);

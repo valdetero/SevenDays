@@ -14,15 +14,18 @@ namespace SevenDays.Tests.Shared
         public NetworkServiceTests()
         {
             Container.Clear();
-            Container.Register<INetworkService>(() => new NetworkService());
+            Container.Register<ILogger>(() => new LoggerMock());
+            Container.Register<INetworkService>(() => new NetworkService());            
         }
 
-        [Fact]
-        public async void CheckNetworkConnectivity()
+        [Theory]
+        [InlineData("misko-7dtd.cloudapp.net","8082")]
+        [InlineData("home.wtfnext.com","26903")]
+        public async void CheckNetworkConnectivity(string host, string port)
         {
             var service = Container.Resolve<INetworkService>();
 
-            var result = await service.CanConnectToService("www.google.com");
+            var result = await service.CanConnectToService(host, port);
 
             Assert.True(result);
         }
