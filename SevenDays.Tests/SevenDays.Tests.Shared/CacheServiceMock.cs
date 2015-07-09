@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using SevenDays.Core.Interfaces;
 using SevenDays.Model.Entity;
 
-namespace SevenDays.Tests.Shared
+namespace SevenDays.Tests
 {
     public class CacheServiceMock : ICacheService
     {

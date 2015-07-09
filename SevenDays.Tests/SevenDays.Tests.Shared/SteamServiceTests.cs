@@ -8,8 +8,9 @@ using SevenDays.Core.Ioc;
 using SevenDays.Core.Services;
 using Xunit;
 
-namespace SevenDays.Tests.Shared
+namespace SevenDays.Tests
 {
+    [Trait("Api", "Steam")]
     public class SteamServiceTests
     {
         public SteamServiceTests()

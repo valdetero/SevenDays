@@ -26,45 +26,6 @@ namespace SevenDays.UI.Droid
 		
 		public static void UpdateIdValues()
 		{
-			global::Acr.UserDialogs.Resource.Attribute.ahBarColor = global::SevenDays.UI.Droid.Resource.Attribute.ahBarColor;
-			global::Acr.UserDialogs.Resource.Attribute.ahBarLength = global::SevenDays.UI.Droid.Resource.Attribute.ahBarLength;
-			global::Acr.UserDialogs.Resource.Attribute.ahBarWidth = global::SevenDays.UI.Droid.Resource.Attribute.ahBarWidth;
-			global::Acr.UserDialogs.Resource.Attribute.ahCircleColor = global::SevenDays.UI.Droid.Resource.Attribute.ahCircleColor;
-			global::Acr.UserDialogs.Resource.Attribute.ahDelayMillis = global::SevenDays.UI.Droid.Resource.Attribute.ahDelayMillis;
-			global::Acr.UserDialogs.Resource.Attribute.ahRadius = global::SevenDays.UI.Droid.Resource.Attribute.ahRadius;
-			global::Acr.UserDialogs.Resource.Attribute.ahRimColor = global::SevenDays.UI.Droid.Resource.Attribute.ahRimColor;
-			global::Acr.UserDialogs.Resource.Attribute.ahRimWidth = global::SevenDays.UI.Droid.Resource.Attribute.ahRimWidth;
-			global::Acr.UserDialogs.Resource.Attribute.ahSpinSpeed = global::SevenDays.UI.Droid.Resource.Attribute.ahSpinSpeed;
-			global::Acr.UserDialogs.Resource.Attribute.ahText = global::SevenDays.UI.Droid.Resource.Attribute.ahText;
-			global::Acr.UserDialogs.Resource.Attribute.ahTextColor = global::SevenDays.UI.Droid.Resource.Attribute.ahTextColor;
-			global::Acr.UserDialogs.Resource.Attribute.ahTextSize = global::SevenDays.UI.Droid.Resource.Attribute.ahTextSize;
-			global::Acr.UserDialogs.Resource.Drawable.ic_errorstatus = global::SevenDays.UI.Droid.Resource.Drawable.ic_errorstatus;
-			global::Acr.UserDialogs.Resource.Drawable.ic_successstatus = global::SevenDays.UI.Droid.Resource.Drawable.ic_successstatus;
-			global::Acr.UserDialogs.Resource.Drawable.roundedbg = global::SevenDays.UI.Droid.Resource.Drawable.roundedbg;
-			global::Acr.UserDialogs.Resource.Drawable.roundedbgdark = global::SevenDays.UI.Droid.Resource.Drawable.roundedbgdark;
-			global::Acr.UserDialogs.Resource.Id.loadingImage = global::SevenDays.UI.Droid.Resource.Id.loadingImage;
-			global::Acr.UserDialogs.Resource.Id.loadingProgressBar = global::SevenDays.UI.Droid.Resource.Id.loadingProgressBar;
-			global::Acr.UserDialogs.Resource.Id.loadingProgressWheel = global::SevenDays.UI.Droid.Resource.Id.loadingProgressWheel;
-			global::Acr.UserDialogs.Resource.Id.textViewStatus = global::SevenDays.UI.Droid.Resource.Id.textViewStatus;
-			global::Acr.UserDialogs.Resource.Layout.loading = global::SevenDays.UI.Droid.Resource.Layout.loading;
-			global::Acr.UserDialogs.Resource.Layout.loadingimage = global::SevenDays.UI.Droid.Resource.Layout.loadingimage;
-			global::Acr.UserDialogs.Resource.Layout.loadingprogress = global::SevenDays.UI.Droid.Resource.Layout.loadingprogress;
-			global::Acr.UserDialogs.Resource.String.ApplicationName = global::SevenDays.UI.Droid.Resource.String.ApplicationName;
-			global::Acr.UserDialogs.Resource.String.Hello = global::SevenDays.UI.Droid.Resource.String.Hello;
-			global::Acr.UserDialogs.Resource.String.library_name = global::SevenDays.UI.Droid.Resource.String.library_name;
-			global::Acr.UserDialogs.Resource.Styleable.ProgressWheel = global::SevenDays.UI.Droid.Resource.Styleable.ProgressWheel;
-			global::Acr.UserDialogs.Resource.Styleable.ProgressWheel_ahBarColor = global::SevenDays.UI.Droid.Resource.Styleable.ProgressWheel_ahBarColor;
-			global::Acr.UserDialogs.Resource.Styleable.ProgressWheel_ahBarLength = global::SevenDays.UI.Droid.Resource.Styleable.ProgressWheel_ahBarLength;
-			global::Acr.UserDialogs.Resource.Styleable.ProgressWheel_ahBarWidth = global::SevenDays.UI.Droid.Resource.Styleable.ProgressWheel_ahBarWidth;
-			global::Acr.UserDialogs.Resource.Styleable.ProgressWheel_ahCircleColor = global::SevenDays.UI.Droid.Resource.Styleable.ProgressWheel_ahCircleColor;
-			global::Acr.UserDialogs.Resource.Styleable.ProgressWheel_ahDelayMillis = global::SevenDays.UI.Droid.Resource.Styleable.ProgressWheel_ahDelayMillis;
-			global::Acr.UserDialogs.Resource.Styleable.ProgressWheel_ahRadius = global::SevenDays.UI.Droid.Resource.Styleable.ProgressWheel_ahRadius;
-			global::Acr.UserDialogs.Resource.Styleable.ProgressWheel_ahRimColor = global::SevenDays.UI.Droid.Resource.Styleable.ProgressWheel_ahRimColor;
-			global::Acr.UserDialogs.Resource.Styleable.ProgressWheel_ahRimWidth = global::SevenDays.UI.Droid.Resource.Styleable.ProgressWheel_ahRimWidth;
-			global::Acr.UserDialogs.Resource.Styleable.ProgressWheel_ahSpinSpeed = global::SevenDays.UI.Droid.Resource.Styleable.ProgressWheel_ahSpinSpeed;
-			global::Acr.UserDialogs.Resource.Styleable.ProgressWheel_ahText = global::SevenDays.UI.Droid.Resource.Styleable.ProgressWheel_ahText;
-			global::Acr.UserDialogs.Resource.Styleable.ProgressWheel_ahTextColor = global::SevenDays.UI.Droid.Resource.Styleable.ProgressWheel_ahTextColor;
-			global::Acr.UserDialogs.Resource.Styleable.ProgressWheel_ahTextSize = global::SevenDays.UI.Droid.Resource.Styleable.ProgressWheel_ahTextSize;
 			global::AndroidHUD.Resource.Attribute.ahBarColor = global::SevenDays.UI.Droid.Resource.Attribute.ahBarColor;
 			global::AndroidHUD.Resource.Attribute.ahBarLength = global::SevenDays.UI.Droid.Resource.Attribute.ahBarLength;
 			global::AndroidHUD.Resource.Attribute.ahBarWidth = global::SevenDays.UI.Droid.Resource.Attribute.ahBarWidth;
@@ -117,8 +78,6 @@ namespace SevenDays.UI.Droid
 			global::Toasts.Forms.Plugin.Droid.Resource.String.Hello = global::SevenDays.UI.Droid.Resource.String.Hello;
 			global::Xamarin.Forms.Platform.Resource.String.ApplicationName = global::SevenDays.UI.Droid.Resource.String.ApplicationName;
 			global::Xamarin.Forms.Platform.Resource.String.Hello = global::SevenDays.UI.Droid.Resource.String.Hello;
-			global::Xamarin.InsightsCore.Resource.String.ApplicationName = global::SevenDays.UI.Droid.Resource.String.ApplicationName;
-			global::Xamarin.InsightsCore.Resource.String.Hello = global::SevenDays.UI.Droid.Resource.String.Hello;
 		}
 		
 		public partial class Animation

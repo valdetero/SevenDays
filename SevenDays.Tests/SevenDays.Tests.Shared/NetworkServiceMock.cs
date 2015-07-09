@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SevenDays.Core.Interfaces;
 
-namespace SevenDays.Tests.Shared
+namespace SevenDays.Tests
 {
     public class NetworkServiceMock : INetworkService
     {

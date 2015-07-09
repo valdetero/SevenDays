@@ -31,8 +31,6 @@ namespace SevenDays.Tests.Droid
 			global::Splat.Resource.String.library_name = global::SevenDays.Tests.Droid.Resource.String.library_name;
 			global::Xamarin.Forms.Platform.Resource.String.ApplicationName = global::SevenDays.Tests.Droid.Resource.String.ApplicationName;
 			global::Xamarin.Forms.Platform.Resource.String.Hello = global::SevenDays.Tests.Droid.Resource.String.Hello;
-			global::Xamarin.InsightsCore.Resource.String.ApplicationName = global::SevenDays.Tests.Droid.Resource.String.ApplicationName;
-			global::Xamarin.InsightsCore.Resource.String.Hello = global::SevenDays.Tests.Droid.Resource.String.Hello;
 		}
 		
 		public partial class Attribute

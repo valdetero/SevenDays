@@ -11,8 +11,9 @@ using SevenDays.Model.Base;
 using SevenDays.Model.Seven;
 using Xunit;
 
-namespace SevenDays.Tests.Shared
+namespace SevenDays.Tests
 {
+    [Trait("Api", "SevenDay")]
     public class SevendayServiceTests
     {
         public SevendayServiceTests()

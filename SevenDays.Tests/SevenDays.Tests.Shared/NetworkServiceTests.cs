@@ -17,7 +17,12 @@ namespace SevenDays.Tests.Shared
             Container.Register<ILogger>(() => new LoggerMock());
             Container.Register<INetworkService>(() => new NetworkService());            
         }
-
+        /*
+         * Connectivity plugin in xUnit tests has issues on 
+         *      Windows Phone - throws UnauthorizedAccessException: Invalid cross-thread access
+         *      Unit/VS Runner - it has no implementation in the PCL
+         */
+#if !WINDOWS_PHONE && __MOBILE__
         [Theory]
         [InlineData("misko-7dtd.cloudapp.net","8082")]
         [InlineData("home.wtfnext.com","26903")]
@@ -29,5 +34,6 @@ namespace SevenDays.Tests.Shared
 
             Assert.True(result);
         }
+#endif
     }
 }

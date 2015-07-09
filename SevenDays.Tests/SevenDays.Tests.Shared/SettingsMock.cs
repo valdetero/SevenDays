@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using SevenDays.Core.Interfaces;
 
-namespace SevenDays.Tests.Shared
+namespace SevenDays.Tests
 {
     public class SettingsMock : ISettings
     {
