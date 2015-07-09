@@ -26,7 +26,7 @@ namespace SevenDays.Tests.UI
 					//.InstalledApp("SevenDays.SevenDays")
 
 					//Simulator
-					.ApkFile ("../../../../SevenDays.UI/SevenDays.UI.Droid/SevenDays.SevenDays.apk")
+					.ApkFile ("../../../../SevenDays.UI/SevenDays.UI.Droid/bin/Debug/SevenDays.SevenDays.apk")
 
 					.StartApp();
 			}
