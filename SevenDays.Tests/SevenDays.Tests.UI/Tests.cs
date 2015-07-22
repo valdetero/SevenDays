@@ -19,6 +19,10 @@ namespace SevenDays.Tests.UI
 		static readonly Func<AppQuery, AppQuery> LoadingPlayersDialog = x => x.Text("Loading players...");
 		static readonly Func<AppQuery, AppQuery> Toast = x => x.Class("Toasts_Forms_Plugin_iOS_MessageView");
 		static readonly Func<AppQuery, AppQuery> PullToRefresh = x => x.Class("UIRefreshControl");
+		static readonly Func<AppQuery, AppQuery> ServerText = x => x.Marked("serverEntry");
+		static readonly Func<AppQuery, AppQuery> PortText = x => x.Marked("portEntry");
+		static readonly Func<AppQuery, AppQuery> Delete = x => x.Class("UIButton").Marked("Delete");
+		static readonly Func<AppQuery, AppQuery> Favorite = x => x.Class("UIButton").Marked("Favorite");
 
 		public Tests(Platform platform)
 		{
@@ -31,7 +35,7 @@ namespace SevenDays.Tests.UI
 			app = AppInitializer.StartApp(platform);
 		}
 
-        [Test]
+        //[Test]
         public void Open_Repl()
         {
             app.Repl();
@@ -63,6 +67,40 @@ namespace SevenDays.Tests.UI
 			result = app.Query(ProfileImages).ToList();
 
 			Assert.IsTrue(result.Any());
+		}
+
+		[Test]
+		public void Add_and_Delete_Server()
+		{
+			app.WaitForNoElement(Toast);
+
+			app.Tap("plus");
+
+			//app.Tap("serverEntry");
+
+			app.WaitThenEnterText(ServerText, "seth-7dtd.cloudapp.net");
+
+			//app.EnterText("misko-7dtd.cloudapp.net");
+
+			app.WaitThenEnterText(PortText, "8082");
+
+			app.Tap("saveButton");
+
+			//need to account for navigation?
+
+			var server = app.Query("nameLabel");
+			Assert.IsTrue(server.Any());
+
+			app.Screenshot("Server added");
+
+			app.DragCoordinates(270, 100, 20, 100);
+
+			app.WaitForElement(Delete);
+
+			app.Tap(Delete);
+
+			var server2 = app.Query("nameLabel");
+			Assert.IsFalse(server2.Any());
 		}
 
 		//Test fails in the simulator
