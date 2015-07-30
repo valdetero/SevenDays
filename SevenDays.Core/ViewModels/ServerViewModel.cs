@@ -42,7 +42,8 @@ namespace SevenDays.Core.ViewModels
         public bool? IsReachable { get; set; }
         public bool IsFavorite { get; set; }
         public bool IsNotFavorite { get { return !this.IsFavorite; } }
-        public bool CanSave { get { return !string.IsNullOrEmpty(this.Host) && !string.IsNullOrEmpty(this.Port); } }
+		//this doesn't work on Mac/Xamarin Studio
+		public bool CanSave { get { return true; }}//{ get { return !string.IsNullOrEmpty(this.Host) && !string.IsNullOrEmpty(this.Port); } }
         public bool CanDelete { get { return !string.IsNullOrEmpty(this._existingHost) && !string.IsNullOrEmpty(this._existingPort); } }
 
         private RelayCommand getSaveCommand;
