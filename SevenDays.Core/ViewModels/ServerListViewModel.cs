@@ -17,10 +17,12 @@ namespace SevenDays.Core.ViewModels
     {
         private ISevendayService sevendayService;
         private ICacheService cache;
+        private readonly ISettings settings;
         public ServerListViewModel()
         {
             sevendayService = Container.Resolve<ISevendayService>();
             cache = Container.Resolve<ICacheService>();
+            settings = Container.Resolve<ISettings>();
 
             Servers = new ObservableCollection<ServerViewModel>();
         }
@@ -40,49 +42,27 @@ namespace SevenDays.Core.ViewModels
 
             var entities = await cache.GetAllObjects<Model.Entity.Server>();
 
+#if DEBUG
+            if (!entities.Any())
+            {
+                var data = InitialData.GetServers();
+
+                foreach (var item in data)
+                {
+                    await cache.InsertObject(item.ToString(), item);
+                }
+
+                settings.SevendaysSelectedServer = data.First().ToString();
+
+                entities = await cache.GetAllObjects<Model.Entity.Server>();
+            }
+#endif
+
             var servers = entities.Select(x => new ServerViewModel(x)).ToList();
 
             Insights.Track(string.Format("Loaded {0} servers from cache", servers.Count));
 
             Servers = new ObservableCollection<ServerViewModel>(servers);
         }
-
-/*
-        private RelayCommand checkConnectivityCommand;
-        public ICommand CheckConnectivityCommand
-        {
-            get { return checkConnectivityCommand ?? (checkConnectivityCommand = new RelayCommand(async () => await ExecuteCheckConnectivityCommand())); }
-        }
-
-        [Insights]
-        public Task<bool> ExecuteCheckConnectivityCommand()
-        {
-            throw new NotImplementedException();
-        }
-
-        private RelayCommand deleteServerCommand;
-        public ICommand DeleteServerCommand
-        {
-            get { return deleteServerCommand ?? (deleteServerCommand = new RelayCommand(async () => await ExecuteDeleteServerCommand())); }
-        }
-
-        [Insights]
-        public Task<bool> ExecuteDeleteServerCommand()
-        {
-            throw new NotImplementedException();
-        }
-
-        private RelayCommand addServerCommand;
-        public ICommand AddServerCommand
-        {
-            get { return addServerCommand ?? (addServerCommand = new RelayCommand(async () => await ExecuteAddServerCommand())); }
-        }
-
-        [Insights]
-        public Task<bool> ExecuteAddServerCommand()
-        {
-            throw new NotImplementedException();
-        }
-*/
     }
 }
