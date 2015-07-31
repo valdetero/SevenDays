@@ -38,11 +38,12 @@ namespace SevenDays.Tests.UI
 				.ApiKey(ApiConstants.TestCloud.Key)
 
 				//Device
-				//.DeviceIdentifier("42a46071aaf6b895aebc4f9ace29972270dac022")
-				//.InstalledApp("com.sparkhound.SevenDays.UI")
+				.DeviceIdentifier("42a46071aaf6b895aebc4f9ace29972270dac022")
+				.InstalledApp("com.sparkhound.SevenDays.UI")
 
 				//Simulator
-				.AppBundle ("../../../../SevenDays.UI/SevenDays.UI.iOS/bin/iPhoneSimulator/Debug/SevenDaysUIiOS.app")
+				//.DeviceIdentifier("072B589B-5546-463F-BB01-2377ACE70437")
+				//.AppBundle ("../../../../SevenDays.UI/SevenDays.UI.iOS/bin/iPhoneSimulator/Debug/SevenDaysUIiOS.app")
 
 				.StartApp();
 		}

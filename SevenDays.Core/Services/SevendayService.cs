@@ -20,6 +20,7 @@ namespace SevenDays.Core.Services
 {
     public class SevendayService : ISevendayService
     {
+		private bool firstrun = true;
         private readonly INetworkService networkService;
         private readonly ICacheService cache;
         private readonly ISettings settings;
@@ -40,6 +41,19 @@ namespace SevenDays.Core.Services
 
         public async Task<SevenDays.Model.Entity.Server> getSelectedServerFromCache()
         {
+#if DEBUG
+			if(firstrun)
+			{
+				var server = new SevenDays.Model.Entity.Server("seth-7dtd.cloudapp.net", "8082");
+				if(string.IsNullOrEmpty(settings.SevendaysSelectedServer))
+					settings.SevendaysSelectedServer = server.ToString();
+				if(await cache.GetObject<SevenDays.Model.Entity.Server>(server.ToString()) == null)
+					await cache.InsertObject(server.ToString(), server);
+
+				firstrun = false;
+			}
+#endif
+
             var serverKey = settings.SevendaysSelectedServer;
 
             if (string.IsNullOrEmpty(serverKey))

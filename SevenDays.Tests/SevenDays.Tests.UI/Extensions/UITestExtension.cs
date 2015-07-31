@@ -11,6 +11,11 @@ namespace SevenDays.Tests.UI
 			app.WaitForElement(lambda);
 			app.EnterText(lambda, text);
 		}
+		public static void WaitThenTap(this IApp app, Func<AppQuery, AppQuery> lambda)
+		{
+			app.WaitForElement(lambda);
+			app.Tap(lambda);
+		}
 	}
 }
 

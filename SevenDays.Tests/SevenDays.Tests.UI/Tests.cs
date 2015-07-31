@@ -35,7 +35,7 @@ namespace SevenDays.Tests.UI
 			app = AppInitializer.StartApp(platform);
 		}
 
-        //[Test]
+        [Test]
         public void Open_Repl()
         {
             app.Repl();
@@ -72,6 +72,12 @@ namespace SevenDays.Tests.UI
 		[Test]
 		public void Add_and_Delete_Server()
 		{
+			app.WaitForNoElement(LoadingInventoryDialog, "Timed out waiting for dialog", TimeSpan.FromSeconds(5), TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(1));
+
+			app.Tap("menu");
+
+			app.WaitThenTap(x => x.Marked("Servers"));
+
 			app.WaitForNoElement(Toast);
 
 			app.Tap("plus");
