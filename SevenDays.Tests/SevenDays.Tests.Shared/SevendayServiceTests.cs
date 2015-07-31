@@ -27,7 +27,7 @@ namespace SevenDays.Tests
         }
 
         [Theory]
-        [InlineData("misko-7dtd.cloudapp.net:8082", 76561197964915848)]
+        [InlineData("seth-7dtd.cloudapp.net:8082", 76561198021070820)]
         [InlineData("home.wtfnext.com:26903", 76561197968329571)]
         public async Task GetPlayerInventory(string server, long steamId)
         {
@@ -43,7 +43,7 @@ namespace SevenDays.Tests
         }
 
         [Theory]
-        [InlineData("misko-7dtd.cloudapp.net:8082")]
+        [InlineData("seth-7dtd.cloudapp.net:8082")]
         [InlineData("home.wtfnext.com:26903")]
         public async Task GetPlayersLocation(string server)
         {

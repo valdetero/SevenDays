@@ -24,7 +24,7 @@ namespace SevenDays.Tests.Shared
          */
 #if !WINDOWS_PHONE && __MOBILE__
         [Theory]
-        [InlineData("misko-7dtd.cloudapp.net","8082")]
+        [InlineData("seth-7dtd.cloudapp.net","8082")]
         [InlineData("home.wtfnext.com","26903")]
         public async void CheckNetworkConnectivity(string host, string port)
         {
