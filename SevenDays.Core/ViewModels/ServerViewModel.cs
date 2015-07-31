@@ -60,10 +60,10 @@ namespace SevenDays.Core.ViewModels
                        
             await deletingExistingItem();
 
-            if (await IsExistingItem())
-                return false;
+			var server = setDefault();
 
-            var server = setDefault();
+            if (await IsExistingItem())
+                return true;
 
             return await cache.InsertObject(server.ToString(), server);
         }
