@@ -28,7 +28,7 @@ namespace SevenDays.Tests
 
         [Theory]
         [InlineData("seth-7dtd.cloudapp.net:8082", 76561198021070820)]
-        [InlineData("home.wtfnext.com:26903", 76561197968329571)]
+        //[InlineData("home.wtfnext.com:26903", 76561197968329571)]
         public async Task GetPlayerInventory(string server, long steamId)
         {
             Container.Resolve<ISettings>().SevendaysSelectedServer = server;
@@ -44,7 +44,7 @@ namespace SevenDays.Tests
 
         [Theory]
         [InlineData("seth-7dtd.cloudapp.net:8082")]
-        [InlineData("home.wtfnext.com:26903")]
+        //[InlineData("home.wtfnext.com:26903")]
         public async Task GetPlayersLocation(string server)
         {
             Container.Resolve<ISettings>().SevendaysSelectedServer = server;
