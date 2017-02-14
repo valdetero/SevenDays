@@ -20,6 +20,8 @@ namespace SevenDays.Core.ViewModels
         public InventoryViewModel(Model.Seven.Item item, string pack):this()
         {
             Name = item.Name;
+			IconName = item.Icon;
+			IconColor = item.IconColor;
             Count = item.Count;
             //Image = sevendayService.GetInventoryImageUrl(item.Name);
             Pack = pack;
@@ -27,11 +29,13 @@ namespace SevenDays.Core.ViewModels
 
         public async Task Init()
         {
-            Image = await sevendayService.GetInventoryImageUrl(Name);
+            Image = await sevendayService.GetInventoryImageUrl(IconName, IconColor);
         }
 
         public string Pack { get; set; }
         public string Name { get; set; }
+		public string IconName { get; set; }
+		public string IconColor { get; set; }
         public int Count { get; set; }
         public string Image { get; set; }
     }

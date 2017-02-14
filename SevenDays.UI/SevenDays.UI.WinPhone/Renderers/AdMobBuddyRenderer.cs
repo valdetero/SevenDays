@@ -18,7 +18,7 @@ namespace AdmobBuddy.Forms.Plugin.WindowsPhone
         public static void Init() { }
 
         /// <summary>
-        /// reload the view and hit up google admob 
+        /// reload the view and hit up google admob
         /// </summary>
         /// <param name="e"></param>
         protected override void OnElementChanged(ElementChangedEventArgs<View> e)
@@ -35,8 +35,11 @@ namespace AdmobBuddy.Forms.Plugin.WindowsPhone
                     Format = AdFormats.Banner,
                     AdUnitID = adMobElement.AdUnitId,
                 };
-                AdRequest adRequest = new AdRequest();
-                bannerAd.LoadAd(adRequest);
+                AdRequest request = new AdRequest();
+#if DEBUG
+				request.ForceTesting = true;
+#endif
+				bannerAd.LoadAd(request);
                 Children.Add(bannerAd);
             }
         }

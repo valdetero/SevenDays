@@ -7,7 +7,7 @@ namespace SevenDays.Core.Helpers
     /// <summary>
     /// This is the Settings static class that can be used in your Core solution or in any
     /// of your client applications. All settings are laid out the same exact way with getters
-    /// and setters. 
+    /// and setters.
     /// </summary>
     public class Settings : SevenDays.Core.Interfaces.ISettings
     {
@@ -57,7 +57,7 @@ namespace SevenDays.Core.Helpers
 
         public static bool ShowAds
         {
-            get { return AppSettings.GetValueOrDefault(UseAdsKey, false); }
+            get { return AppSettings.GetValueOrDefault(UseAdsKey, true); }
             set { AppSettings.AddOrUpdateValue(UseAdsKey, value); }
         }
 

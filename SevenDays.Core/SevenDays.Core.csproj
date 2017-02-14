@@ -51,6 +51,7 @@
     <Compile Include="Helpers\InitialData.cs" />
     <Compile Include="Helpers\InsightsAttribute.cs" />
     <Compile Include="Helpers\Logger.cs" />
+    <Compile Include="Helpers\MD5.cs" />
     <Compile Include="Helpers\RelayCommand.cs" />
     <Compile Include="Helpers\Settings.cs" />
     <Compile Include="Interfaces\ICacheService.cs" />

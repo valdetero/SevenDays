@@ -26,7 +26,7 @@ namespace SevenDays.UI.Droid
                 }
             };
 
-            Bootstrapper.Setup();
+            Bootstrapper.Setup(this);
             LoadApplication(new App());
         }
     }

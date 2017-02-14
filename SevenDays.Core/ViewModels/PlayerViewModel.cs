@@ -88,8 +88,10 @@ namespace SevenDays.Core.ViewModels
             Insights.Track(string.Format("Found {0} inventory items in bag", inventory.Bag.Count()));
             Insights.Track(string.Format("Found {0} inventory items in belt", inventory.Belt.Count()));
 
-            var inventories =   inventory.Bag.Where(x => x.Count > 0).Select(x => new InventoryViewModel(x, "Bag")).Concat(
-                                inventory.Belt.Where(x => x.Count > 0).Select(x => new InventoryViewModel(x, "Belt"))).ToList();
+            var inventories =   inventory.Bag.Where(x => x != null && x.Count > 0).Select(x => new InventoryViewModel(x, "Bag")).Concat(
+                                inventory.Belt.Where(x => x != null && x.Count > 0).Select(x => new InventoryViewModel(x, "Belt"))).Concat(
+								inventory.Equipment.ToItemList().Select(x => new InventoryViewModel(x, "Equipment")))
+								.ToList();
 
             foreach (var inv in inventories)
             {

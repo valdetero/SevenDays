@@ -1,18 +1,19 @@
 using AdMobBuddy.Forms.Plugin.Abstractions;
-using System;
 using GoogleAdMobAds;
 using UIKit;
 using Xamarin.Forms;
 using AdMobBuddy.Forms.Plugin.iOS;
 using Xamarin.Forms.Platform.iOS;
+using SevenDays.Core;
+using SevenDays.Core.Helpers;
 
-[assembly: ExportRenderer(typeof(AdMobBuddy.Forms.Plugin.Abstractions.AdMobBuddyControl), typeof(AdMobBuddyRenderer))]
+[assembly: ExportRenderer(typeof(AdMobBuddyControl), typeof(AdMobBuddyRenderer))]
 namespace AdMobBuddy.Forms.Plugin.iOS
 {
-    /// <summary>
-    /// AdMobBuddy Renderer for iOS
-    /// </summary>
-    public class AdMobBuddyRenderer : ViewRenderer
+	/// <summary>
+	/// AdMobBuddy Renderer for iOS
+	/// </summary>
+	public class AdMobBuddyRenderer : ViewRenderer
     {
         GADBannerView adView;
         bool viewOnScreen = false;
@@ -23,7 +24,7 @@ namespace AdMobBuddy.Forms.Plugin.iOS
         public static void Init() { }
 
         /// <summary>
-        /// reload the view and hit up google admob 
+        /// reload the view and hit up google admob
         /// </summary>
         /// <param name="e"></param>
         protected override void OnElementChanged(ElementChangedEventArgs<Xamarin.Forms.View> e)
@@ -47,7 +48,16 @@ namespace AdMobBuddy.Forms.Plugin.iOS
                     viewOnScreen = true;
                 };
 
-                adView.LoadRequest(GADRequest.Request);
+				var request = GADRequest.Request;
+#if DEBUG
+				var identifier = UIDevice.CurrentDevice.IdentifierForVendor.ToString();
+				var currentDevice = MD5.GetMd5String(identifier);
+				if(!ApiConstants.GoogleAds.Devices.Contains(currentDevice))
+					ApiConstants.GoogleAds.Devices.Add(currentDevice);
+
+				request.TestDevices = ApiConstants.GoogleAds.Devices?.ToArray();
+#endif
+				adView.LoadRequest(request);
                 base.SetNativeControl(adView);
             }
         }

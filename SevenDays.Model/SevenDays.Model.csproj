@@ -35,6 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Entity\Server.cs" />
+    <Compile Include="Seven\Equipment.cs" />
     <Compile Include="Steam\PlayerSummaryDto.cs" />
     <Compile Include="Extensions\AutomapperExtension.cs" />
     <Compile Include="Mapper\AutoMapperConfig.cs" />

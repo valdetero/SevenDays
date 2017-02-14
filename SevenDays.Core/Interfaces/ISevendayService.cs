@@ -15,7 +15,7 @@ namespace SevenDays.Core.Interfaces
         Task<bool> CanConnectToServer(string host, string port);
         Task<ListResponse<Player>> GetPlayersLocation();
         Task<Response<Inventory>> GetPlayerInventory(long steamId);
-        Task<string> GetInventoryImageUrl(string item);
+        Task<string> GetInventoryImageUrl(string item, string color);
         Task<string> GetMapUrl();
     }
 }

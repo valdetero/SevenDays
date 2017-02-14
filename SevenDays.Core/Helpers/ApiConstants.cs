@@ -30,9 +30,11 @@ namespace SevenDays.Core
         {
             public const string PlayerLocation = "api/getplayerslocation?";
             public const string PlayerInventory = "api/getplayerinventory?";
-            public const string InventoryImage = "itemicons/{0}.png";
-            public const string Map = "static/index.html";
-        }
+            public const string InventoryImage = "itemicons/{0}__{1}.png?";
+            public const string Map = "static/index.html?";
+			public readonly static string User = "";
+			public readonly static string Token = "";
+		}
 
         public partial struct Insights
         {
@@ -49,6 +51,7 @@ namespace SevenDays.Core
             public readonly static string WinKey = "";
             public readonly static string DroidKey = "";
             public readonly static string iOSKey = "";
-        }
+			public readonly static List<string> Devices;
+		}
     }
 }

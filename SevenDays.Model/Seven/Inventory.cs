@@ -10,5 +10,6 @@ namespace SevenDays.Model.Seven
     {
         public IEnumerable<Item> Bag { get; set; }
         public IEnumerable<Item> Belt { get; set; }
-    }
+        public Equipment Equipment { get; set; }
+	}
 }

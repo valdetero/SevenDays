@@ -36,7 +36,7 @@ namespace SevenDays.Core.Services
         private async Task<string> getApiUrlAsync(string api)
         {
             var server = await getSelectedServerFromCache();
-            return string.Format("http://{0}:{1}/{2}", server.Host, server.Port, api);
+            return $"http://{server.Host}:{server.Port}/{api}adminuser={ApiConstants.Seven.User}&admintoken={ApiConstants.Seven.Token}";
         }
 
         public async Task<SevenDays.Model.Entity.Server> getSelectedServerFromCache()
@@ -94,7 +94,7 @@ namespace SevenDays.Core.Services
             if (!await CanConnectToServer())
                 return response;
 
-            string url = string.Format("{0}steamId={1}", await getApiUrlAsync(ApiConstants.Seven.PlayerInventory), steamId);
+            string url = string.Format("{0}&steamId={1}", await getApiUrlAsync(ApiConstants.Seven.PlayerInventory), steamId);
 
             using (var client = new HttpClient(new NativeMessageHandler()))
             {
@@ -136,10 +136,10 @@ namespace SevenDays.Core.Services
             return response;
         }
 
-        public async Task<string> GetInventoryImageUrl(string item)
+        public async Task<string> GetInventoryImageUrl(string item, string color)
         {
             string url = await getApiUrlAsync(ApiConstants.Seven.InventoryImage);
-            return string.Format(url, item);
+            return string.Format(url, item, color);
         }
 
         public async Task<string> GetMapUrl()
