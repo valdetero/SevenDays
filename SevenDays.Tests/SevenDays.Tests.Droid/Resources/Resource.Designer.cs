@@ -29,8 +29,6 @@ namespace SevenDays.Tests.Droid
 			global::PCLStorage.Resource.String.ApplicationName = global::SevenDays.Tests.Droid.Resource.String.ApplicationName;
 			global::PCLStorage.Resource.String.Hello = global::SevenDays.Tests.Droid.Resource.String.Hello;
 			global::Splat.Resource.String.library_name = global::SevenDays.Tests.Droid.Resource.String.library_name;
-			global::Xamarin.Forms.Platform.Resource.String.ApplicationName = global::SevenDays.Tests.Droid.Resource.String.ApplicationName;
-			global::Xamarin.Forms.Platform.Resource.String.Hello = global::SevenDays.Tests.Droid.Resource.String.Hello;
 		}
 		
 		public partial class Attribute
@@ -65,14 +63,14 @@ namespace SevenDays.Tests.Droid
 		public partial class String
 		{
 			
+			// aapt resource value: 0x7f030002
+			public const int ApplicationName = 2130903042;
+			
 			// aapt resource value: 0x7f030001
-			public const int ApplicationName = 2130903041;
+			public const int Hello = 2130903041;
 			
 			// aapt resource value: 0x7f030000
-			public const int Hello = 2130903040;
-			
-			// aapt resource value: 0x7f030002
-			public const int library_name = 2130903042;
+			public const int library_name = 2130903040;
 			
 			static String()
 			{

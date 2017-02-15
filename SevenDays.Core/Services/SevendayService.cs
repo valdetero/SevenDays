@@ -7,7 +7,7 @@ using System.Reactive.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Akavache;
-using Connectivity.Plugin;
+using Plugin.Connectivity;
 using ModernHttpClient;
 using Newtonsoft.Json;
 using SevenDays.Core.Helpers;

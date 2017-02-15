@@ -76,8 +76,7 @@ namespace SevenDays.UI.Droid
 			global::Toasts.Forms.Plugin.Droid.Resource.Layout.crouton = global::SevenDays.UI.Droid.Resource.Layout.crouton;
 			global::Toasts.Forms.Plugin.Droid.Resource.String.ApplicationName = global::SevenDays.UI.Droid.Resource.String.ApplicationName;
 			global::Toasts.Forms.Plugin.Droid.Resource.String.Hello = global::SevenDays.UI.Droid.Resource.String.Hello;
-			global::Xamarin.Forms.Platform.Resource.String.ApplicationName = global::SevenDays.UI.Droid.Resource.String.ApplicationName;
-			global::Xamarin.Forms.Platform.Resource.String.Hello = global::SevenDays.UI.Droid.Resource.String.Hello;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::SevenDays.UI.Droid.Resource.Attribute.actionBarSize;
 		}
 		
 		public partial class Animation

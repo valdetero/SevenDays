@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SevenDays.Core.Interfaces;
-using Connectivity.Plugin;
+using Plugin.Connectivity;
 
 namespace SevenDays.Core.Services
 {
@@ -18,7 +18,7 @@ namespace SevenDays.Core.Services
         public async Task<bool> CanConnectToService(string host)
         {
             logger.Track(string.Format("Checking connectivity to {0}", host));
-            return CrossConnectivity.Current.IsConnected 
+            return CrossConnectivity.Current.IsConnected
                 && await CrossConnectivity.Current.IsReachable(host);
         }
 
@@ -27,8 +27,8 @@ namespace SevenDays.Core.Services
             int portInt;
 
             logger.Track(string.Format("Checking connectivity to {0}:{1}", host, port));
-            return CrossConnectivity.Current.IsConnected 
-                && (int.TryParse(port, out portInt) 
+            return CrossConnectivity.Current.IsConnected
+                && (int.TryParse(port, out portInt)
                 && await CrossConnectivity.Current.IsRemoteReachable(host, portInt));
         }
     }

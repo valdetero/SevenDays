@@ -22,7 +22,7 @@ namespace SevenDays
     #else
             Xamarin.Insights.Initialize(ApiConstants.Insights.Key);
     #endif
-            Xamarin.Insights.Identify(DeviceInfo.Plugin.CrossDeviceInfo.Current.Id, new Dictionary<string, string>());
+            Xamarin.Insights.Identify(Plugin.DeviceInfo.CrossDeviceInfo.Current.Id, new Dictionary<string, string>());
     #if DEBUG
             Xamarin.Insights.ForceDataTransmission = true;
     #endif
