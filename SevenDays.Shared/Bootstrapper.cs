@@ -16,6 +16,7 @@ namespace SevenDays
             SevenDays.Model.Mapper.AutoMapperConfig.Register();
             Analytics.Init();
 
+			SQLitePCL.Batteries_V2.Init();
             Akavache.BlobCache.ApplicationName = "SevenDays";
             Akavache.BlobCache.EnsureInitialized();
 #if !TEST
@@ -27,7 +28,7 @@ namespace SevenDays
             AdMobBuddy.Forms.Plugin.Droid.AdMobBuddyRenderer.Init(context);
             SevenDays.UI.App.AdMobId = SevenDays.Core.ApiConstants.GoogleAds.DroidKey;
 #elif __IOS__
-            Acr.UserDialogs.UserDialogs.Init();
+            //Acr.UserDialogs.UserDialogs.Init();
             ImageCircle.Forms.Plugin.iOS.ImageCircleRenderer.Init();
             Toasts.Forms.Plugin.iOS.ToastNotificatorImplementation.Init();
             AdMobBuddy.Forms.Plugin.iOS.AdMobBuddyRenderer.Init();

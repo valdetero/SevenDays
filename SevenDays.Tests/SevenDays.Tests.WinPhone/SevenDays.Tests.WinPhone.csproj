@@ -31,7 +31,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Bin\Debug</OutputPath>
-    <DefineConstants>TRACE;DEBUG;TEST;WINDOWS_PHONE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;TEST;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
     <NoStdLib>true</NoStdLib>
     <NoConfig>true</NoConfig>
     <ErrorReport>prompt</ErrorReport>
@@ -41,7 +41,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>Bin\Release</OutputPath>
-    <DefineConstants>TRACE;TEST</DefineConstants>
+    <DefineConstants>TRACE;TEST;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
     <NoStdLib>true</NoStdLib>
     <NoConfig>true</NoConfig>
     <ErrorReport>prompt</ErrorReport>
@@ -52,7 +52,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Bin\x86\Debug</OutputPath>
-    <DefineConstants>TRACE;DEBUG;TEST;WINDOWS_PHONE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;TEST;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
     <NoStdLib>true</NoStdLib>
     <NoConfig>true</NoConfig>
     <ErrorReport>prompt</ErrorReport>
@@ -62,7 +62,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>Bin\x86\Release</OutputPath>
-    <DefineConstants>TRACE;TEST;WINDOWS_PHONE</DefineConstants>
+    <DefineConstants>TRACE;TEST;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
     <NoStdLib>true</NoStdLib>
     <NoConfig>true</NoConfig>
     <ErrorReport>prompt</ErrorReport>
@@ -73,7 +73,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Bin\ARM\Debug</OutputPath>
-    <DefineConstants>TRACE;DEBUG;TEST;WINDOWS_PHONE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;TEST;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
     <NoStdLib>true</NoStdLib>
     <NoConfig>true</NoConfig>
     <ErrorReport>prompt</ErrorReport>
@@ -83,7 +83,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>Bin\ARM\Release</OutputPath>
-    <DefineConstants>TRACE;TEST</DefineConstants>
+    <DefineConstants>TRACE;TEST;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
     <NoStdLib>true</NoStdLib>
     <NoConfig>true</NoConfig>
     <ErrorReport>prompt</ErrorReport>
@@ -153,12 +153,12 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Akavache, Version=4.1.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\akavache.core.4.1.1\lib\wp8\Akavache.dll</HintPath>
+    <Reference Include="Akavache, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\akavache.core.5.0.0\lib\Portable-Net45+Win8+WP8+Wpa81\Akavache.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Akavache.Sqlite3, Version=4.1.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\akavache.sqlite3.4.1.1\lib\Portable-Net45+Win8+WP8+Wpa81\Akavache.Sqlite3.dll</HintPath>
+    <Reference Include="Akavache.Sqlite3, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\akavache.sqlite3.5.0.0\lib\Portable-Net45+Win8+WP8+Wpa81\Akavache.Sqlite3.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Phone.Controls.Toolkit, Version=8.0.1.0, Culture=neutral, PublicKeyToken=b772ad94eb9ca604, processorArchitecture=MSIL">
@@ -203,6 +203,10 @@
     </Reference>
     <Reference Include="Splat, Version=1.6.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Splat.1.6.2\lib\wp8\Splat.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1488e028ca7ab535, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SQLitePCLRaw.core.1.1.0\lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\SQLitePCLRaw.core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Reactive.Core, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -296,7 +300,6 @@
   </Target>
   -->
   <ProjectExtensions />
-  <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
@@ -305,8 +308,14 @@
     <Error Condition="!Exists('..\..\packages\SQLitePCL.raw_basic.0.8.0\build\wp8\SQLitePCL.raw_basic.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\SQLitePCL.raw_basic.0.8.0\build\wp8\SQLitePCL.raw_basic.targets'))" />
     <Error Condition="!Exists('..\..\packages\xunit.runner.devices.1.2.0-rc4\build\wp8\xunit.runner.devices.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\xunit.runner.devices.1.2.0-rc4\build\wp8\xunit.runner.devices.targets'))" />
     <Error Condition="!Exists('..\..\packages\Xamarin.Forms.2.3.3.180\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Forms.2.3.3.180\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets'))" />
+    <Error Condition="!Exists('..\..\packages\SQLitePCLRaw.provider.e_sqlite3.wp80.1.1.0\build\wp8\SQLitePCLRaw.provider.e_sqlite3.wp80.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\SQLitePCLRaw.provider.e_sqlite3.wp80.1.1.0\build\wp8\SQLitePCLRaw.provider.e_sqlite3.wp80.targets'))" />
+    <Error Condition="!Exists('..\..\packages\SQLitePCLRaw.lib.e_sqlite3.v110_wp80.1.1.0\build\SQLitePCLRaw.lib.e_sqlite3.v110_wp80.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\SQLitePCLRaw.lib.e_sqlite3.v110_wp80.1.1.0\build\SQLitePCLRaw.lib.e_sqlite3.v110_wp80.targets'))" />
+    <Error Condition="!Exists('..\..\packages\SQLitePCLRaw.bundle_e_sqlite3.1.1.0\build\wp8\SQLitePCLRaw.bundle_e_sqlite3.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\SQLitePCLRaw.bundle_e_sqlite3.1.1.0\build\wp8\SQLitePCLRaw.bundle_e_sqlite3.targets'))" />
   </Target>
-  <Import Project="..\..\packages\SQLitePCL.raw_basic.0.8.0\build\wp8\SQLitePCL.raw_basic.targets" Condition="Exists('..\..\packages\SQLitePCL.raw_basic.0.8.0\build\wp8\SQLitePCL.raw_basic.targets')" />
   <Import Project="..\..\packages\xunit.runner.devices.1.2.0-rc4\build\wp8\xunit.runner.devices.targets" Condition="Exists('..\..\packages\xunit.runner.devices.1.2.0-rc4\build\wp8\xunit.runner.devices.targets')" />
+  <Import Project="..\..\packages\SQLitePCL.raw_basic.0.8.0\build\wp8\SQLitePCL.raw_basic.targets" Condition="Exists('..\..\packages\SQLitePCL.raw_basic.0.8.0\build\wp8\SQLitePCL.raw_basic.targets')" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.3.180\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.3.180\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
+  <Import Project="..\..\packages\SQLitePCLRaw.provider.e_sqlite3.wp80.1.1.0\build\wp8\SQLitePCLRaw.provider.e_sqlite3.wp80.targets" Condition="Exists('..\..\packages\SQLitePCLRaw.provider.e_sqlite3.wp80.1.1.0\build\wp8\SQLitePCLRaw.provider.e_sqlite3.wp80.targets')" />
+  <Import Project="..\..\packages\SQLitePCLRaw.lib.e_sqlite3.v110_wp80.1.1.0\build\SQLitePCLRaw.lib.e_sqlite3.v110_wp80.targets" Condition="Exists('..\..\packages\SQLitePCLRaw.lib.e_sqlite3.v110_wp80.1.1.0\build\SQLitePCLRaw.lib.e_sqlite3.v110_wp80.targets')" />
+  <Import Project="..\..\packages\SQLitePCLRaw.bundle_e_sqlite3.1.1.0\build\wp8\SQLitePCLRaw.bundle_e_sqlite3.targets" Condition="Exists('..\..\packages\SQLitePCLRaw.bundle_e_sqlite3.1.1.0\build\wp8\SQLitePCLRaw.bundle_e_sqlite3.targets')" />
 </Project>
