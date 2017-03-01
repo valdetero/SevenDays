@@ -20,7 +20,6 @@ namespace SevenDays.Tests.Droid
         {
             base.OnCreate();
             RegisterActivityLifecycleCallbacks(this);
-            //A great place to initialize Xamarin.Insights and Dependency Services!
         }
 
         public override void OnTerminate()

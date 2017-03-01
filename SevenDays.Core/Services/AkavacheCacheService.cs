@@ -26,7 +26,6 @@ namespace SevenDays.Core.Services
             catch (Exception exception)
             {
 				_logger.LogException(exception);
-                //Xamarin.Insights.Report(exception, "Key", key);
             }
         }
 
@@ -43,7 +42,6 @@ namespace SevenDays.Core.Services
             catch (Exception exception)
             {
 				_logger.LogException(exception);
-				//Xamarin.Insights.Report(exception, "Key", key);
 
 				return default(T);
             }
@@ -62,7 +60,6 @@ namespace SevenDays.Core.Services
             catch (Exception exception)
             {
 				_logger.LogException(exception);
-				//Xamarin.Insights.Report(exception, "type", typeof(T).FullName);
 
 				return new List<T>();
             }
@@ -76,7 +73,7 @@ namespace SevenDays.Core.Services
             }
             catch (Exception exception)
             {
-                Xamarin.Insights.Report(exception, key, value.ToString());
+				_logger.LogException(exception);
 
                 return false;
             }

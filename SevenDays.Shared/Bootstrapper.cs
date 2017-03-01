@@ -37,7 +37,7 @@ namespace SevenDays
 			Microsoft.Azure.Mobile.MobileCenter.Start(Core.ApiConstants.MobileCenter.iOS, typeof(Microsoft.Azure.Mobile.Analytics.Analytics), typeof(Microsoft.Azure.Mobile.Crashes.Crashes));
 
 #elif WINDOWS_PHONE
-            Acr.UserDialogs.UserDialogs.Init();
+            //Acr.UserDialogs.UserDialogs.Init();
             ImageCircle.Forms.Plugin.WindowsPhone.ImageCircleRenderer.Init();
             Toasts.Forms.Plugin.WindowsPhone.ToastNotificatorImplementation.Init();
             AdmobBuddy.Forms.Plugin.WindowsPhone.AdMobBuddyRenderer.Init();

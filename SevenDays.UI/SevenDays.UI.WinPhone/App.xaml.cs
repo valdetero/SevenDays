@@ -84,7 +84,7 @@ namespace SevenDays.UI.WinPhone
         // Code to execute if a navigation fails
         private void RootFrame_NavigationFailed(object sender, NavigationFailedEventArgs e)
         {
-            Xamarin.Insights.Report(e.Exception);
+			Core.Ioc.Container.Resolve<Core.Interfaces.ILogger>().LogException(e.Exception);
 
             if (Debugger.IsAttached)
             {
@@ -96,7 +96,7 @@ namespace SevenDays.UI.WinPhone
         // Code to execute on Unhandled Exceptions
         private void Application_UnhandledException(object sender, ApplicationUnhandledExceptionEventArgs e)
         {
-            Xamarin.Insights.Report(e.ExceptionObject);
+            Core.Ioc.Container.Resolve<Core.Interfaces.ILogger>().LogException(e.ExceptionObject);
 
             if (Debugger.IsAttached)
             {
