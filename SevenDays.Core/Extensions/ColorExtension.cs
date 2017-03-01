@@ -10,40 +10,19 @@ namespace SevenDays.Core
 {
     public static class ColorUtil
     {
-        public static Color Lighter(this Color color)
-        {
-            return color.WithLuminosity(color.Luminosity + 0.2);
-        }
+        public static Color Lighter(this Color color) => color.WithLuminosity(color.Luminosity + 0.2);
 
-        public static Color Darker(this Color color)
-        {
-            return color.WithLuminosity(color.Luminosity - 0.2);
-        }
+        public static Color Darker(this Color color) => color.WithLuminosity(color.Luminosity - 0.2);
 
-        public static Color Lighten(this Color color, double amount)
-        {
-            return color.WithLuminosity(color.Luminosity + amount);
-        }
+        public static Color Lighten(this Color color, double amount) => color.WithLuminosity(color.Luminosity + amount);
 
-        public static Color Darken(this Color color, double amount)
-        {
-            return color.WithLuminosity(color.Luminosity - amount);
-        }
+        public static Color Darken(this Color color, double amount) => color.WithLuminosity(color.Luminosity - amount);
 
-        public static Color Saturate(this Color color, double amount)
-        {
-            return color.WithSaturation(color.Saturation + amount);
-        }
+        public static Color Saturate(this Color color, double amount) => color.WithSaturation(color.Saturation + amount);
 
-        public static Color Desaturate(this Color color, double amount)
-        {
-            return color.WithSaturation(color.Saturation - amount);
-        }
+        public static Color Desaturate(this Color color, double amount) => color.WithSaturation(color.Saturation - amount);
 
-        public static Color Grayscale(this Color color)
-        {
-            return color.WithSaturation(0);
-        }
+        public static Color Grayscale(this Color color) => color.WithSaturation(0);
 
         public static Color Complement(this Color color)
         {
@@ -68,7 +47,7 @@ namespace SevenDays.Core
             var g = (int)(255 * color.G);
             var b = (int)(255 * color.B);
 
-            Debug.WriteLine("{3} := R:{0} G:{1} B:{2}", r, g, b, label);
+            Debug.WriteLine($"{label} := R:{r} G:{g} B:{b}");
             Debug.WriteLine(color.ToString());
         }
     }

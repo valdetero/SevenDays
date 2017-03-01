@@ -1,14 +1,12 @@
-﻿using SevenDays.Core.Interfaces;
+﻿using SevenDays.Core.Helpers;
+using SevenDays.Core.Interfaces;
 using SevenDays.Core.Ioc;
+using SevenDays.Core.Logging;
 using SevenDays.Core.Services;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using SevenDays.Core.Helpers;
 
 namespace SevenDays
 {
-    public static class IoC
+	public static class IoC
     {
         public static void Init()
         {
@@ -17,7 +15,8 @@ namespace SevenDays
             Container.Register<ISevendayService>(() => new SevendayService());
             Container.Register<ISettings>(() => new Settings());
             Container.Register<ICacheService>(() => new AkavacheCacheService());
-            Container.Register<ILogger>(() => new Logger());
-        }
+            Container.Register<ILogger>(() => new MobileCenterLogger());
+            Container.Register<ITrackTimer>(() => new StopWatch());
+		}
     }
 }

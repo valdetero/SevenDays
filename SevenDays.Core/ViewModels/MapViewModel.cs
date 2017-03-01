@@ -7,6 +7,7 @@ using System.Windows.Input;
 using SevenDays.Core.Helpers;
 using SevenDays.Core.Interfaces;
 using SevenDays.Core.Ioc;
+using SevenDays.Core.Logging;
 
 namespace SevenDays.Core.ViewModels
 {
@@ -24,7 +25,7 @@ namespace SevenDays.Core.ViewModels
             get { return getGetMapUrlCommand ?? (getGetMapUrlCommand = new RelayCommand(async () => await ExecuteGetMapUrlCommand())); }
         }
 
-        [Insights]
+        [Track]
         public Task<string> ExecuteGetMapUrlCommand()
         {
             return sevendayService.GetMapUrl();

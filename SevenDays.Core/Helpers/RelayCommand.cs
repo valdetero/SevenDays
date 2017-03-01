@@ -21,7 +21,6 @@ namespace SevenDays.Core.Helpers
                 isEnabled = true;
         }
 
-
         public bool IsEnabled
         {
             get { return isEnabled; }
@@ -30,11 +29,8 @@ namespace SevenDays.Core.Helpers
                 if (value != isEnabled)
                 {
                     isEnabled = value;
-                    if (CanExecuteChanged != null)
-                    {
-                        CanExecuteChanged(this, EventArgs.Empty);
-                    }
-                }
+					CanExecuteChanged?.Invoke(this, EventArgs.Empty);
+				}
             }
         }
 
@@ -48,24 +44,14 @@ namespace SevenDays.Core.Helpers
 
         public event EventHandler CanExecuteChanged;
 
-        public void Execute(object parameter)
-        {
-            handler();
-        }
+        public void Execute(object parameter) => handler();
 
         /// <summary>
         /// Method used to raise the <see cref="CanExecuteChanged"/> event
         /// to indicate that the return value of the <see cref="CanExecute"/>
         /// method has changed.
         /// </summary>
-        public void RaiseCanExecuteChanged()
-        {
-            var handler = CanExecuteChanged;
-            if (handler != null)
-            {
-                handler(this, EventArgs.Empty);
-            }
-        }
+        public void RaiseCanExecuteChanged() => CanExecuteChanged?.Invoke(this, EventArgs.Empty);
     }
 
     public class RelayCommand<T> : ICommand
@@ -91,11 +77,8 @@ namespace SevenDays.Core.Helpers
                 if (value != isEnabled)
                 {
                     isEnabled = value;
-                    if (CanExecuteChanged != null)
-                    {
-                        CanExecuteChanged(this, EventArgs.Empty);
-                    }
-                }
+					CanExecuteChanged?.Invoke(this, EventArgs.Empty);
+				}
             }
         }
 
@@ -109,23 +92,13 @@ namespace SevenDays.Core.Helpers
 
         public event EventHandler CanExecuteChanged;
 
-        public void Execute(object parameter)
-        {
-            handler((T)parameter);
-        }
+        public void Execute(object parameter) => handler((T)parameter);
 
         /// <summary>
         /// Method used to raise the <see cref="CanExecuteChanged"/> event
         /// to indicate that the return value of the <see cref="CanExecute"/>
         /// method has changed.
         /// </summary>
-        public void RaiseCanExecuteChanged()
-        {
-            var handler = CanExecuteChanged;
-            if (handler != null)
-            {
-                handler(this, EventArgs.Empty);
-            }
-        }
+        public void RaiseCanExecuteChanged() => CanExecuteChanged?.Invoke(this, EventArgs.Empty);
     }
 }

@@ -12,22 +12,9 @@ namespace SevenDays.Core.Helpers
 	/// </summary>
 	public class Settings : SevenDays.Core.Interfaces.ISettings
     {
-        private static ISettings AppSettings
-        {
-            get
-            {
-                return CrossSettings.Current;
-            }
-        }
+        private static ISettings AppSettings => CrossSettings.Current;
 
         #region Setting Constants
-
-        //private const string SevendaysServerKey = "sevendays_server";
-        //private static readonly string SevendaysServerDefault = "localhost";
-        //private static readonly string SevendaysServerDefault = "home.wtfnext.com";
-
-        //private const string SevendaysPortKey = "sevendays_port";
-        //private static readonly string SevendaysPortDefault = "26903";
 
         private const string SevendaysSelectedServerKey = "sevendays_selected_server";
 
@@ -36,19 +23,6 @@ namespace SevenDays.Core.Helpers
         private const string PageSizeKey = "page_size";
 
         #endregion
-
-
-        //public static string SevendaysServer
-        //{
-        //    get { return AppSettings.GetValueOrDefault(SevendaysServerKey, SevendaysServerDefault); }
-        //    set { AppSettings.AddOrUpdateValue(SevendaysServerKey, value); }
-        //}
-
-        //public static string SevendaysPort
-        //{
-        //    get { return AppSettings.GetValueOrDefault(SevendaysPortKey, SevendaysPortDefault); }
-        //    set { AppSettings.AddOrUpdateValue(SevendaysPortKey, value); }
-        //}
 
         public string SevendaysSelectedServer
         {

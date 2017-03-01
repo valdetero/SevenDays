@@ -23,7 +23,6 @@ namespace SevenDays.Core.ViewModels
 			IconName = item.Icon;
 			IconColor = item.IconColor;
             Count = item.Count;
-            //Image = sevendayService.GetInventoryImageUrl(item.Name);
             Pack = pack;
         }
 

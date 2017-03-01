@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SevenDays.Core.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,11 +18,16 @@ namespace SevenDays.Core.ViewModels
             set
             {
                 isBusy = value;
-                if (IsBusyChanged != null)
-                    IsBusyChanged(isBusy);
-            }
+				IsBusyChanged?.Invoke(isBusy);
+			}
         }
-        
+
         public bool CanLoadMore { get; set; }
+
+		protected ILogger Logger => Ioc.Container.Resolve<ILogger>();
+		protected ITrackTimer TrackTime(string identifier)
+		{
+			return Ioc.Container.Resolve<ITrackTimer>().Init(identifier);
+		}
     }
 }

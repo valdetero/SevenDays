@@ -10,6 +10,7 @@ using SevenDays.Core.Helpers;
 using SevenDays.Core.Interfaces;
 using SevenDays.Core.Ioc;
 using SevenDays.Model.Entity;
+using SevenDays.Core.Logging;
 
 namespace SevenDays.Core.ViewModels
 {
@@ -52,12 +53,12 @@ namespace SevenDays.Core.ViewModels
             get { return getSaveCommand ?? (getSaveCommand = new RelayCommand(async () => await ExecuteSaveCommand())); }
         }
 
-        [Insights]
+        [Track]
         public async Task<bool> ExecuteSaveCommand()
         {
             int port;
             int.TryParse(Port, out port);
-                       
+
             await deletingExistingItem();
 
 			var server = setDefault();
@@ -74,7 +75,7 @@ namespace SevenDays.Core.ViewModels
             get { return getSetDefaultCommand ?? (getSetDefaultCommand = new RelayCommand(() => ExecuteSetDefaultCommand())); }
         }
 
-        [Insights]
+        [Track]
         public void ExecuteSetDefaultCommand()
         {
             setDefault();
@@ -86,7 +87,7 @@ namespace SevenDays.Core.ViewModels
             get { return getCheckConnectivityCommand ?? (getCheckConnectivityCommand = new RelayCommand(async () => await ExecuteCheckConnectivityCommand())); }
         }
 
-        [Insights]
+        [Track]
         public async Task<bool> ExecuteCheckConnectivityCommand()
         {
             IsReachable = await sevendayService.CanConnectToServer(Host, Port);
@@ -100,7 +101,7 @@ namespace SevenDays.Core.ViewModels
             get { return getDeleteCommand ?? (getDeleteCommand = new RelayCommand(async () => await ExecuteDeleteCommand())); }
         }
 
-        [Insights]
+        [Track]
         public async Task ExecuteDeleteCommand()
         {
             await deletingExistingItem();

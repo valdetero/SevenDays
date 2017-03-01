@@ -9,20 +9,23 @@ using SevenDays.Core.Helpers;
 using SevenDays.Core.Interfaces;
 using SevenDays.Core.Ioc;
 using Xamarin;
+using SevenDays.Core.Logging;
 
 namespace SevenDays.Core.ViewModels
 {
     [PropertyChanged.ImplementPropertyChanged]
     public class ServerListViewModel : IViewModel
     {
-        private ISevendayService sevendayService;
-        private ICacheService cache;
+        private readonly ISevendayService sevendayService;
+        private readonly ICacheService cache;
         private readonly ISettings settings;
+		private readonly ILogger logger;
         public ServerListViewModel()
         {
             sevendayService = Container.Resolve<ISevendayService>();
             cache = Container.Resolve<ICacheService>();
             settings = Container.Resolve<ISettings>();
+			logger = Container.Resolve<ILogger>();
 
             Servers = new ObservableCollection<ServerViewModel>();
         }
@@ -35,7 +38,7 @@ namespace SevenDays.Core.ViewModels
             get { return getServersCommand ?? (getServersCommand = new RelayCommand(async () => await ExecuteGetServersCommand())); }
         }
 
-        [Insights]
+        [Track]
         public async Task ExecuteGetServersCommand()
         {
             Servers.Clear();
@@ -60,7 +63,7 @@ namespace SevenDays.Core.ViewModels
 
             var servers = entities.Select(x => new ServerViewModel(x)).ToList();
 
-            Insights.Track(string.Format("Loaded {0} servers from cache", servers.Count));
+            logger.Track(string.Format("Loaded {0} servers from cache", servers.Count));
 
             Servers = new ObservableCollection<ServerViewModel>(servers);
         }

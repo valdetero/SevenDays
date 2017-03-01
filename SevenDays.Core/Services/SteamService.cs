@@ -26,19 +26,19 @@ namespace SevenDays.Core.Services
 
         //Can't ping the API
         private Task<bool> canConnectToServer()
-        {            
+        {
             //return await networkService.CanConnectToService(ApiConstants.Steam.ApiEndpoint, "80");
             return Task.FromResult(true);
         }
 
         public async Task<Response<PlayerStats>> GetPlayerAchievements(long steamId)
-        {            
+        {
             var response = new Response<PlayerStats>();
 
-            logger.Track(string.Format("Getting player achievements for {0}", steamId));
+            logger.Track($"Getting player achievements for {steamId}");
 
             string url = string.Format("{0}key={1}&appId={2}&steamId={3}", ApiConstants.Steam.Achievements, ApiConstants.Steam.Key, ApiConstants.Steam.AppId, steamId);
-            
+
             using (var client = new HttpClient(new NativeMessageHandler()))
             {
                 var result = await client.GetStringAsync(url);
@@ -63,9 +63,9 @@ namespace SevenDays.Core.Services
                     sb.Append(",");
                 }
             }
-            
+
             string url = string.Format("{0}key={1}&steamIds={2}", ApiConstants.Steam.PlayerSummary, ApiConstants.Steam.Key, sb.ToString());
-            
+
             using (var client = new HttpClient(new NativeMessageHandler()))
             {
                 var result = await client.GetStringAsync(url);
@@ -81,7 +81,7 @@ namespace SevenDays.Core.Services
             var response = new Response<Game>();
 
             string url = string.Format("{0}key={1}&appId={2}", ApiConstants.Steam.Schema, ApiConstants.Steam.Key, ApiConstants.Steam.AppId);
-            
+
             using (var client = new HttpClient(new NativeMessageHandler()))
             {
                 var result = await client.GetStringAsync(url);
@@ -96,7 +96,7 @@ namespace SevenDays.Core.Services
             var response = new Response<PlayerStats>();
 
             string url = string.Format("{0}key={1}&appId={2}&steamId={3}", ApiConstants.Steam.UserStats, ApiConstants.Steam.Key, ApiConstants.Steam.AppId, steamId);
-            
+
             using (var client = new HttpClient(new NativeMessageHandler()))
             {
                 var result = await client.GetStringAsync(url);

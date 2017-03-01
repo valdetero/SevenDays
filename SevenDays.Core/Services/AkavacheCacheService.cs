@@ -11,9 +11,10 @@ namespace SevenDays.Core.Services
 {
     public class AkavacheCacheService: ICacheService
     {
+		ILogger _logger;
         public AkavacheCacheService()
         {
-            
+			_logger = Ioc.Container.Resolve<ILogger>();
         }
 
         public async Task RemoveObject(string key)
@@ -24,10 +25,11 @@ namespace SevenDays.Core.Services
             }
             catch (Exception exception)
             {
-                Xamarin.Insights.Report(exception, "Key", key);
+				_logger.LogException(exception);
+                //Xamarin.Insights.Report(exception, "Key", key);
             }
         }
- 
+
         public async Task<T> GetObject<T>(string key) where T: class, new()
         {
             try
@@ -40,14 +42,15 @@ namespace SevenDays.Core.Services
             }
             catch (Exception exception)
             {
-                Xamarin.Insights.Report(exception, "Key", key);
+				_logger.LogException(exception);
+				//Xamarin.Insights.Report(exception, "Key", key);
 
-                return default(T);
+				return default(T);
             }
         }
 
         public async Task<IEnumerable<T>> GetAllObjects<T>()
-        {            
+        {
             try
             {
                 return await BlobCache.LocalMachine.GetAllObjects<T>();
@@ -58,12 +61,13 @@ namespace SevenDays.Core.Services
             }
             catch (Exception exception)
             {
-                Xamarin.Insights.Report(exception, "type", typeof(T).FullName);
+				_logger.LogException(exception);
+				//Xamarin.Insights.Report(exception, "type", typeof(T).FullName);
 
-                return new List<T>();
+				return new List<T>();
             }
         }
- 
+
         public async Task<bool> InsertObject<T>(string key, T value)
         {
             try

@@ -5,37 +5,44 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using MethodDecoratorInterfaces;
+using SevenDays.Core.Interfaces;
 
-namespace SevenDays.Core.Helpers
+namespace SevenDays.Core.Logging
 {
     [AttributeUsage(
             AttributeTargets.Method
             | AttributeTargets.Constructor
             | AttributeTargets.Assembly
             | AttributeTargets.Module)]
-    public class InsightsAttribute : Attribute, IMethodDecorator
+    public class TrackAttribute : Attribute, IMethodDecorator
     {
+		private readonly ILogger _logger;
         private string _methodName;
+
+		public TrackAttribute()
+		{
+			_logger = Ioc.Container.Resolve<ILogger>();
+		}
 
         public void Init(object instance, MethodBase method, object[] args)
         {
-            _methodName = //method.DeclaringType.FullName + "." + 
+            _methodName = //method.DeclaringType.FullName + "." +
                 method.Name;
-        }
+		}
 
-        public void OnEntry()
+		public void OnEntry()
         {
-            Xamarin.Insights.Track(string.Format("OnEntry: {0}", _methodName));
+			_logger.Track($"OnEntry: {_methodName}");
         }
 
         public void OnExit()
         {
-            Xamarin.Insights.Track(string.Format("OnExit: {0}", _methodName));
+			_logger.Track($"OnExit: {_methodName}");
         }
 
         public void OnException(Exception exception)
         {
-            Xamarin.Insights.Report(exception);
+			_logger.LogException(exception);
         }
     }
 }

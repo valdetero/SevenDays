@@ -46,7 +46,13 @@ namespace SevenDays.Core
 			public readonly static string Key = "";
 		}
 
-        public partial struct GoogleAds
+		public partial struct MobileCenter
+		{
+			public readonly static string iOS = "";
+			public readonly static string Droid = "";
+		}
+
+		public partial struct GoogleAds
         {
             public readonly static string WinKey = "";
             public readonly static string DroidKey = "";

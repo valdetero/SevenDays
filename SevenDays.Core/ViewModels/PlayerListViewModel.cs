@@ -11,7 +11,7 @@ using SevenDays.Core.Ioc;
 using SevenDays.Model;
 using SevenDays.Model.Base;
 using SevenDays.Model.Mapper;
-using Xamarin;
+using SevenDays.Core.Logging;
 
 namespace SevenDays.Core.ViewModels
 {
@@ -21,11 +21,13 @@ namespace SevenDays.Core.ViewModels
         private ISevendayService sevendayService;
         private ISteamService steamService;
         private ICacheService cache;
+		private ILogger logger;
         public PlayerListViewModel()
         {
             sevendayService = Container.Resolve<ISevendayService>();
             steamService = Container.Resolve<ISteamService>();
             cache = Container.Resolve<ICacheService>();
+			logger = Container.Resolve<ILogger>();
 
             Players = new ObservableCollection<PlayerViewModel>();
             CanLoadMore = true;
@@ -39,25 +41,24 @@ namespace SevenDays.Core.ViewModels
             get { return getPlayerSummariesCommand ?? (getPlayerSummariesCommand = new RelayCommand(async () => await ExecuteGetPlayerSummariesCommand())); }
         }
 
-        [Insights]
+        [Track]
         public async Task ExecuteGetPlayerSummariesCommand()
         {
             Players.Clear();
 
             ListResponse<Model.Seven.Player> locationResponse;
-            using (var handle = Insights.TrackTime("Seven_GetPlayersLocation"))
+            using (TrackTime("Seven_GetPlayersLocation"))
                 locationResponse = await sevendayService.GetPlayersLocation();
 
             if (!locationResponse.Successful)
                     return;
 
             var sevens = locationResponse.Result.ToList();
-            
-            Insights.Track(string.Format("Found {0} seven players", sevens.Count));
-            Insights.Track(string.Format("Getting player summaries for {0} steamIds", sevens.Count));
+
+			logger.Track($"Found {sevens.Count} seven players");
 
             ListResponse<Model.Steam.Player> summaryResponse;
-            using (var handle = Insights.TrackTime("Steam_GetPlayerSummaries"))
+            using (TrackTime("Steam_GetPlayerSummaries"))
                 summaryResponse = await steamService.GetPlayerSummaries(sevens.Select(x => x.SteamId).ToArray());
 
             if (!summaryResponse.Successful)
@@ -65,11 +66,11 @@ namespace SevenDays.Core.ViewModels
 
             var steams = summaryResponse.Result.ToList();
 
-            Insights.Track(string.Format("Found {0} steam players", steams.Count));
+			logger.Track($"Found {steams.Count} steam players");
 
             addPlayers(sevens, steams);
 
-            Insights.Track(string.Format("Added {0} players to view", Players.Count));
+			logger.Track($"Added {Players.Count} players to view");
         }
 
         private RelayCommand loadMoreCommand;
@@ -78,7 +79,7 @@ namespace SevenDays.Core.ViewModels
             get { return loadMoreCommand ?? (loadMoreCommand = new RelayCommand(async () => await ExecuteLoadMoreCommand())); }
         }
 
-        [Insights]
+        [Track]
         public async Task ExecuteLoadMoreCommand()
         {
             if (!CanLoadMore)
@@ -87,7 +88,7 @@ namespace SevenDays.Core.ViewModels
             IsBusy = true;
 
             ListResponse<Model.Seven.Player> locationResponse;
-            using (var handle = Insights.TrackTime("Seven_GetPlayersLocation"))
+            using (TrackTime("Seven_GetPlayersLocation"))
                 locationResponse = await sevendayService.GetPlayersLocation();
 
             if (!locationResponse.Successful)
@@ -99,11 +100,10 @@ namespace SevenDays.Core.ViewModels
                 .Take(Settings.PageSize)
                 .ToList();
 
-            Insights.Track(string.Format("Found {0} seven players", sevens.Count));
-            Insights.Track(string.Format("Getting player summaries for {0} steamIds", sevens.Count));
+			logger.Track($"Found {sevens.Count} seven players");
 
             ListResponse<Model.Steam.Player> summaryResponse;
-            using (var handle = Insights.TrackTime("Steam_GetPlayerSummaries"))
+            using (TrackTime("Steam_GetPlayerSummaries"))
                 summaryResponse = await steamService.GetPlayerSummaries(sevens.Select(x => x.SteamId).ToArray());
 
             if (!summaryResponse.Successful)
@@ -111,11 +111,11 @@ namespace SevenDays.Core.ViewModels
 
             var steams = summaryResponse.Result.ToList();
 
-            Insights.Track(string.Format("Found {0} steam players", steams.Count));
+			logger.Track($"Found {steams.Count} steam players");
 
             addPlayers(sevens, steams);
 
-            Insights.Track(string.Format("Added {0} players to view", Players.Count));
+			logger.Track($"Added {Players.Count} players to view");
 
             CanLoadMore = sevens.Count == Settings.PageSize;
 
@@ -128,7 +128,7 @@ namespace SevenDays.Core.ViewModels
             get { return isServerReachableCommand ?? (isServerReachableCommand = new RelayCommand(async () => await ExecuteIsServerReachableCommand())); }
         }
 
-        [Insights]
+        [Track]
         public async Task<bool> ExecuteIsServerReachableCommand()
         {
             return await sevendayService.CanConnectToServer();
@@ -140,7 +140,7 @@ namespace SevenDays.Core.ViewModels
             get { return getCachedPlayersCommand ?? (getCachedPlayersCommand = new RelayCommand(async () => await ExecuteGetCachedPlayersCommand())); }
         }
 
-        [Insights]
+        [Track]
         public async Task ExecuteGetCachedPlayersCommand()
         {
             var sevens = await cache.GetObject<List<Model.Seven.Player>>("seven_players");
@@ -161,7 +161,7 @@ namespace SevenDays.Core.ViewModels
                 if (Players.Contains(player))
                     Players.Remove(player);
 
-                Players.Add(player);                
+                Players.Add(player);
             }
         }
 

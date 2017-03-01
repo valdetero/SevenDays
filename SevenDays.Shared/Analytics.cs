@@ -5,6 +5,7 @@ using System.Text;
 
 namespace SevenDays
 {
+	/*
     public static class Analytics
     {
         public static void Init()
@@ -41,4 +42,5 @@ namespace SevenDays
 #endif
         }
     }
+	*/
 }

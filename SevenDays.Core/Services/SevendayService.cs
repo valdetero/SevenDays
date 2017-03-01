@@ -64,7 +64,7 @@ namespace SevenDays.Core.Services
 
         public Task<bool> CanConnectToServer(string host, string port)
         {
-            return networkService.CanConnectToService(string.Format("http://{0}", host), port);
+            return networkService.CanConnectToService($"http://{host}", port);
         }
 
         public Task<bool> CanConnectToServer(SevenDays.Model.Entity.Server server)
@@ -126,10 +126,8 @@ namespace SevenDays.Core.Services
                 System.Net.WebExceptionStatus.ReceiveFailure = 3
                 Azure throws this error. However this enum doesn't exist in the namespace.
             */
-            catch (System.Net.WebException ex)// when ((int)ex.Status == 3)
+            catch (System.Net.WebException ex) when ((int)ex.Status == 3)
             {
-                if ((int) ex.Status != 3)
-                    throw;
                 logger.LogException(ex);
             }
 
@@ -142,9 +140,6 @@ namespace SevenDays.Core.Services
             return string.Format(url, item, color);
         }
 
-        public async Task<string> GetMapUrl()
-        {
-            return await getApiUrlAsync(ApiConstants.Seven.Map);
-        }
+        public Task<string> GetMapUrl() => getApiUrlAsync(ApiConstants.Seven.Map);
     }
 }

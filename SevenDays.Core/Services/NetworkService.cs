@@ -17,7 +17,7 @@ namespace SevenDays.Core.Services
         }
         public async Task<bool> CanConnectToService(string host)
         {
-            logger.Track(string.Format("Checking connectivity to {0}", host));
+            logger.Track($"Checking connectivity to {host}");
             return CrossConnectivity.Current.IsConnected
                 && await CrossConnectivity.Current.IsReachable(host);
         }
@@ -26,7 +26,7 @@ namespace SevenDays.Core.Services
         {
             int portInt;
 
-            logger.Track(string.Format("Checking connectivity to {0}:{1}", host, port));
+            logger.Track($"Checking connectivity to {host}:{port}");
             return CrossConnectivity.Current.IsConnected
                 && (int.TryParse(port, out portInt)
                 && await CrossConnectivity.Current.IsRemoteReachable(host, portInt));

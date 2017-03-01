@@ -9,18 +9,20 @@ using SevenDays.Core.Helpers;
 using SevenDays.Core.Interfaces;
 using SevenDays.Core.Ioc;
 using SevenDays.Model.Seven;
-using Xamarin;
 using Xamarin.Forms;
+using SevenDays.Core.Logging;
 
 namespace SevenDays.Core.ViewModels
 {
     [PropertyChanged.ImplementPropertyChanged]
-    public class PlayerViewModel : IViewModel
+    public class PlayerViewModel : ViewModelBase, IViewModel
     {
         private readonly ISevendayService _sevendayService;
+		private readonly ILogger _logger;
         public PlayerViewModel()
         {
             _sevendayService = Container.Resolve<ISevendayService>();
+			_logger = Container.Resolve<ILogger>();
 
             Inventory = new ObservableCollection<Grouping<string, InventoryViewModel>>();
         }
@@ -44,20 +46,8 @@ namespace SevenDays.Core.ViewModels
         public bool ShouldShowAsOffline { get { return IsOnline == false; } }
         public string LastLogOff { get; set; }
         private string avatar;
-        public ImageSource Avatar
-        {
-            get
-            {
-                if (string.IsNullOrEmpty(avatar))
-                    return null;
+        public ImageSource Avatar => string.IsNullOrEmpty(avatar) ? null : ImageSource.FromUri(new Uri(avatar));
 
-                return Device.OnPlatform(
-                    UriImageSource.FromUri(new Uri(avatar)),
-                    UriImageSource.FromUri(new Uri(avatar)),
-                    UriImageSource.FromUri(new Uri(avatar))
-                );
-            }
-        }
 
         public ObservableCollection<Grouping<string, InventoryViewModel>> Inventory { get; set; }
 
@@ -67,15 +57,15 @@ namespace SevenDays.Core.ViewModels
             get { return _getLoadInventoryCommand ?? (_getLoadInventoryCommand = new RelayCommand(async () => await ExecuteLoadInventoryCommand())); }
         }
 
-        [Insights]
+        [Track]
         public async Task ExecuteLoadInventoryCommand()
         {
             Inventory.Clear();
 
             Inventory inventory;
 
-            Insights.Track(string.Format("Getting player inventory for {0}", SteamId));
-            using (var handle = Insights.TrackTime("Seven_GetPlayerInventory"))
+            _logger.Track($"Getting player inventory for {SteamId}");
+            using (TrackTime("Seven_GetPlayerInventory"))
             {
                 var invResponse = await _sevendayService.GetPlayerInventory(SteamId);
 
@@ -85,8 +75,8 @@ namespace SevenDays.Core.ViewModels
                 inventory = invResponse.Result;
             }
 
-            Insights.Track(string.Format("Found {0} inventory items in bag", inventory.Bag.Count()));
-            Insights.Track(string.Format("Found {0} inventory items in belt", inventory.Belt.Count()));
+			_logger.Track($"Found {inventory.Bag.Count()} inventory items in bag");
+            _logger.Track($"Found {inventory.Belt.Count()} inventory items in belt");
 
             var inventories =   inventory.Bag.Where(x => x != null && x.Count > 0).Select(x => new InventoryViewModel(x, "Bag")).Concat(
                                 inventory.Belt.Where(x => x != null && x.Count > 0).Select(x => new InventoryViewModel(x, "Belt"))).Concat(
@@ -104,7 +94,7 @@ namespace SevenDays.Core.ViewModels
 
             Inventory = new ObservableCollection<Grouping<string, InventoryViewModel>>(allItems);
 
-            Insights.Track(string.Format("Added {0} inventory items to view", allItems.Count));
+			_logger.Track($"Added {allItems.Count} inventory items to view");
         }
 
         private Color getColorFromState()

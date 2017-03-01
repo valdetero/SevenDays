@@ -46,10 +46,7 @@ namespace SevenDays.Core.Helpers
 			return sb.ToString();
 		}
 
-		static public MD5 Create()
-		{
-			return new MD5();
-		}
+		static public MD5 Create() => new MD5();
 
 		#region base implementation of the MD5
 		#region constants
@@ -77,22 +74,10 @@ namespace SevenDays.Core.Helpers
 		#endregion
 
 		#region F, G, H and I are basic MD5 functions.
-		static private uint F(uint x, uint y, uint z)
-		{
-			return (((x) & (y)) | ((~x) & (z)));
-		}
-		static private uint G(uint x, uint y, uint z)
-		{
-			return (((x) & (z)) | ((y) & (~z)));
-		}
-		static private uint H(uint x, uint y, uint z)
-		{
-			return ((x) ^ (y) ^ (z));
-		}
-		static private uint I(uint x, uint y, uint z)
-		{
-			return ((y) ^ ((x) | (~z)));
-		}
+		static private uint F(uint x, uint y, uint z) => (((x) & (y)) | ((~x) & (z)));
+		static private uint G(uint x, uint y, uint z) => (((x) & (z)) | ((y) & (~z)));
+		static private uint H(uint x, uint y, uint z) => ((x) ^ (y) ^ (z));
+		static private uint I(uint x, uint y, uint z) => ((y) ^ ((x) | (~z)));
 		#endregion
 
 		#region rotates x left n bits.
@@ -102,10 +87,7 @@ namespace SevenDays.Core.Helpers
 		/// <param name="x"></param>
 		/// <param name="n"></param>
 		/// <returns></returns>
-		static private uint ROTATE_LEFT(uint x, byte n)
-		{
-			return (((x) << (n)) | ((x) >> (32 - (n))));
-		}
+		static private uint ROTATE_LEFT(uint x, byte n) => (((x) << (n)) | ((x) >> (32 - (n))));
 		#endregion
 
 		#region FF, GG, HH, and II transformations
@@ -396,21 +378,9 @@ namespace SevenDays.Core.Helpers
 
 		protected byte[] HashValue;
 		protected int State;
-		public virtual bool CanReuseTransform
-		{
-			get
-			{
-				return true;
-			}
-		}
+		public virtual bool CanReuseTransform => true;
 
-		public virtual bool CanTransformMultipleBlocks
-		{
-			get
-			{
-				return true;
-			}
-		}
+		public virtual bool CanTransformMultipleBlocks => true;
 		public virtual byte[] Hash
 		{
 			get
@@ -420,39 +390,18 @@ namespace SevenDays.Core.Helpers
 				return (byte[])HashValue.Clone();
 			}
 		}
-		public virtual int HashSize
-		{
-			get
-			{
-				return HashSizeValue;
-			}
-		}
+		public virtual int HashSize => HashSizeValue;
 		protected int HashSizeValue = 128;
 
-		public virtual int InputBlockSize
-		{
-			get
-			{
-				return 1;
-			}
-		}
-		public virtual int OutputBlockSize
-		{
-			get
-			{
-				return 1;
-			}
-		}
+		public virtual int InputBlockSize => 1;
+		public virtual int OutputBlockSize => 1;
 
 		public void Clear()
 		{
 			Dispose(true);
 		}
 
-		public byte[] ComputeHash(byte[] buffer)
-		{
-			return ComputeHash(buffer, 0, buffer.Length);
-		}
+		public byte[] ComputeHash(byte[] buffer) => ComputeHash(buffer, 0, buffer.Length);
 		public byte[] ComputeHash(byte[] buffer, int offset, int count)
 		{
 			Initialize();

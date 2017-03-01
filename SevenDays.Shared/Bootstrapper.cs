@@ -14,7 +14,7 @@ namespace SevenDays
         {
             IoC.Init();
             SevenDays.Model.Mapper.AutoMapperConfig.Register();
-            Analytics.Init();
+            //Analytics.Init();
 
 			SQLitePCL.Batteries_V2.Init();
             Akavache.BlobCache.ApplicationName = "SevenDays";
@@ -27,12 +27,15 @@ namespace SevenDays
             Toasts.Forms.Plugin.Droid.ToastNotificatorImplementation.Init();
             AdMobBuddy.Forms.Plugin.Droid.AdMobBuddyRenderer.Init(context);
             SevenDays.UI.App.AdMobId = SevenDays.Core.ApiConstants.GoogleAds.DroidKey;
+			Microsoft.Azure.Mobile.MobileCenter.Start(Core.ApiConstants.MobileCenter.Droid, typeof(Microsoft.Azure.Mobile.Analytics.Analytics), typeof(Microsoft.Azure.Mobile.Crashes.Crashes));
 #elif __IOS__
-            //Acr.UserDialogs.UserDialogs.Init();
-            ImageCircle.Forms.Plugin.iOS.ImageCircleRenderer.Init();
+			//Acr.UserDialogs.UserDialogs.Init();
+			ImageCircle.Forms.Plugin.iOS.ImageCircleRenderer.Init();
             Toasts.Forms.Plugin.iOS.ToastNotificatorImplementation.Init();
             AdMobBuddy.Forms.Plugin.iOS.AdMobBuddyRenderer.Init();
             SevenDays.UI.App.AdMobId = SevenDays.Core.ApiConstants.GoogleAds.iOSKey;
+			Microsoft.Azure.Mobile.MobileCenter.Start(Core.ApiConstants.MobileCenter.iOS, typeof(Microsoft.Azure.Mobile.Analytics.Analytics), typeof(Microsoft.Azure.Mobile.Crashes.Crashes));
+
 #elif WINDOWS_PHONE
             Acr.UserDialogs.UserDialogs.Init();
             ImageCircle.Forms.Plugin.WindowsPhone.ImageCircleRenderer.Init();
@@ -43,6 +46,6 @@ namespace SevenDays
 
 #endif
 
-        }
+		}
     }
 }
